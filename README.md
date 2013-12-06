@@ -4,7 +4,7 @@ EVE Api Fetcher Bundle
 Copyright (C) 2013 by Patrick Ruckstuhl
 All rights reserved.
 
-Symfony bundle for automatic fetching of the EVE Online API, heavily inspired by Yapeal
+Symfony bundle for automatic fetching of the EVE Online API, heavily inspired by [Yapeal](http://code.google.com/p/yapeal/) and makes use of [PhealNG](https://github.com/3rdpartyeve/phealng)
 
 ## LICENSE
 EVE Api Fetcher Bundle is licensed under a MIT style license, see LICENSE.txt
