@@ -1,0 +1,12 @@
+filter:
+    excluded_paths:
+        - 'vendor/*'
+        - 'app/*'
+        - 'web/*'
+tools:
+    php_cpd: true
+    php_pdepend: true
+    php_mess_detector:
+        config:
+            ruleset: phpmd_rules.xml
+    php_loc: true
