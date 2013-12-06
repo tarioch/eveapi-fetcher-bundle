@@ -1,6 +1,9 @@
 EVE Api Fetcher Bundle
 ======================
 
+[![Latest Stable Version](https://poser.pugx.org/tarioch/eveapi-fetcher-bundle/v/stable.png)](https://packagist.org/packages/tarioch/eveapi-fetcher-bundle)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/3172bec4-e7d2-467d-800c-debefc17b118/mini.png)](https://insight.sensiolabs.com/projects/3172bec4-e7d2-467d-800c-debefc17b118)
+
 Copyright (C) 2013 by Patrick Ruckstuhl
 All rights reserved.
 
