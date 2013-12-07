@@ -21,7 +21,7 @@ class ScheduleApiJobsCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $gearman = $this->getContainer()->get('gearman');
-        $entityManager = $this->getContainer()->get('doctrine.orm.entity_manager');
+        $entityManager = $this->getContainer()->get('doctrine.orm.eveapi_entity_manager');
 
         $calls = $entityManager->getRepository('TariochEveapiFetcherBundle:ApiCall')->loadReadyCalls();
         foreach ($calls as $call) {

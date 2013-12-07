@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="hpl_eveapi.serverServerStatus")
+ * @ORM\Table(name="serverServerStatus")
  */
 class ServerServerStatus
 {

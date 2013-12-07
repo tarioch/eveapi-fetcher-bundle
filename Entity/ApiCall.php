@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="ApiCallRepository")
- * @ORM\Table(name="hpl_eveapi.apiCall")
+ * @ORM\Table(name="apiCall")
  */
 class ApiCall
 {
