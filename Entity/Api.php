@@ -15,7 +15,7 @@ class Api
     private $apiId;
 
     /**
-     * @ORM\Column(name="mask", type="integer")
+     * @ORM\Column(name="mask", type="integer", nullable=true)
      */
     private $mask;
 
@@ -35,7 +35,7 @@ class Api
     private $name;
 
     /**
-     * @ORM\Column(name="callInterval", type="integer")
+     * @ORM\Column(name="callInterval", type="integer", options={"default"=0})
      */
     private $callInterval;
 

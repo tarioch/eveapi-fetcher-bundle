@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class ServerServerStatus
 {
     /**
-     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="ID", type="integer")
+     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
      */
     private $id;
 
@@ -20,7 +20,7 @@ class ServerServerStatus
     private $serverOpen;
 
     /**
-     * @ORM\Column(name="onlinePlayers", type="integer")
+     * @ORM\Column(name="onlinePlayers", type="bigint", options={"unsigned"=true})
      */
     private $onlinePlayers;
 

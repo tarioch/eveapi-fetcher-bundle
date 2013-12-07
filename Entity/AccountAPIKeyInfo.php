@@ -10,17 +10,17 @@ use Doctrine\ORM\Mapping as ORM;
 class AccountAPIKeyInfo
 {
     /**
-     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="ID", type="integer")
+     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
      */
     private $id;
 
     /**
-     * @ORM\Column(name="accessMask", type="integer")
+     * @ORM\Column(name="accessMask", type="bigint", options={"unsigned"=true})
      */
     private $accessMask;
 
     /**
-     * @ORM\Column(name="expires", type="datetime")
+     * @ORM\Column(name="expires", type="datetime", nullable=true)
      */
     private $expires;
 
@@ -32,7 +32,7 @@ class AccountAPIKeyInfo
 
     /**
      * @ORM\OneToOne(targetEntity="Key", fetch="EAGER")
-     * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID")
+     * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=false, onDelete="cascade")
      */
     private $key;
 

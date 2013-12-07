@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Key
 {
     /**
-     * @ORM\Id @ORM\Column(name="keyID", type="integer")
+     * @ORM\Id @ORM\Column(name="keyID", type="bigint", options={"unsigned"=true})
      */
     private $keyId;
 

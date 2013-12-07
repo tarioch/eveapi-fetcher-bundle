@@ -5,27 +5,30 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="ApiCallRepository")
- * @ORM\Table(name="apiCall")
+ * @ORM\Table(name="apiCall", indexes={
+ *     @ORM\Index(name="ownerId", columns={"ownerId"}),
+ *     @ORM\Index(name="cachedUntil", columns={"cachedUntil"})
+ * })
  */
 class ApiCall
 {
     /**
-     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="apiCallID", type="integer")
+     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="apiCallID", type="bigint", options={"unsigned"=true})
      */
     private $apiCallId;
 
     /**
-     * @ORM\Column(name="ownerID", type="integer")
+     * @ORM\Column(name="ownerID", type="bigint", nullable=true, options={"unsigned"=true})
      */
     private $ownerId;
 
     /**
-     * @ORM\Column(name="earliestNextCall", type="datetime")
+     * @ORM\Column(name="earliestNextCall", type="datetime", nullable=true)
      */
     private $earliestNextCall;
 
     /**
-     * @ORM\Column(name="cachedUntil", type="datetime")
+     * @ORM\Column(name="cachedUntil", type="datetime", nullable=true)
      */
     private $cachedUntil;
 
@@ -35,13 +38,13 @@ class ApiCall
     private $active;
 
     /**
-     * @ORM\Column(name="errorCount", type="integer")
+     * @ORM\Column(name="errorCount", type="smallint", options={"unsigned"=true, "default"=0})
      */
     private $errorCount;
 
     /**
-     * @ORM\OneToOne(targetEntity="Api", fetch="EAGER")
-     * @ORM\JoinColumn(name="apiID", referencedColumnName="apiID")
+     * @ORM\ManyToOne(targetEntity="Api", fetch="EAGER")
+     * @ORM\JoinColumn(name="apiID", referencedColumnName="apiID", nullable=false, onDelete="cascade")
      */
     private $api;
 

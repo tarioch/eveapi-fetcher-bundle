@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class AccountAccountStatus
 {
     /**
-     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="ID", type="integer")
+     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
      */
     private $id;
 
@@ -20,12 +20,12 @@ class AccountAccountStatus
     private $createDate;
 
     /**
-     * @ORM\Column(name="logonCount", type="integer")
+     * @ORM\Column(name="logonCount", type="bigint", options={"unsigned"=true})
      */
     private $logonCount;
 
     /**
-     * @ORM\Column(name="logonMinutes", type="integer")
+     * @ORM\Column(name="logonMinutes", type="bigint", options={"unsigned"=true})
      */
     private $logonMinutes;
 
@@ -36,7 +36,7 @@ class AccountAccountStatus
 
     /**
      * @ORM\OneToOne(targetEntity="Key", fetch="EAGER")
-     * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID")
+     * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=false, onDelete="cascade")
      */
     private $key;
 

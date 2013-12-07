@@ -5,17 +5,20 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="accountCharacter")
+ * @ORM\Table(name="accountCharacter", indexes={
+ *     @ORM\Index(name="characterID", columns={"characterId"}),
+ *     @ORM\Index(name="corporationID", columns={"corporationId"})
+ * })
  */
 class AccountCharacter
 {
     /**
-     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="ID", type="integer")
+     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
      */
     private $id;
 
     /**
-     * @ORM\Column(name="characterID", type="integer")
+     * @ORM\Column(name="characterID", type="bigint", options={"unsigned"=true})
      */
     private $characterId;
 
@@ -25,7 +28,7 @@ class AccountCharacter
     private $characterName;
 
     /**
-     * @ORM\Column(name="corporationID", type="integer")
+     * @ORM\Column(name="corporationID", type="bigint", options={"unsigned"=true})
      */
     private $corporationId;
 
@@ -35,8 +38,8 @@ class AccountCharacter
     private $corporationName;
 
     /**
-     * @ORM\OneToOne(targetEntity="Key", fetch="EAGER")
-     * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID")
+     * @ORM\ManyToOne(targetEntity="Key", fetch="EAGER")
+     * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=false, onDelete="cascade")
      */
     private $key;
 
