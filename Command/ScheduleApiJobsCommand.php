@@ -8,11 +8,17 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ScheduleApiJobsCommand extends ContainerAwareCommand 
 {
+    /**
+     * @inheritdoc
+     */
     protected function configure()
     {
         $this->setName('eve:api:schedule')->setDescription('Schedule needed api fetches');
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $gearman = $this->getContainer()->get('gearman');
