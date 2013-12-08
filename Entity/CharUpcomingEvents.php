@@ -221,7 +221,7 @@ class CharUpcomingEvents
      *
      * @return boolean 
      */
-    public function getImportance()
+    public function isImportance()
     {
         return $this->importance;
     }
