@@ -2,6 +2,7 @@ EVE Api Fetcher Bundle
 ======================
 
 [![Latest Stable Version](https://poser.pugx.org/tarioch/eveapi-fetcher-bundle/v/stable.png)](https://packagist.org/packages/tarioch/eveapi-fetcher-bundle)
+[![Build Status](https://travis-ci.org/tarioch/eveapi-fetcher-bundle.png)](https://travis-ci.org/tarioch/eveapi-fetcher-bundle)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/tarioch/eveapi-fetcher-bundle/badges/quality-score.png?s=10b11825f1bf7cc31108d785491a783f071418d4)](https://scrutinizer-ci.com/g/tarioch/eveapi-fetcher-bundle/)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/3172bec4-e7d2-467d-800c-debefc17b118/mini.png)](https://insight.sensiolabs.com/projects/3172bec4-e7d2-467d-800c-debefc17b118)
 
