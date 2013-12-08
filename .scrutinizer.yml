@@ -20,4 +20,5 @@ tools:
             ruleset: phpmd_rules.xml
 
     php_analyzer: true
- 
+    sensiolabs_security_checker: true
+
