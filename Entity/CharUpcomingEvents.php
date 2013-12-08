@@ -86,5 +86,183 @@ class CharUpcomingEvents
      */
     private $response;
 
+    /**
+     * @param integer $eventId
+     * @param integer $ownerId
+     */
+    public function __construct($eventId, $ownerId)
+    {
+        $this->eventId = $eventId;
+	$this->ownerId = $ownerId;
+    }
 
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get eventId
+     *
+     * @return integer 
+     */
+    public function getEventId()
+    {
+        return $this->eventId;
+    }
+
+    /**
+     * Get ownerId
+     *
+     * @return integer 
+     */
+    public function getOwnerId()
+    {
+        return $this->ownerId;
+    }
+
+    /**
+     * Set ownerName
+     *
+     * @param string $ownerName
+     */
+    public function setOwnerName($ownerName)
+    {
+        $this->ownerName = $ownerName;
+    }
+
+    /**
+     * Get ownerName
+     *
+     * @return string 
+     */
+    public function getOwnerName()
+    {
+        return $this->ownerName;
+    }
+
+    /**
+     * Set eventDate
+     *
+     * @param \DateTime $eventDate
+     */
+    public function setEventDate($eventDate)
+    {
+        $this->eventDate = $eventDate;
+    }
+
+    /**
+     * Get eventDate
+     *
+     * @return \DateTime 
+     */
+    public function getEventDate()
+    {
+        return $this->eventDate;
+    }
+
+    /**
+     * Set eventTitle
+     *
+     * @param string $eventTitle
+     */
+    public function setEventTitle($eventTitle)
+    {
+        $this->eventTitle = $eventTitle;
+    }
+
+    /**
+     * Get eventTitle
+     *
+     * @return string 
+     */
+    public function getEventTitle()
+    {
+        return $this->eventTitle;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer 
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * Set importance
+     *
+     * @param boolean $importance
+     */
+    public function setImportance($importance)
+    {
+        $this->importance = $importance;
+    }
+
+    /**
+     * Get importance
+     *
+     * @return boolean 
+     */
+    public function getImportance()
+    {
+        return $this->importance;
+    }
+
+    /**
+     * Set eventText
+     *
+     * @param string $eventText
+     */
+    public function setEventText($eventText)
+    {
+        $this->eventText = $eventText;
+    }
+
+    /**
+     * Get eventText
+     *
+     * @return string 
+     */
+    public function getEventText()
+    {
+        return $this->eventText;
+    }
+
+    /**
+     * Set response
+     *
+     * @param string $response
+     */
+    public function setResponse($response)
+    {
+        $this->response = $response;
+    }
+
+    /**
+     * Get response
+     *
+     * @return string 
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
 }
