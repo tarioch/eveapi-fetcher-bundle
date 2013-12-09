@@ -45,7 +45,8 @@ class ScheduleApiJobsCommandTest extends \PHPUnit_Framework_TestCase
         $commandTester = new CommandTester($this->command);
         $commandTester->execute(array('command' => $this->command->getName()));
 
-        $this->assertEquals('Scheduled ' . $apiCallId1 . ': worker ' . $section1 . $name1 . "\n", $commandTester->getDisplay());
+        $expectedOutput = 'Scheduled ' . $apiCallId1 . ': worker ' . $section1 . $name1 . "\n";
+        $this->assertEquals($expectedOutput, $commandTester->getDisplay());
     }
 
     public function setUp()
