@@ -21,4 +21,4 @@ upload_coverage:
 composer_install:
 	composer install || exit 1
 
-.PHONY: verify fullbuild test test_coverage upload_coverage composer_install
+.PHONY: verify fullbuild checkstyle detectmess test test_coverage upload_coverage composer_install
