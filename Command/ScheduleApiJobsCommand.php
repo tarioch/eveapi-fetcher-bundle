@@ -5,7 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ScheduleApiJobsCommand extends ContainerAwareCommand 
+class ScheduleApiJobsCommand extends ContainerAwareCommand
 {
     /**
      * @inheritdoc
@@ -27,11 +27,12 @@ class ScheduleApiJobsCommand extends ContainerAwareCommand
         foreach ($calls as $call) {
             $api = $call->getApi();
 
-            $job = $api->getWorker() . '~apiUpdate';
+            $worker = $api->getWorker();
+            $job = $worker . '~apiUpdate';
             $callId = $call->getApiCallId();
 
             $gearman->doBackgroundJob($job, $callId, $callId);
-            $output->writeln('Scheduled ' . $callId . ': ' . $api->getWorker() . ' ' . $api->getSection() . $api->getName());
+            $output->writeln('Scheduled ' . $callId . ': ' . $worker . ' ' . $api->getSection() . $api->getName());
         }
     }
 }

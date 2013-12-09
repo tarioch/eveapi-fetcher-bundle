@@ -93,7 +93,7 @@ class CharUpcomingEvents
     public function __construct($eventId, $ownerId)
     {
         $this->eventId = $eventId;
-	$this->ownerId = $ownerId;
+        $this->ownerId = $ownerId;
     }
 
     /**
