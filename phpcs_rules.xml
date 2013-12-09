@@ -5,4 +5,5 @@
 	<rule ref="PSR2"/>
 
 	<exclude-pattern>vendor/</exclude-pattern>
+	<exclude-pattern>Tests/Fixtures</exclude-pattern>
 </ruleset>

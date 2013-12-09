@@ -11,7 +11,7 @@
     processIsolation = "false"
     stopOnFailure = "false"
     syntaxCheck = "false"
-    bootstrap = "./vendor/autoload.php" >
+    bootstrap = "./Tests/bootstrap.php" >
 
     <testsuites>
         <testsuite name="TariochEveapiFetcherBundle Test Suite">
@@ -33,5 +33,9 @@
     <listeners>
         <listener class="\Mockery\Adapter\Phpunit\TestListener"></listener>
     </listeners>
+
+    <php>
+	<server name="KERNEL_DIR" value="./Tests/Fixtures/App/app" />
+    </php>
 
 </phpunit>

@@ -1,0 +1,26 @@
+framework:
+    secret: dummy
+
+liip_functional_test: ~
+
+doctrine:
+    dbal:
+        connections:
+            eveapi:
+                driver:   "pdo_mysql"
+                host:     "127.0.0.1"
+                port:     null
+                dbname:   "tarioch_eveapi_fetcher_bundle"
+                user:     "travis"
+                password: ""
+                charset:  UTF8
+                mapping_types:
+                        enum: string
+
+    orm:
+        entity_managers:
+            eveapi:
+                connection: eveapi
+                mappings:
+                    TariochEveapiFetcherBundle: ~
+
