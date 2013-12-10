@@ -24,3 +24,6 @@ doctrine:
                 mappings:
                     TariochEveapiFetcherBundle: ~
 
+doctrine_migrations:
+    # workaround, see http://stackoverflow.com/questions/17066670/symfony2-change-migration-directory
+    dir_name: '%kernel.root_dir%/../../../../DoctrineMigrations'
