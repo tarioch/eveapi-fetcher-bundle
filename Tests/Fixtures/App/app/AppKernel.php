@@ -13,6 +13,7 @@ class AppKernel extends Kernel
 	    new Tarioch\PhealBundle\TariochPhealBundle(),
 	    new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 	    new Liip\FunctionalTestBundle\LiipFunctionalTestBundle(),
+	    new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
 
             new Tarioch\EveapiFetcherBundle\TariochEveapiFetcherBundle(),
         );

@@ -23,7 +23,8 @@
 	"doctrine/doctrine-bundle": "1.2.*",
 	"symfony/monolog-bundle": "2.3.*",
 	"mmoreram/gearman-bundle": "dev-master",
-	"doctrine/doctrine-migrations-bundle": "dev-master"
+	"doctrine/doctrine-migrations-bundle": "dev-master@dev",
+	"doctrine/migrations": "@dev"
     },
     "require-dev": {
 	"phpunit/phpunit" : "3.7.*",
