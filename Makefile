@@ -6,7 +6,7 @@ checkstyle:
 	@./vendor/bin/phpcs -s -p --standard=phpcs_rules.xml --extensions=php . || exit 2
 
 detectmess:
-	@./vendor/bin/phpmd . text phpmd_rules.xml --suffixes php --exclude vendor || exit 3
+	@./vendor/bin/phpmd . text phpmd_rules.xml --suffixes php --exclude vendor,DoctrineMigrations || exit 3
 
 test:
 	@./vendor/bin/phpunit || exit 4
