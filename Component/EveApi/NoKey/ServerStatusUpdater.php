@@ -25,6 +25,9 @@ class ServerStatusUpdater implements NoKeyApi
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function update(ApiCall $call, Pheal $pheal)
     {
         $entity = $this->loadOrCreate();
