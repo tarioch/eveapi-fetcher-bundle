@@ -2,14 +2,18 @@
 
 namespace Application\Migrations;
 
-use Doctrine\DBAL\Migrations\AbstractMigration,
-    Doctrine\DBAL\Schema\Schema;
+use Doctrine\DBAL\Migrations\AbstractMigration;
+use Doctrine\DBAL\Schema\Schema;
 
 /**
- * Auto-generated Migration: Please modify to your need!
+ * Api data 
  */
 class Version20131211001428 extends AbstractMigration
 {
+    /**
+     * @inheritdoc
+     * @SuppressWarnings(PHPMD.ShortMethodName)
+     */
     public function up(Schema $schema)
     {
         $this->addSql("INSERT INTO `api` VALUES(1, NULL, 'TarioEveToolBundleWorkerEveWorker', 'server', 'ServerStatus', 5);");
@@ -17,6 +21,9 @@ class Version20131211001428 extends AbstractMigration
 	$this->addSql("INSERT INTO `api` VALUES(3, 1, 'TarioEveToolBundleWorkerEveWorker', 'account', 'APIKeyInfo', 60);");
     }
 
+    /**
+     * @inheritdoc
+     */
     public function down(Schema $schema)
     {
 	$this->addSql("DELETE FROM `api` WHERE apiID IN (1, 2, 3);");
