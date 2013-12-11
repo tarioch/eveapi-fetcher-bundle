@@ -38,12 +38,12 @@ class AccountCharacter
     private $corporationName;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Key", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="ApiKey", fetch="EAGER")
      * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=false, onDelete="cascade")
      */
     private $key;
 
-    public function __construct(Key $key, $characterId)
+    public function __construct(ApiKey $key, $characterId)
     {
         $this->key = $key;
         $this->characterId = $characterId;
