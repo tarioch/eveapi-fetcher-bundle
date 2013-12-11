@@ -1,22 +1,18 @@
 verify: checkstyle detectmess test
 
-ifndef TARIOCH_BIN_DIR
-export TARIOCH_BIN_DIR="@./vendor/bin"
-endif
-
 fullbuild: composer_install detectmess test_coverage upload_coverage
 
 checkstyle:
-	$(TARIOCH_BIN_DIR)/phpcs -s -p --standard=phpcs_rules.xml --extensions=php . || exit 2
+	@./vendor/bin/phpcs -s -p --standard=phpcs_rules.xml --extensions=php . || exit 2
 
 detectmess:
-	$(TARIOCH_BIN_DIR)/phpmd . text phpmd_rules.xml --suffixes php --exclude vendor,DoctrineMigrations || exit 3
+	@./vendor/bin/phpmd . text phpmd_rules.xml --suffixes php --exclude vendor,DoctrineMigrations || exit 3
 
 test:
-	$(TARIOCH_BIN_DIR)/phpunit || exit 4
+	@./vendor/bin/phpunit || exit 4
 
 test_coverage:
-	$(TARIOCH_BIN_DIR)/phpunit --coverage-clover=coverage.clover || exit 4
+	@./vendor/bin/phpunit --coverage-clover=coverage.clover || exit 4
 
 upload_coverage:
 	wget https://scrutinizer-ci.com/ocular.phar || exit 5
