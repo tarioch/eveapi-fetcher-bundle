@@ -1,5 +1,5 @@
 <?php
-namespace Tarioch\EveapiFetcherBundle\Tests\Command;
+namespace Tarioch\EveapiFetcherBundle\Tests\Unit\Command;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;

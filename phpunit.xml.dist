@@ -14,9 +14,12 @@
     bootstrap = "./Tests/bootstrap.php" >
 
     <testsuites>
-        <testsuite name="TariochEveapiFetcherBundle Test Suite">
-            <directory>./Tests</directory>
+        <testsuite name="UnitTestSuite">
+	    <directory>./Tests/Unit</directory>
         </testsuite>
+        <testsuite name="FunctionalTestSuite">
+            <directory>./Tests/Functional</directory>
+	</testsuite>
     </testsuites>
 
     <filter>

@@ -1,5 +1,5 @@
 <?php
-namespace Tarioch\EveapiFetcherBundle\Tests\Entity;
+namespace Tarioch\EveapiFetcherBundle\Tests\Functional\Entity;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCallRepository;
