@@ -16,9 +16,9 @@ class Version20131211001428 extends AbstractMigration
      */
     public function up(Schema $schema)
     {
-        $this->addSql("INSERT INTO `api` VALUES(1, NULL, 'TariochEveapiFetcherBundleWorkerEveWorker', 'server', 'ServerStatus', 5);");
-	$this->addSql("INSERT INTO `api` VALUES(2, 33554432, 'TariochEveapiFetcherBundleWorkerEveWorker', 'account', 'AccountStatus', 120);");
-	$this->addSql("INSERT INTO `api` VALUES(3, 1, 'TariochEveapiFetcherBundleWorkerEveWorker', 'account', 'APIKeyInfo', 60);");
+        $this->addSql("INSERT INTO `api` VALUES(1, NULL, 'TariochEveapiFetcherBundleComponentWorkerTariochEveapiFetcherEveWorker', 'server', 'ServerStatus', 5);");
+	$this->addSql("INSERT INTO `api` VALUES(2, 33554432, 'TariochEveapiFetcherBundleComponentWorkerTariochEveapiFetcherEveWorker', 'account', 'AccountStatus', 120);");
+	$this->addSql("INSERT INTO `api` VALUES(3, 1, 'TariochEveapiFetcherBundleComponentWorkerTariochEveapiFetcherEveWorker', 'account', 'APIKeyInfo', 60);");
     }
 
     /**
