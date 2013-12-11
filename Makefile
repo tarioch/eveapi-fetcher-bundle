@@ -1,6 +1,6 @@
 verify: checkstyle detectmess test
 
-fullbuild: composer_install checkstyle detectmess test_coverage upload_coverage
+fullbuild: composer_install detectmess test_coverage upload_coverage
 
 checkstyle:
 	@./vendor/bin/phpcs -s -p --standard=phpcs_rules.xml --extensions=php . || exit 2

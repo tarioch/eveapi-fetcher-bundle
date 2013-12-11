@@ -1,7 +1,9 @@
 <?php
 use Doctrine\Common\Annotations\AnnotationRegistry;
 
-if (!is_file($loaderFile = __DIR__.'/../vendor/autoload.php') && !is_file($loaderFile = __DIR__.'/../../../../../autoload.php')) {
+$directVendors = is_file($loaderFile = __DIR__.'/../vendor/autoload.php');
+$transitiveVendors = is_file($loaderFile = __DIR__.'/../../../../../autoload.php');
+if (!$directVendors && !$transitiveVendors) {
     throw new \LogicException('Could not find autoload.php in vendor/. Did you run "composer install --dev"?');
 }
 
