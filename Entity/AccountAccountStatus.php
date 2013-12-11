@@ -47,12 +47,12 @@ class AccountAccountStatus
     /**
      * @var Key
      *
-     * @ORM\OneToOne(targetEntity="Key", fetch="EAGER")
+     * @ORM\OneToOne(targetEntity="ApiKey", fetch="EAGER")
      * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=false, onDelete="cascade")
      */
     private $key;
 
-    public function __construct(Key $key)
+    public function __construct(ApiKey $key)
     {
         $this->key = $key;
     }
