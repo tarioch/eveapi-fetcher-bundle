@@ -5,7 +5,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Pheal;
-use Tarioch\EveApiFetcherBundle\Component\EveApi\AccountApi;
+use Tarioch\EveapiFetcherBundle\Component\EveApi\AccountApi;
 use Tarioch\EveapiFetcherBundle\Entity\Key;
 use Tarioch\EveapiFetcherBundle\Entity\AccountAccountStatus;
 
