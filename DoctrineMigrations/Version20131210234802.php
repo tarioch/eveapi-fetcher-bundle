@@ -24,7 +24,7 @@ class Version20131210234802 extends AbstractMigration
         $this->addSql("CREATE TABLE accountCharacter (ID BIGINT UNSIGNED AUTO_INCREMENT NOT NULL, characterID BIGINT UNSIGNED NOT NULL, characterName VARCHAR(255) NOT NULL, corporationID BIGINT UNSIGNED NOT NULL, corporationName VARCHAR(255) NOT NULL, keyID BIGINT UNSIGNED NOT NULL, INDEX IDX_478595412F12946A (keyID), INDEX characterID (characterId), INDEX corporationID (corporationId), PRIMARY KEY(ID)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
         $this->addSql("CREATE TABLE serverServerStatus (ID BIGINT UNSIGNED AUTO_INCREMENT NOT NULL, serverOpen TINYINT(1) NOT NULL, onlinePlayers BIGINT UNSIGNED NOT NULL, PRIMARY KEY(ID)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
         $this->addSql("CREATE TABLE accountAPIKeyInfo (ID BIGINT UNSIGNED AUTO_INCREMENT NOT NULL, accessMask BIGINT UNSIGNED NOT NULL, expires DATETIME DEFAULT NULL, type VARCHAR(255) NOT NULL, keyID BIGINT UNSIGNED NOT NULL, UNIQUE INDEX UNIQ_199C99BF2F12946A (keyID), PRIMARY KEY(ID)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
-        $this->addSql("CREATE TABLE `key` (keyID BIGINT UNSIGNED NOT NULL, vCode VARCHAR(255) NOT NULL, active TINYINT(1) NOT NULL, errorCount INT NOT NULL, PRIMARY KEY(keyID)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
+        $this->addSql("CREATE TABLE apiKey (keyID BIGINT UNSIGNED NOT NULL, vCode VARCHAR(255) NOT NULL, active TINYINT(1) NOT NULL, errorCount INT NOT NULL, PRIMARY KEY(keyID)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
         $this->addSql("ALTER TABLE apiCall ADD CONSTRAINT FK_6255DFCE1E438816 FOREIGN KEY (apiID) REFERENCES api (apiID) ON DELETE CASCADE");
         $this->addSql("ALTER TABLE accountAccountStatus ADD CONSTRAINT FK_B0E66ADD2F12946A FOREIGN KEY (keyID) REFERENCES `key` (keyID) ON DELETE CASCADE");
         $this->addSql("ALTER TABLE accountCharacter ADD CONSTRAINT FK_478595412F12946A FOREIGN KEY (keyID) REFERENCES `key` (keyID) ON DELETE CASCADE");
@@ -49,6 +49,6 @@ class Version20131210234802 extends AbstractMigration
         $this->addSql("DROP TABLE accountCharacter");
         $this->addSql("DROP TABLE serverServerStatus");
         $this->addSql("DROP TABLE accountAPIKeyInfo");
-        $this->addSql("DROP TABLE `key`");
+        $this->addSql("DROP TABLE apiKey");
     }
 }

@@ -5,9 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="key")
+ * @ORM\Table(name="apiKey")
  */
-class Key
+class ApiKey
 {
     /**
      * @ORM\Id @ORM\Column(name="keyID", type="bigint", options={"unsigned"=true})

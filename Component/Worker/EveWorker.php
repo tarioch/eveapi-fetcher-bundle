@@ -138,7 +138,7 @@ class EveWorker
     private function accountApi(ApiCall $call)
     {
         $keyId = $call->getOwnerId();
-        $key = $this->entityManager->getRepository('TariochEveapiFetcherBundle:Key')->find($keyId);
+        $key = $this->entityManager->getRepository('TariochEveapiFetcherBundle:ApiKey')->find($keyId);
         if ($key->isActive()) {
             $pheal = $this->phealFactory->createEveOnline($key->getKeyId(), $key->getVcode());
             $updateService = $this->getUpdateService($call);
