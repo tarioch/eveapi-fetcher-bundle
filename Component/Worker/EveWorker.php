@@ -37,7 +37,7 @@ class EveWorker
         PhealFactory $phealFactory,
         EntityManager $entityManager,
         Container $container,
-        LoggerInterface $logge
+        LoggerInterface $logger
     ) {
         $this->phealFactory = $phealFactory;
         $this->entityManager = $entityManager;
