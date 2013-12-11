@@ -1,5 +1,5 @@
 <?php
-namespace Tarioch\EveapiFetcherBundle\Worker;
+namespace Tarioch\EveapiFetcherBundle\Component\Worker;
 
 use Mmoreram\GearmanBundle\Driver\Gearman;
 use JMS\DiExtraBundle\Annotation as DI;
@@ -14,7 +14,7 @@ use Symfony\Component\Stopwatch\Stopwatch;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @DI\Service("tarioch.eveapi.worker.eve")
- * @Gearman\Work(service = "tarioch.eveapi.worker.eve")
+ * @Gearman\Work(name = "TariochEveapiFetcherEveWorker", service = "tarioch.eveapi.worker.eve")
  */
 class EveWorker
 {
