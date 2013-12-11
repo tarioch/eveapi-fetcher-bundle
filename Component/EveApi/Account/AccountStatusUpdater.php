@@ -26,6 +26,9 @@ class AccountStatusUpdater implements AccountApi
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function update(ApiCall $call, Key $key, Pheal $pheal)
     {
         $entity = $this->loadOrCreate($key);
