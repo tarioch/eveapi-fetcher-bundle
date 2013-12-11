@@ -41,7 +41,8 @@ class ServerStatusUpdater implements NoKeyApi
 
     private function loadOrCreate()
     {
-        $entity = $this->entityManager->getRepository('TariochEveapiFetcherBundle:ServerServerStatus')->findOneBy(array());
+        $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:ServerServerStatus');
+        $entity = $repository->findOneBy(array());
         if ($entity == null) {
             $entity = new ServerServerStatus();
             $this->entityManager->persist($entity);

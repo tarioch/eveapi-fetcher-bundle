@@ -43,7 +43,8 @@ class APIKeyInfoUpdater implements AccountApi
         }
         $entity->setType($apiKey->type);
 
-        $characterEntities = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountCharacter')->findByKey($key);
+        $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountCharacter');
+        $characterEntities = $repository->findByKey($key);
         $charEntityMap = array();
         foreach ($characterEntities as $characterEntity) {
             $charEntityMap[$characterEntity->getCharacterId()] = $characterEntity;
@@ -68,7 +69,8 @@ class APIKeyInfoUpdater implements AccountApi
 
     private function loadOrCreate(Key $key)
     {
-        $entity = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountAPIKeyInfo')->findOneByKey($key);
+        $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountAPIKeyInfo');
+        $entity = $repository->findOneByKey($key);
         if ($entity == null) {
             $entity = new AccountAPIKeyInfo($key);
             $this->entityManager->persist($entity);

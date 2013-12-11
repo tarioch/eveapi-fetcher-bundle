@@ -33,8 +33,12 @@ class EveWorker
      * "logger" = @DI\Inject("logger")
      * })
      */
-    public function __construct(PhealFactory $phealFactory, EntityManager $entityManager, Container $container, LoggerInterface $logger)
-    {
+    public function __construct(
+        PhealFactory $phealFactory,
+        EntityManager $entityManager,
+        Container $container,
+        LoggerInterface $logge
+    ) {
         $this->phealFactory = $phealFactory;
         $this->entityManager = $entityManager;
         $this->container = $container;
@@ -74,12 +78,12 @@ class EveWorker
                 $call->setEarliestNextCall($earliestNextCall);
 
                 $event = $stopwatch->stop($apiInfo);
-		$this->logger->info('{callId}: {apiInfo} duration: {duration} memory: {memory}', array(
-		    'callId' => $apiCallId,
-		    'apiInfo' => $apiInfo,
-		    'duration' => $event->getDuration(),
-		    'memory' => $event->getMemory()
-		));
+                $this->logger->info('{callId}: {apiInfo} duration: {duration} memory: {memory}', array(
+                    'callId' => $apiCallId,
+                    'apiInfo' => $apiInfo,
+                    'duration' => $event->getDuration(),
+                    'memory' => $event->getMemory()
+                ));
             }
 
             $this->entityManager->flush();

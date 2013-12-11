@@ -44,7 +44,8 @@ class AccountStatusUpdater implements AccountApi
 
     private function loadOrCreate(Key $key)
     {
-        $entity = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountAccountStatus')->findOneByKey($key);
+        $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountAccountStatus');
+        $entity = $repository->findOneByKey($key);
         if ($entity == null) {
             $entity = new AccountAccountStatus($key);
             $this->entityManager->persist($entity);
