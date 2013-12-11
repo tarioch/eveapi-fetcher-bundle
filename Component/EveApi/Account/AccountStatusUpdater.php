@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Pheal;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\AccountApi;
-use Tarioch\EveapiFetcherBundle\Entity\Key;
+use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 use Tarioch\EveapiFetcherBundle\Entity\AccountAccountStatus;
 
 /**
@@ -29,7 +29,7 @@ class AccountStatusUpdater implements AccountApi
     /**
      * @inheritdoc
      */
-    public function update(ApiCall $call, Key $key, Pheal $pheal)
+    public function update(ApiCall $call, ApiKey $key, Pheal $pheal)
     {
         $entity = $this->loadOrCreate($key);
         $api = $pheal->accountScope->AccountStatus();
@@ -42,7 +42,7 @@ class AccountStatusUpdater implements AccountApi
         return $api->cached_until;
     }
 
-    private function loadOrCreate(Key $key)
+    private function loadOrCreate(ApiKey $key)
     {
         $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountAccountStatus');
         $entity = $repository->findOneByKey($key);
