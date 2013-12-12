@@ -110,6 +110,7 @@ gearman:
         callbacks: false
         job_prefix: null
         generate_unique_key: true
+        workers_name_prepend_namespace: false
 
     servers:
         localhost:
