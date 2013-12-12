@@ -22,8 +22,8 @@
 	"doctrine/orm" : ">=2.2.3,<2.4-dev",
 	"doctrine/doctrine-bundle": "1.2.*",
 	"symfony/monolog-bundle": "2.3.*",
-	"mmoreram/gearman-bundle": "dev-master",
-	"doctrine/doctrine-migrations-bundle": "dev-master@dev",
+	"mmoreram/gearman-bundle": "2.3.2-dev",
+	"doctrine/doctrine-migrations-bundle": "1.0.0-BETA2",
 	"doctrine/migrations": "@dev"
     },
     "require-dev": {
