@@ -5,13 +5,8 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Tarioch\PhealBundle\DependencyInjection\PhealFactory;
 use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
-use Pheal\Exceptions\PhealException;
-use Symfony\Component\DependencyInjection\Container;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\Stopwatch\Stopwatch;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;
-use Doctrine\ORM\Mapping\InheritanceType;
 
 /**
  * @DI\Service("tarioch.eveapi.section.nokey")

@@ -2,11 +2,7 @@
 namespace Tarioch\EveapiFetcherBundle\Component\Section;
 
 use JMS\DiExtraBundle\Annotation as DI;
-use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
-use Pheal\Exceptions\PhealException;
-use Symfony\Component\DependencyInjection\Container;
-use Symfony\Component\Stopwatch\Stopwatch;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 
 /**

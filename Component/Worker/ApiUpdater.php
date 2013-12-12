@@ -3,7 +3,6 @@ namespace Tarioch\EveapiFetcherBundle\Component\Worker;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
-use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Exceptions\PhealException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Stopwatch\Stopwatch;

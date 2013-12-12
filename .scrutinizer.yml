@@ -2,7 +2,9 @@ filter:
     excluded_paths:
         - 'vendor/*'
 tools:
-    external_code_coverage: true
+    external_code_coverage:
+        enabled: true
+        timeout: 600
     php_cpd:
         enabled: true
         excluded_dirs:
