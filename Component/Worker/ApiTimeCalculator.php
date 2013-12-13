@@ -9,7 +9,11 @@ use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
  */
 class ApiTimeCalculator
 {
-    public function isCallStillValid(ApiCall $call)
+    /**
+     * @param ApiCall|null $call
+     * @return boolean
+     */
+    public function isCallStillValid($call)
     {
         $now = new \DateTime('now', new \DateTimeZone('UTC'));
         return $call != null && $call->getCachedUntil() < $now && $call->getEarliestNextCall() < $now;
