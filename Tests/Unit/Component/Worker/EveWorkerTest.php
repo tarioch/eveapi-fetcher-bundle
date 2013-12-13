@@ -1,9 +1,6 @@
 <?php
 namespace Tarioch\EveapiFetcherBundle\Tests\Unit\Component\Worker;
 
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Tester\CommandTester;
-use Tarioch\EveapiFetcherBundle\Command\ScheduleApiJobsCommand;
 use Mockery as m;
 use Doctrine\ORM\EntityManager;
 use Psr\Log\LoggerInterface;
