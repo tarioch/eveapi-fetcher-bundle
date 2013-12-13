@@ -79,8 +79,6 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 
     public function testUpdateFailed()
     {
-        $earliestNextCall = 'earliestNextCall';
-
         $this->mockPrepareApiCall();
 
         $this->sectionApi->shouldReceive('update')
@@ -98,8 +96,6 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 
     public function testUpdateFailedMaxReached()
     {
-        $earliestNextCall = 'earliestNextCall';
-
         $this->mockPrepareApiCall();
 
         $this->sectionApi->shouldReceive('update')
@@ -155,6 +151,11 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
         $this->api = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
         $this->sectionApi = m::mock('Tarioch\EveapiFetcherBundle\Component\Section\SectionApi');
 
-        $this->apiUpdater = new ApiUpdater($this->entityManager, $this->logger, $this->apiTimeCalculator, $this->sectionApiFactory);
+        $this->apiUpdater = new ApiUpdater(
+            $this->entityManager,
+            $this->logger,
+            $this->apiTimeCalculator,
+            $this->sectionApiFactory
+        );
     }
 }
