@@ -5,7 +5,7 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 
 /**
- * @DI\Service("tarioch.eveapi.worker.apitimecalculator")
+ * @DI\Service(public=false)
  */
 class ApiTimeCalculator
 {

@@ -20,7 +20,7 @@ class EveWorker
      * @DI\InjectParams({
      * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager"),
      * "logger" = @DI\Inject("logger"),
-     * "apiUpdater" = @DI\Inject("tarioch.eveapi.worker.apiupdater")
+     * "apiUpdater" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.worker.api_updater")
      * })
      */
     public function __construct(EntityManager $entityManager, LoggerInterface $logger, ApiUpdater $apiUpdater)

@@ -9,7 +9,7 @@ use Symfony\Component\Stopwatch\Stopwatch;
 use Tarioch\EveapiFetcherBundle\Component\Section\SectionApiFactory;
 
 /**
- * @DI\Service("tarioch.eveapi.worker.apiupdater")
+ * @DI\Service(public=false)
  */
 class ApiUpdater
 {
@@ -24,8 +24,8 @@ class ApiUpdater
      * @DI\InjectParams({
      * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager"),
      * "logger" = @DI\Inject("logger"),
-     * "apiTimeCalculator" = @DI\Inject("tarioch.eveapi.worker.apitimecalculator"),
-     * "sectionApiFactory" = @DI\Inject("tarioch.eveapi.section.sectionapifactory")
+     * "apiTimeCalculator" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.worker.api_time_calculator"),
+     * "sectionApiFactory" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.section.section_api_factory")
      * })
      */
     public function __construct(

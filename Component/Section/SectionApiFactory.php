@@ -6,7 +6,7 @@ use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 
 /**
- * @DI\Service("tarioch.eveapi.section.sectionapifactory")
+ * @DI\Service(public=false)
  */
 class SectionApiFactory
 {
