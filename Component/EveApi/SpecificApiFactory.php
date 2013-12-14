@@ -6,7 +6,7 @@ use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * @DI\Service("tarioch.eveapi.specificapifactory")
+ * @DI\Service(public=false)
  */
 class SpecificApiFactory
 {

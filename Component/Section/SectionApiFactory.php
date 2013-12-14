@@ -15,8 +15,8 @@ class SectionApiFactory
 
     /**
      * @DI\InjectParams({
-     * "accountSectionUpdater" = @DI\Inject("tarioch.eveapi.section.account"),
-     * "noKeySectionUpdater" = @DI\Inject("tarioch.eveapi.section.nokey")
+     * "accountSectionUpdater" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.section.account_section_api"),
+     * "noKeySectionUpdater" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.section.no_key_section_api")
      * })
      */
     public function __construct(AccountSectionApi $accountSectionUpdater, NoKeySectionApi $noKeySectionUpdater)

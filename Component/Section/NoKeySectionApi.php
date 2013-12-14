@@ -9,7 +9,7 @@ use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;
 
 /**
- * @DI\Service("tarioch.eveapi.section.nokey")
+ * @DI\Service(public=false)
  */
 class NoKeySectionApi implements SectionApi
 {
@@ -21,7 +21,7 @@ class NoKeySectionApi implements SectionApi
      * @DI\InjectParams({
      * "phealFactory" = @DI\Inject("tarioch.pheal.factory"),
      * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager"),
-     * "specificApiFactory" = @DI\Inject("tarioch.eveapi.specificapifactory")
+     * "specificApiFactory" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.eve_api.specific_api_factory")
      * })
      */
     public function __construct(
