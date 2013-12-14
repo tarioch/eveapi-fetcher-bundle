@@ -7,9 +7,6 @@ use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;
-use Tario\EveToolBundle\Component\User\Key;
-use Pheal\Pheal;
-use Pheal\Exceptions\PhealException;
 
 /**
  * @DI\Service("tarioch.eveapi.section.account")
