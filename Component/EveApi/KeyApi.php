@@ -5,7 +5,7 @@ use Pheal\Pheal;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 
-interface AccountApi
+interface KeyApi
 {
     public function update(ApiCall $call, ApiKey $key, Pheal $pheal);
 }

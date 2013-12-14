@@ -7,16 +7,15 @@ use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;
+use Tario\EveToolBundle\Component\User\Key;
+use Pheal\Pheal;
+use Pheal\Exceptions\PhealException;
 
 /**
  * @DI\Service("tarioch.eveapi.section.account")
  */
-class AccountSectionApi implements SectionApi
+class AccountSectionApi extends AbstractKeySectionApi
 {
-    private $phealFactory;
-    private $entityManager;
-    private $specificApiFactory;
-
     /**
      * @DI\InjectParams({
      * "phealFactory" = @DI\Inject("tarioch.pheal.factory"),
@@ -29,27 +28,14 @@ class AccountSectionApi implements SectionApi
         EntityManager $entityManager,
         SpecificApiFactory $specificApiFactory
     ) {
-        $this->phealFactory = $phealFactory;
-        $this->entityManager = $entityManager;
-        $this->specificApiFactory = $specificApiFactory;
+        parent::__construct($phealFactory, $entityManager, $specificApiFactory);
     }
 
     /**
      * @inheritdoc
      */
-    public function update(ApiCall $call)
+    protected function getKeyId(ApiCall $call)
     {
-        $keyId = $call->getOwnerId();
-        $key = $this->entityManager->getRepository('TariochEveapiFetcherBundle:ApiKey')->find($keyId);
-        if ($key->isActive()) {
-            $pheal = $this->phealFactory->createEveOnline($key->getKeyId(), $key->getVcode());
-            $updateService = $this->getUpdateService($call);
-
-            return $updateService->update($call, $key, $pheal);
-        } else {
-            $call->setActive(false);
-
-            return $call->getCachedUntil();
-        }
+        return $call->getOwnerId();
     }
 }

@@ -5,14 +5,14 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Pheal;
-use Tarioch\EveapiFetcherBundle\Component\EveApi\AccountApi;
+use Tarioch\EveapiFetcherBundle\Component\EveApi\KeyApi;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 use Tarioch\EveapiFetcherBundle\Entity\AccountAccountStatus;
 
 /**
  * @DI\Service("tarioch.eveapi.account.AccountStatus")
  */
-class AccountStatusUpdater implements AccountApi
+class AccountStatusUpdater implements KeyApi
 {
     private $entityManager;
 
