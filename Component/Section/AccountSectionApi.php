@@ -31,7 +31,7 @@ class AccountSectionApi extends AbstractKeySectionApi
     /**
      * @inheritdoc
      */
-    protected function getKeyId(ApiCall $call)
+    public function getKeyId(ApiCall $call)
     {
         return $call->getOwnerId();
     }
