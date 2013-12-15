@@ -3,7 +3,6 @@ namespace Tarioch\EveapiFetcherBundle\Component\Section;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Tarioch\PhealBundle\DependencyInjection\PhealFactory;
-use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;

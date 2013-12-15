@@ -72,12 +72,6 @@ class APIKeyInfoUpdater implements KeyApi
             $this->entityManager->remove($characterEntity);
         }
 
-        // update enabled api calls
-//         $apiRepository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:Api');
-//         $apiCallRepository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:ApiCall');
-//         $validApis = $apiRepository->loadValidApis($entity->getAccessMask());
-//         $existingApiCalls = $apiCallRepository->findByKey($key);
-
         return $api->cached_until;
     }
 
