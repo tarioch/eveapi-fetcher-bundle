@@ -9,6 +9,7 @@ use Tarioch\EveapiFetcherBundle\Component\EveApi\KeyApi;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 use Tarioch\EveapiFetcherBundle\Entity\AccountAPIKeyInfo;
 use Tarioch\EveapiFetcherBundle\Entity\AccountCharacter;
+use Tarioch\EveapiFetcherBundle\Entity\Api;
 
 /**
  * @DI\Service("tarioch.eveapi.account.APIKeyInfo")
@@ -33,16 +34,18 @@ class APIKeyInfoUpdater implements KeyApi
      */
     public function update(ApiCall $call, ApiKey $key, Pheal $pheal)
     {
-        $entity = $this->loadOrCreate($key);
         $api = $pheal->accountScope->APIKeyInfo();
-
         $apiKey = $api->key;
+
+        // update api key info
+        $entity = $this->loadOrCreate($key);
         $entity->setAccessMask($apiKey->accessMask);
         if (! empty($apiKey->expires)) {
             $entity->setExpires(new \DateTime($apiKey->expires));
         }
         $entity->setType($apiKey->type);
 
+        // update associated characters
         $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountCharacter');
         $characterEntities = $repository->findByKey($key);
         $charEntityMap = array();
@@ -63,6 +66,17 @@ class APIKeyInfoUpdater implements KeyApi
             $charEntity->setCorporationId($char->corporationID);
             $charEntity->setCorporationName($char->corporationName);
         }
+
+        // remove old, no longer valid characters
+        foreach ($characterEntities as $characterEntity) {
+            $this->entityManager->remove($characterEntity);
+        }
+
+        // update enabled api calls
+//         $apiRepository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:Api');
+//         $apiCallRepository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:ApiCall');
+//         $validApis = $apiRepository->loadValidApis($entity->getAccessMask());
+//         $existingApiCalls = $apiCallRepository->findByKey($key);
 
         return $api->cached_until;
     }

@@ -5,7 +5,7 @@ use Mockery as m;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Tarioch\EveapiFetcherBundle\Component\Section\SectionApiFactory;
 use Tarioch\EveapiFetcherBundle\Component\Section\NoKeySectionApi;
-use Tarioch\EveapiFetcherBundle\Component\Section\AccountSectionApi;
+use Tarioch\EveapiFetcherBundle\Component\Section\KeySectionApi;
 
 class SectionApiFactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,9 +14,9 @@ class SectionApiFactoryTest extends \PHPUnit_Framework_TestCase
      */
     private $noKeySectionApi;
     /**
-     * @var AccountSectionApi
+     * @var KeySectionApi
      */
-    private $accountSectionApi;
+    private $keySectionApi;
     /**
      * @var ApiCall
      */
@@ -35,7 +35,21 @@ class SectionApiFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $this->api->shouldReceive('getSection')->andReturn('account');
 
-        $this->assertSame($this->accountSectionApi, $this->factory->create($this->apiCall));
+        $this->assertSame($this->keySectionApi, $this->factory->create($this->apiCall));
+    }
+
+    public function testCreateCharSection()
+    {
+        $this->api->shouldReceive('getSection')->andReturn('char');
+
+        $this->assertSame($this->keySectionApi, $this->factory->create($this->apiCall));
+    }
+
+    public function testCreateCorpSection()
+    {
+        $this->api->shouldReceive('getSection')->andReturn('corp');
+
+        $this->assertSame($this->keySectionApi, $this->factory->create($this->apiCall));
     }
 
     public function testCreateServerSection()
@@ -59,25 +73,15 @@ class SectionApiFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($this->noKeySectionApi, $this->factory->create($this->apiCall));
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
-    public function testCreateUnknownSection()
-    {
-        $this->api->shouldReceive('getSection')->andReturn('dummy');
-
-        $this->factory->create($this->apiCall);
-    }
-
     public function setUp()
     {
         $this->noKeySectionApi = m::mock('Tarioch\EveapiFetcherBundle\Component\Section\NoKeySectionApi');
-        $this->accountSectionApi = m::mock('Tarioch\EveapiFetcherBundle\Component\Section\AccountSectionApi');
+        $this->keySectionApi = m::mock('Tarioch\EveapiFetcherBundle\Component\Section\KeySectionApi');
         $this->apiCall = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiCall');
         $this->api = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
 
         $this->factory = new SectionApiFactory(
-            $this->accountSectionApi,
+            $this->keySectionApi,
             $this->noKeySectionApi
         );
 

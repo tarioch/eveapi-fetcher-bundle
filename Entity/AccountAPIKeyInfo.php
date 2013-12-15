@@ -29,7 +29,6 @@ class AccountAPIKeyInfo
      */
     private $type;
 
-
     /**
      * @ORM\OneToOne(targetEntity="ApiKey", fetch="EAGER")
      * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=false, onDelete="cascade")

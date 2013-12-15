@@ -48,6 +48,12 @@ class ApiCall
      */
     private $api;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ApiKey", fetch="EAGER")
+     * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=true, onDelete="cascade")
+     */
+    private $key;
+
     public function __construct($api, $ownerId = null)
     {
         $this->ownerId = $ownerId;
@@ -112,5 +118,10 @@ class ApiCall
     public function clearErrorCount()
     {
         $this->errorCount = 0;
+    }
+
+    public function getKey()
+    {
+        return $this->key;
     }
 }

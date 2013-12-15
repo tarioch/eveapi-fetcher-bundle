@@ -10,40 +10,35 @@ use Tarioch\EveapiFetcherBundle\Entity\Api;
  */
 class SectionApiFactory
 {
-    private $accountSectionUpdater;
-    private $noKeySectionUpdater;
+    private static $keySections = array('account', 'char', 'corp');
+
+    private $keySectionApi;
+    private $noKeySectionApi;
 
     /**
      * @DI\InjectParams({
-     * "accountSectionUpdater" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.section.account_section_api"),
-     * "noKeySectionUpdater" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.section.no_key_section_api")
+     * "keySectionApi" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.section.key_section_api"),
+     * "noKeySectionApi" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.section.no_key_section_api")
      * })
      */
-    public function __construct(AccountSectionApi $accountSectionUpdater, NoKeySectionApi $noKeySectionUpdater)
+    public function __construct(KeySectionApi $keySectionApi, NoKeySectionApi $noKeySectionApi)
     {
-        $this->accountSectionUpdater = $accountSectionUpdater;
-        $this->noKeySectionUpdater = $noKeySectionUpdater;
+        $this->keySectionApi = $keySectionApi;
+        $this->noKeySectionApi = $noKeySectionApi;
     }
 
     /**
      *
      * @param ApiCall $call
-     * @return SectionUpdater
+     * @return SectionApi
      */
     public function create(ApiCall $call)
     {
         $section = $call->getApi()->getSection();
-        switch ($section) {
-            case 'account':
-                return $this->accountSectionUpdater;
-            case 'server':
-            case 'eve':
-            case 'map':
-                return $this->noKeySectionUpdater;
-            case 'char':
-            case 'corp':
-            default:
-                throw new \InvalidArgumentException('Unsupported section ' . $section);
+        if (in_array($section, self::$keySections)) {
+            return $this->keySectionApi;
+        } else {
+            return $this->noKeySectionApi;
         }
     }
 }

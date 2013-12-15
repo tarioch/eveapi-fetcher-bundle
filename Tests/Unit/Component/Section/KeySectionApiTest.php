@@ -3,23 +3,16 @@ namespace Tarioch\EveapiFetcherBundle\Tests\Unit\Component\Section;
 
 use Mockery as m;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
-use Tarioch\EveapiFetcherBundle\Component\Section\SectionApiFactory;
-use Tarioch\EveapiFetcherBundle\Component\Section\AccountSectionApi;
-use Tarioch\EveapiFetcherBundle\Component\Section\AbstractKeySectionApi;
+use Tarioch\EveapiFetcherBundle\Component\Section\KeySectionApi;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;
 use Tarioch\PhealBundle\DependencyInjection\PhealFactory;
 use Pheal\Pheal;
 use Pheal\Exceptions\PhealException;
 
-class AbstractKeySectionApiTest extends \PHPUnit_Framework_TestCase
+class KeySectionApiTest extends \PHPUnit_Framework_TestCase
 {
-    const KEY_ID = 'KEY_ID';
     const CACHED_UNTIL = 'CACHED_UNTIL';
 
-    /**
-     * @var EntityManager
-     */
-    private $entityManager;
     /**
      * @var SpecificApiFactory
      */
@@ -56,9 +49,7 @@ class AbstractKeySectionApiTest extends \PHPUnit_Framework_TestCase
 
     public function testUpdateNotActive()
     {
-        $this->entityManager->shouldReceive('find')
-            ->with('TariochEveapiFetcherBundle:ApiKey', self::KEY_ID)
-            ->andReturn($this->key);
+        $this->apiCall->shouldReceive('getKey')->andReturn($this->key);
         $this->key->shouldReceive('isActive')
             ->andReturn(false);
         $this->apiCall->shouldReceive('setActive')
@@ -122,9 +113,7 @@ class AbstractKeySectionApiTest extends \PHPUnit_Framework_TestCase
         $keyId = 'keyId';
         $vcode = 'vcode';
 
-        $this->entityManager->shouldReceive('find')
-            ->with('TariochEveapiFetcherBundle:ApiKey', self::KEY_ID)
-            ->andReturn($this->key);
+        $this->apiCall->shouldReceive('getKey')->andReturn($this->key);
         $this->key->shouldReceive('isActive')
             ->andReturn(true);
 
@@ -141,7 +130,6 @@ class AbstractKeySectionApiTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->entityManager = m::mock('Doctrine\ORM\EntityManager');
         $this->specificApiFactory = m::mock('Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory');
         $this->apiCall = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiCall');
         $this->api = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
@@ -150,11 +138,9 @@ class AbstractKeySectionApiTest extends \PHPUnit_Framework_TestCase
         $this->phealFactory = m::mock('Tarioch\PhealBundle\DependencyInjection\PhealFactory');
         $this->specificApi = m::mock('Tarioch\EveapiFetcherBundle\Component\KeyApi');
 
-        $this->keySectionApi = new DummyKeySectionApi(
+        $this->keySectionApi = new KeySectionApi(
             $this->phealFactory,
-            $this->entityManager,
-            $this->specificApiFactory,
-            self::KEY_ID
+            $this->specificApiFactory
         );
     }
 }
