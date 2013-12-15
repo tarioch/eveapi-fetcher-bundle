@@ -10,7 +10,7 @@ class ApiRepository extends EntityRepository
         $qb = $this->createQueryBuilder('a');
         $q = $qb->select('a')
             ->where(
-                'a.mask & :accessMask = a.mask'
+                'BIT_AND(a.mask, :accessMask) = a.mask'
             )
             ->getQuery()
             ->setParameter('accessMask', $accessMask);
