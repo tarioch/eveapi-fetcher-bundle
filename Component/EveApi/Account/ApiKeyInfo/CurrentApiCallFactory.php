@@ -3,13 +3,7 @@ namespace Tarioch\EveapiFetcherBundle\Component\EveApi\Account\ApiKeyInfo;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
-use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
-use Pheal\Pheal;
-use Pheal\Core\Element;
-use Tarioch\EveapiFetcherBundle\Component\EveApi\KeyApi;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
-use Tarioch\EveapiFetcherBundle\Entity\AccountAPIKeyInfo;
-use Tarioch\EveapiFetcherBundle\Entity\AccountCharacter;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 
 /**
