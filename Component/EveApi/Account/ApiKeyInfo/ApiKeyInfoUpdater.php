@@ -1,5 +1,5 @@
 <?php
-namespace Tarioch\EveapiFetcherBundle\Component\EveApi\Account;
+namespace Tarioch\EveapiFetcherBundle\Component\EveApi\Account\APIKeyInfo;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
@@ -15,19 +15,22 @@ use Tarioch\EveapiFetcherBundle\Entity\Api;
 /**
  * @DI\Service("tarioch.eveapi.account.APIKeyInfo")
  */
-class APIKeyInfoUpdater implements KeyApi
+class ApiKeyInfoUpdater implements KeyApi
 {
 
     private $entityManager;
+    private $currentApiCallFactory;
 
     /**
      * @DI\InjectParams({
-     * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager")
+     * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager"),
+     * "currentApiCallFactory" = @DI\Inject("tarioch.eveapi.account.api_key_info.current_api_call_factory")
      * })
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, CurrentApiCallFactory $currentApiCallFactory)
     {
         $this->entityManager = $entityManager;
+        $this->currentApiCallFactory = $currentApiCallFactory;
     }
 
     /**
@@ -81,21 +84,9 @@ class APIKeyInfoUpdater implements KeyApi
 
     private function updateApiCalls(ApiKey $key, $accessMask, array $chars, array $corps)
     {
+        $currentApiCallMap = $this->currentApiCallFactory->createCurrentApiCallMap($key);
+
         $apiRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:Api');
-        $apiCallRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:ApiCall');
-
-
-        $currentApiCallMap = array();
-        $currentApiCalls = $apiCallRepo->findByKey($key);
-        foreach ($currentApiCalls as $apiCall) {
-            $apiId = $apiCall->getApi()->getApiId();
-            if (!isset($currentApiCallMap[$apiId])) {
-                $currentApiCallMap[$apiId] = array();
-            }
-
-            $currentApiCallMap[$apiId][$apiCall->getOwnerId()] = $apiCall;
-        }
-
         $validApis = $apiRepo->loadValidApis($accessMask);
         foreach ($validApis as $api) {
             $section = $api->getSection();
