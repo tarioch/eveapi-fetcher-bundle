@@ -3,8 +3,6 @@ namespace Tarioch\EveapiFetcherBundle\Component\EveApi\Account\ApiKeyInfo;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
-use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
-use Tarioch\EveapiFetcherBundle\Entity\Api;
 
 /**
  * @DI\Service(id = "tarioch.eveapi.account.api_key_info.new_api_factory", public = false)
