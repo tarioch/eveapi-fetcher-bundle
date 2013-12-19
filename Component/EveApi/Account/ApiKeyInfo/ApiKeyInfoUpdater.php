@@ -11,6 +11,7 @@ use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 use Tarioch\EveapiFetcherBundle\Entity\AccountAPIKeyInfo;
 use Tarioch\EveapiFetcherBundle\Entity\AccountCharacter;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
+use Tarioch\EveapiFetcherBundle\Component\EveApi\Account\ApiKeyInfo\NewApiFactory;
 
 /**
  * @DI\Service("tarioch.eveapi.account.APIKeyInfo")
@@ -20,17 +21,23 @@ class ApiKeyInfoUpdater implements KeyApi
 
     private $entityManager;
     private $currentApiCallFactory;
+    private $newApiFactory;
 
     /**
      * @DI\InjectParams({
      * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager"),
-     * "currentApiCallFactory" = @DI\Inject("tarioch.eveapi.account.api_key_info.current_api_call_factory")
+     * "currentApiCallFactory" = @DI\Inject("tarioch.eveapi.account.api_key_info.current_api_call_factory"),
+     * "newApiFactory" = @DI\Inject("tarioch.eveapi.account.api_key_info.new_api_factory")
      * })
      */
-    public function __construct(EntityManager $entityManager, CurrentApiCallFactory $currentApiCallFactory)
-    {
+    public function __construct(
+        EntityManager $entityManager,
+        CurrentApiCallFactory $currentApiCallFactory,
+        NewApiFactory $newApiFactory
+    ) {
         $this->entityManager = $entityManager;
         $this->currentApiCallFactory = $currentApiCallFactory;
+        $this->newApiFactory = $newApiFactory;
     }
 
     /**
@@ -85,45 +92,38 @@ class ApiKeyInfoUpdater implements KeyApi
     private function updateApiCalls(ApiKey $key, $accessMask, array $chars, array $corps)
     {
         $currentApiCallMap = $this->currentApiCallFactory->createCurrentApiCallMap($key);
+        $newApiMap = $this->newApiFactory->createNewApiMap($accessMask, $key->getKeyId(), $chars, $corps);
 
-        $apiRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:Api');
-        $validApis = $apiRepo->loadValidApis($accessMask);
-        foreach ($validApis as $api) {
-            $section = $api->getSection();
-            $owners;
-            if ($section === 'account') {
-                $owners = $key->getKeyId();
-            } elseif ($section === 'char') {
-                $owners = $chars;
-            } elseif ($section === 'corp') {
-                $owners = $corps;
-            }
-
-            $apiId = $api->getApiId();
-            if (isset($currentApiCallMap[$apiId])) {
-                $currentOwners = array_keys($currentApiCallMap[$apiId]);
-                $addedOwners = array_diff($owners, $currentOwners);
-                foreach ($addedOwners as $owner) {
-                    $this->entityManager->persist(new ApiCall($api, $owner));
-                }
-
-                $removedOwners = array_diff($currentOwners, $owners);
-                foreach ($removedOwners as $owner) {
-                    $this->entityManager->remove($currentApiCallMap[$apiId][$owner]);
-                }
-                unset($currentApiCallMap[$apiId]);
-            } else {
-                foreach ($owners as $owner) {
-                    $this->entityManager->persist(new ApiCall($api, $owner));
-                }
+        $apisToAdd = $this->getOnlyInSource($newApiMap, $currentApiCallMap);
+        foreach ($apisToAdd as $apis) {
+            foreach ($apis as $owner => $api) {
+                $this->entityManager->persist(new ApiCall($api, $owner));
             }
         }
 
-        foreach ($currentApiCallMap as $apis) {
+        $apisToRemove = $this->getOnlyInSource($currentApiCallMap, $newApiMap);
+        foreach ($apisToRemove as $apis) {
             foreach ($apis as $calls) {
                 $this->entityManager->remove($calls);
             }
         }
+    }
+
+    private function getOnlyInSource(array $sourceMap, array $compareMap)
+    {
+        $diff = array_diff_key($sourceMap, $compareMap);
+
+        $intersection = array_intersect_key($sourceMap, $compareMap);
+        foreach ($intersection as $key => $sourceOwners) {
+            $compareOwners = $compareMap[$key];
+
+            $ownerDiff = array_diff_key($sourceOwners, $compareOwners);
+            if (!empty($ownerDiff)) {
+                $diff[$key] = $ownerDiff;
+            }
+        }
+
+        return $diff;
     }
 
     private function updateApiKeyInfo(ApiKey $key, Element $apiKey)
