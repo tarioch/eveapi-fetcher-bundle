@@ -45,6 +45,7 @@ class ScheduleApiJobsCommandTest extends \PHPUnit_Framework_TestCase
         $this->apiRepository->shouldReceive('loadApiKeyInfoApi')->andReturn($this->keyInfoApi);
         $this->newKey->shouldReceive('getKeyId')->andReturn('newKeyId');
         $this->entityManager->shouldReceive('persist')->once();
+        $this->entityManager->shouldReceive('flush')->once();
 
         $this->entityManager->shouldReceive('getRepository')
             ->with('TariochEveapiFetcherBundle:ApiCall')
