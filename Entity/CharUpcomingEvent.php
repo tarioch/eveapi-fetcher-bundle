@@ -6,13 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="charUpcomingEvents", uniqueConstraints={
- *	@ORM\UniqueConstraint(name="event_owner", columns={"eventId", "ownerId"})
+ * @ORM\Table(name="charUpcomingEvent", uniqueConstraints={
+ *     @ORM\UniqueConstraint(name="event_owner", columns={"eventId", "ownerId"})
  * }, indexes={
- * 	@ORM\Index(name="eventDate", columns={"eventDate"})
+ *     @ORM\Index(name="eventDate", columns={"eventDate"})
  * })
  */
-class CharUpcomingEvents
+class CharUpcomingEvent
 {
     /**
      * @var integer
@@ -38,11 +38,18 @@ class CharUpcomingEvents
     private $ownerId;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="eventOwnerID", type="bigint", options={"unsigned"=true})
+     */
+    private $eventOwnerId;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="ownerName", type="string")
+     * @ORM\Column(name="eventOwnerName", type="string")
      */
-    private $ownerName;
+    private $eventOwnerName;
 
     /**
      * @var \DateTime
@@ -99,7 +106,7 @@ class CharUpcomingEvents
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -109,7 +116,7 @@ class CharUpcomingEvents
     /**
      * Get eventId
      *
-     * @return integer 
+     * @return integer
      */
     public function getEventId()
     {
@@ -119,7 +126,7 @@ class CharUpcomingEvents
     /**
      * Get ownerId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOwnerId()
     {
@@ -127,23 +134,44 @@ class CharUpcomingEvents
     }
 
     /**
-     * Set ownerName
+     * Set eventOwnerId
      *
-     * @param string $ownerName
+     * @param integer $eventOwnerId
      */
-    public function setOwnerName($ownerName)
+    public function setEventOwnerId($eventOwnerId)
     {
-        $this->ownerName = $ownerName;
+        $this->eventOwnerId = $eventOwnerId;
     }
 
     /**
-     * Get ownerName
+     * Get eventOwnerId
      *
-     * @return string 
+     * @return integer
      */
-    public function getOwnerName()
+    public function getEventOwnerId()
     {
-        return $this->ownerName;
+        return $this->eventOwnerId;
+    }
+
+
+    /**
+     * Set eventOwnerName
+     *
+     * @param string $eventOwnerName
+     */
+    public function setEventOwnerName($eventOwnerName)
+    {
+        $this->eventOwnerName = $eventOwnerName;
+    }
+
+    /**
+     * Get eventOwnerName
+     *
+     * @return string
+     */
+    public function getEventOwnerName()
+    {
+        return $this->eventOwnerName;
     }
 
     /**
@@ -159,7 +187,7 @@ class CharUpcomingEvents
     /**
      * Get eventDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEventDate()
     {
@@ -179,7 +207,7 @@ class CharUpcomingEvents
     /**
      * Get eventTitle
      *
-     * @return string 
+     * @return string
      */
     public function getEventTitle()
     {
@@ -199,7 +227,7 @@ class CharUpcomingEvents
     /**
      * Get duration
      *
-     * @return integer 
+     * @return integer
      */
     public function getDuration()
     {
@@ -219,7 +247,7 @@ class CharUpcomingEvents
     /**
      * Get importance
      *
-     * @return boolean 
+     * @return boolean
      */
     public function isImportance()
     {
@@ -239,7 +267,7 @@ class CharUpcomingEvents
     /**
      * Get eventText
      *
-     * @return string 
+     * @return string
      */
     public function getEventText()
     {
@@ -259,7 +287,7 @@ class CharUpcomingEvents
     /**
      * Get response
      *
-     * @return string 
+     * @return string
      */
     public function getResponse()
     {
