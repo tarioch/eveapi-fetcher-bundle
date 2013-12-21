@@ -10,12 +10,12 @@ class ApiRepositoryTest extends AbstractFunctionalTestCase
 
     public function testLoadValidApisFullAccessMask()
     {
-        $this->assertNotEmpty($this->repository->loadValidApis(268435455));
+        $this->assertNotEmpty($this->repository->loadValidApis(268435455, 'Account'));
     }
 
     public function testLoadValidApisEmptyAccessMaskMask()
     {
-        $this->assertEmpty($this->repository->loadValidApis(0));
+        $this->assertEmpty($this->repository->loadValidApis(0, 'Account'));
     }
 
     public function testLoadApiKeyInfoApi()
