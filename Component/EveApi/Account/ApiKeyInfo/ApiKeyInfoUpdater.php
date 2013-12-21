@@ -1,5 +1,5 @@
 <?php
-namespace Tarioch\EveapiFetcherBundle\Component\EveApi\Account\APIKeyInfo;
+namespace Tarioch\EveapiFetcherBundle\Component\EveApi\Account\ApiKeyInfo;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
@@ -22,22 +22,26 @@ class ApiKeyInfoUpdater implements KeyApi
     private $entityManager;
     private $currentApiCallFactory;
     private $newApiFactory;
+    private $diffCalculator;
 
     /**
      * @DI\InjectParams({
      * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager"),
      * "currentApiCallFactory" = @DI\Inject("tarioch.eveapi.account.api_key_info.current_api_call_factory"),
-     * "newApiFactory" = @DI\Inject("tarioch.eveapi.account.api_key_info.new_api_factory")
+     * "newApiFactory" = @DI\Inject("tarioch.eveapi.account.api_key_info.new_api_factory"),
+     * "diffCalculator" = @DI\Inject("tarioch.eveapi.account.api_key_info.diff_calculator")
      * })
      */
     public function __construct(
         EntityManager $entityManager,
         CurrentApiCallFactory $currentApiCallFactory,
-        NewApiFactory $newApiFactory
+        NewApiFactory $newApiFactory,
+        DiffCalculator $diffCalculator
     ) {
         $this->entityManager = $entityManager;
         $this->currentApiCallFactory = $currentApiCallFactory;
         $this->newApiFactory = $newApiFactory;
+        $this->diffCalculator = $diffCalculator;
     }
 
     /**
@@ -94,36 +98,19 @@ class ApiKeyInfoUpdater implements KeyApi
         $currentApiCallMap = $this->currentApiCallFactory->createCurrentApiCallMap($key);
         $newApiMap = $this->newApiFactory->createNewApiMap($accessMask, $key->getKeyId(), $chars, $corps);
 
-        $apisToAdd = $this->getOnlyInSource($newApiMap, $currentApiCallMap);
+        $apisToAdd = $this->diffCalculator->getOnlyInSource($newApiMap, $currentApiCallMap);
         foreach ($apisToAdd as $apis) {
             foreach ($apis as $owner => $api) {
                 $this->entityManager->persist(new ApiCall($api, $owner));
             }
         }
 
-        $apisToRemove = $this->getOnlyInSource($currentApiCallMap, $newApiMap);
+        $apisToRemove = $this->diffCalculator->getOnlyInSource($currentApiCallMap, $newApiMap);
         foreach ($apisToRemove as $apis) {
             foreach ($apis as $calls) {
                 $this->entityManager->remove($calls);
             }
         }
-    }
-
-    private function getOnlyInSource(array $sourceMap, array $compareMap)
-    {
-        $diff = array_diff_key($sourceMap, $compareMap);
-
-        $intersection = array_intersect_key($sourceMap, $compareMap);
-        foreach ($intersection as $key => $sourceOwners) {
-            $compareOwners = $compareMap[$key];
-
-            $ownerDiff = array_diff_key($sourceOwners, $compareOwners);
-            if (!empty($ownerDiff)) {
-                $diff[$key] = $ownerDiff;
-            }
-        }
-
-        return $diff;
     }
 
     private function updateApiKeyInfo(ApiKey $key, Element $apiKey)
