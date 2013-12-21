@@ -14,12 +14,6 @@ class ApiCallRepositoryTest extends AbstractFunctionalTestCase
         $this->repository->loadReadyCalls();
     }
 
-    public function testFindNormalCallsByKey()
-    {
-        $key = new ApiKey('123', 'abc');
-        $this->repository->findNormalCallsByKey($key);
-    }
-
     public function setUp()
     {
         parent::setUp();
