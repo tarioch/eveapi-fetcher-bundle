@@ -54,10 +54,13 @@ class ApiCall
      */
     private $key;
 
-    public function __construct($api, $ownerId = null)
+    public function __construct($api, $ownerId = null, $key = null)
     {
-        $this->ownerId = $ownerId;
         $this->api = $api;
+        $this->ownerId = $ownerId;
+        $this->key = $key;
+        $this->active = true;
+        $this->errorCount = 0;
     }
 
     public function getApiCallId()

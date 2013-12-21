@@ -97,11 +97,11 @@ class ApiKeyInfoUpdater implements KeyApi
     {
         $currentApiCallMap = $this->currentApiCallFactory->createCurrentApiCallMap($key);
         $newApiMap = $this->newApiFactory->createNewApiMap($accessMask, $key->getKeyId(), $chars, $corps);
-
         $apisToAdd = $this->diffCalculator->getOnlyInSource($newApiMap, $currentApiCallMap);
+
         foreach ($apisToAdd as $apis) {
             foreach ($apis as $owner => $api) {
-                $this->entityManager->persist(new ApiCall($api, $owner));
+                $this->entityManager->persist(new ApiCall($api, $owner, $key));
             }
         }
 

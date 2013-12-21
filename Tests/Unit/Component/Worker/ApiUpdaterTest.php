@@ -133,7 +133,7 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 
     private function mockFinishApiCall()
     {
-        $this->apiTimeCalculator->shouldReceive('earliestNextCall')
+        $this->apiTimeCalculator->shouldReceive('calculateEarliestNextCall')
             ->with($this->apiCall)
             ->andReturn(self::EARLIEST_NEXT_CALL);
         $this->apiCall->shouldReceive('setEarliestNextCall')->with(self::EARLIEST_NEXT_CALL);

@@ -63,7 +63,7 @@ class ApiUpdater
                     $call->setDisabled(true);
                 }
             }
-            $call->setEarliestNextCall($this->apiTimeCalculator->earliestNextCall($call));
+            $call->setEarliestNextCall($this->apiTimeCalculator->calculateEarliestNextCall($call));
 
             $event = $stopwatch->stop($apiInfo);
             $this->logger->info('{callId}: {apiInfo} duration: {duration} memory: {memory}', array(
