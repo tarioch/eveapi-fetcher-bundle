@@ -26,7 +26,7 @@ class CurrentApiCallFactory
     public function createCurrentApiCallMap(ApiKey $key)
     {
         $apiCallRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:ApiCall');
-        $currentApiCalls = $apiCallRepo->findByKey($key);
+        $currentApiCalls = $apiCallRepo->findNormalCallsByKey($key);
 
         $currentApiCallMap = array();
         foreach ($currentApiCalls as $apiCall) {

@@ -35,7 +35,7 @@ class CurrentApiCallFactoryTest extends \PHPUnit_Framework_TestCase
         $this->entityManager->shouldReceive('getRepository')
             ->with('TariochEveapiFetcherBundle:ApiCall')
             ->andReturn($this->repository);
-        $this->repository->shouldReceive('findByKey')
+        $this->repository->shouldReceive('findNormalCallsByKey')
             ->with($this->apiKey)
             ->andReturn(array($this->apiCall1, $this->apiCall2));
         $this->api->shouldReceive('getApiId')->andReturn($apiId);
