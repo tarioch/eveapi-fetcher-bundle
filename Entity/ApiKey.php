@@ -2,9 +2,10 @@
 namespace Tarioch\EveapiFetcherBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ApiKeyRepository")
  * @ORM\Table(name="apiKey")
  */
 class ApiKey
@@ -29,10 +30,16 @@ class ApiKey
      */
     private $errorCount;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ApiCall", mappedBy="key")
+     */
+    private $apiCalls;
+
     public function __construct($keyId, $vCode)
     {
         $this->keyId = $keyId;
         $this->vCode = $vCode;
+        $this->apiCalls = new ArrayCollection();
     }
 
     public function getKeyId()
@@ -53,6 +60,11 @@ class ApiKey
     public function setActive($active)
     {
         $this->active = $active;
+    }
+
+    public function getErrorCount()
+    {
+        $this->errorCount;
     }
 
     public function increaseErrorCount()

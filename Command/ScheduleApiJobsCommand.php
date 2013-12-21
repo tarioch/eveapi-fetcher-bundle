@@ -4,6 +4,8 @@ namespace Tarioch\EveapiFetcherBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
+use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 
 class ScheduleApiJobsCommand extends ContainerAwareCommand
 {
@@ -22,6 +24,15 @@ class ScheduleApiJobsCommand extends ContainerAwareCommand
     {
         $gearman = $this->getContainer()->get('gearman');
         $entityManager = $this->getContainer()->get('doctrine.orm.eveapi_entity_manager');
+
+        $newKeys = $entityManager->getRepository('TariochEveapiFetcherBundle:ApiKey')->loadKeysWithoutApiCall();
+        if (!empty($newKeys)) {
+            $api = $entityManager->getRepository('TariochEveapiFetcherBundle:Api')->loadApiKeyInfoApi();
+            foreach ($newKeys as $key) {
+                $entityManager->persist(new ApiCall($api, $key->getKeyId(), $key));
+                $entityManager->flush();
+            }
+        }
 
         $calls = $entityManager->getRepository('TariochEveapiFetcherBundle:ApiCall')->loadReadyCalls();
         foreach ($calls as $call) {

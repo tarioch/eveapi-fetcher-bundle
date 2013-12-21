@@ -18,6 +18,11 @@ class ApiRepositoryTest extends AbstractFunctionalTestCase
         $this->assertEmpty($this->repository->loadValidApis(0));
     }
 
+    public function testLoadApiKeyInfoApi()
+    {
+        $this->assertNotNull($this->repository->loadApiKeyInfoApi());
+    }
+
     public function setUp()
     {
         parent::setUp();

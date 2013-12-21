@@ -12,8 +12,12 @@ class ScheduleApiJobsCommandTest extends \PHPUnit_Framework_TestCase
     private $gearman;
     private $entityManager;
     private $apiCallRepository;
+    private $apiKeyRepository;
+    private $apiRepository;
     private $apiCall1;
     private $api1;
+    private $newKey;
+    private $keyInfoApi;
 
     private $command;
 
@@ -30,6 +34,18 @@ class ScheduleApiJobsCommandTest extends \PHPUnit_Framework_TestCase
         $this->container->shouldReceive('get')
             ->with('doctrine.orm.eveapi_entity_manager')
             ->andReturn($this->entityManager);
+
+        $this->entityManager->shouldReceive('getRepository')
+            ->with('TariochEveapiFetcherBundle:ApiKey')
+            ->andReturn($this->apiKeyRepository);
+        $this->apiKeyRepository->shouldReceive('loadKeysWithoutApiCall')->andReturn(array($this->newKey));
+        $this->entityManager->shouldReceive('getRepository')
+            ->with('TariochEveapiFetcherBundle:Api')
+            ->andReturn($this->apiRepository);
+        $this->apiRepository->shouldReceive('loadApiKeyInfoApi')->andReturn($this->keyInfoApi);
+        $this->newKey->shouldReceive('getKeyId')->andReturn('newKeyId');
+        $this->entityManager->shouldReceive('persist')->once();
+
         $this->entityManager->shouldReceive('getRepository')
             ->with('TariochEveapiFetcherBundle:ApiCall')
             ->andReturn($this->apiCallRepository);
@@ -55,8 +71,12 @@ class ScheduleApiJobsCommandTest extends \PHPUnit_Framework_TestCase
         $this->gearman = m::mock('Mmoreram\GearmanBundle\Service\GearmanClient');
         $this->entityManager = m::mock('Doctrine\ORM\EntityManager');
         $this->apiCallRepository = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiCallRepository');
+        $this->apiKeyRepository = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiKeyRepository');
+        $this->apiRepository = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiRepository');
         $this->apiCall1 = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiCall');
         $this->api1 = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
+        $this->newKey = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiKey');
+        $this->keyInfoApi = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
 
         $application = new Application();
         $application->add(new ScheduleApiJobsCommand());

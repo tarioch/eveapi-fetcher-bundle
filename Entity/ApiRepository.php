@@ -17,4 +17,18 @@ class ApiRepository extends EntityRepository
 
         return $q->getResult();
     }
+
+    public function loadApiKeyInfoApi()
+    {
+        $qb = $this->createQueryBuilder('a');
+        $q = $qb->select('a')
+            ->where(
+                'a.section = :section and a.name = :name'
+            )
+            ->setParameter('section', 'account')
+            ->setParameter('name', 'APIKeyInfo')
+            ->getQuery();
+
+        return $q->getSingleResult();
+    }
 }
