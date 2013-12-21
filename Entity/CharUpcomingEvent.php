@@ -61,7 +61,7 @@ class CharUpcomingEvent
     /**
      * @var string
      *
-     * @ORM\Column(name="eventTitle", type="string")
+     * @ORM\Column(name="eventTitle", type="text")
      */
     private $eventTitle;
 
