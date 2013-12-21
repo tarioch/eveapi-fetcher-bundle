@@ -3,6 +3,7 @@ namespace Tarioch\EveapiFetcherBundle\Tests\Functional\Entity;
 
 use Tarioch\EveapiFetcherBundle\Entity\ApiCallRepository;
 use Tarioch\EveapiFetcherBundle\Tests\Functional\AbstractFunctionalTestCase;
+use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 
 class ApiCallRepositoryTest extends AbstractFunctionalTestCase
 {
@@ -15,7 +16,8 @@ class ApiCallRepositoryTest extends AbstractFunctionalTestCase
 
     public function testFindNormalCallsByKey()
     {
-        $this->repository->findNormalCallsByKey();
+        $key = new ApiKey('123', 'abc');
+        $this->repository->findNormalCallsByKey($key);
     }
 
     public function setUp()
