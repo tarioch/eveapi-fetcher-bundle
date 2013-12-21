@@ -139,5 +139,8 @@ autorestart=true
 user=www-data
 ```
 
+## Getting started ##
+Simply insert a key into the table apiKey and all available and implemented api data will be fetched.
+
 ## Help ##
 Feel free to open an issue if you have an issues or questions.
