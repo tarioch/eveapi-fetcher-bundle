@@ -88,15 +88,15 @@ class ApiKeyInfoUpdater implements KeyApi
             $this->entityManager->remove($characterEntity);
         }
 
-        $this->updateApiCalls($key, $apiKey->accessMask, $chars, $corps);
+        $this->updateApiCalls($key, $apiKey->accessMask, $apiKey->type, $chars, $corps);
 
         return $api->cached_until;
     }
 
-    private function updateApiCalls(ApiKey $key, $accessMask, array $chars, array $corps)
+    private function updateApiCalls(ApiKey $key, $accessMask, $keyType, array $chars, array $corps)
     {
         $currentApiCallMap = $this->currentApiCallFactory->createCurrentApiCallMap($key);
-        $newApiMap = $this->newApiFactory->createNewApiMap($accessMask, $key->getKeyId(), $chars, $corps);
+        $newApiMap = $this->newApiFactory->createNewApiMap($accessMask, $keyType, $key->getKeyId(), $chars, $corps);
         $apisToAdd = $this->diffCalculator->getOnlyInSource($newApiMap, $currentApiCallMap);
 
         foreach ($apisToAdd as $apis) {

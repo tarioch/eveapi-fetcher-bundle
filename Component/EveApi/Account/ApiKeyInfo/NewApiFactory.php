@@ -24,10 +24,10 @@ class NewApiFactory
         $this->newApiOwnersFactory = $newApiOwnersFactory;
     }
 
-    public function createNewApiMap($accessMask, $keyId, array $chars, array $corps)
+    public function createNewApiMap($accessMask, $keyType, $keyId, array $chars, array $corps)
     {
         $apiRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:Api');
-        $validApis = $apiRepo->loadValidApis($accessMask);
+        $validApis = $apiRepo->loadValidApis($accessMask, $keyType);
 
         $newApiMap = array();
         foreach ($validApis as $api) {

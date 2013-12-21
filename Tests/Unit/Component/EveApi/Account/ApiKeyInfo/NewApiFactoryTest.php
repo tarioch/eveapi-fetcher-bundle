@@ -17,6 +17,7 @@ class NewApiFactoryTest extends \PHPUnit_Framework_TestCase
     public function testCreate()
     {
         $accessMask = 'accessMask';
+        $keyType = 'keyType';
         $apiId1 = 'apiId1';
         $apiId2 = 'apiId2';
         $section1 = 'section1';
@@ -44,7 +45,7 @@ class NewApiFactoryTest extends \PHPUnit_Framework_TestCase
             ->with('TariochEveapiFetcherBundle:Api')
             ->andReturn($this->repository);
         $this->repository->shouldReceive('loadValidApis')
-            ->with($accessMask)
+            ->with($accessMask, $keyType)
             ->andReturn(array($this->api1, $this->api2));
 
 
@@ -60,7 +61,7 @@ class NewApiFactoryTest extends \PHPUnit_Framework_TestCase
             ->with($section2, $keyId, $chars, $corps)
             ->andReturn(array($ownerId21, $ownerId22));
 
-        $actual = $this->factory->createNewApiMap($accessMask, $keyId, $chars, $corps);
+        $actual = $this->factory->createNewApiMap($accessMask, $keyType, $keyId, $chars, $corps);
 
         $this->assertEquals($expected, $actual);
     }
