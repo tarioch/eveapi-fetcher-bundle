@@ -64,7 +64,7 @@ class ApiKey
 
     public function getErrorCount()
     {
-        $this->errorCount;
+        return $this->errorCount;
     }
 
     public function increaseErrorCount()
