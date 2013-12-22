@@ -22,7 +22,7 @@
 	"doctrine/orm" : ">=2.2.3,<2.4-dev",
 	"doctrine/doctrine-bundle": "1.2.*",
 	"symfony/monolog-bundle": "2.3.*",
-	"mmoreram/gearman-bundle": "dev-master#e261a709@dev",
+	"mmoreram/gearman-bundle": "2.3.*@dev",
 	"doctrine/doctrine-migrations-bundle": "1.0.0-BETA2",
 	"doctrine/migrations": "~1.0@dev",
 	"liip/doctrine-cache-bundle": "1.0.3"
