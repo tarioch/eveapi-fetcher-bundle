@@ -60,7 +60,7 @@ class ApiUpdater
                 $this->logger->error('{callId}: Api call failed', array('callId' => $apiCallId, 'exception' => $e));
                 $call->increaseErrorCount();
                 if ($call->getErrorCount() > self::ERROR_MAX) {
-                    $call->setDisabled(true);
+                    $call->setActive(false);
                 }
             }
             $call->setEarliestNextCall($this->apiTimeCalculator->calculateEarliestNextCall($call));
