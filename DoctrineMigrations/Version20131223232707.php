@@ -16,7 +16,7 @@ class Version20131223232707 extends AbstractMigration
      */
     public function up(Schema $schema)
     {
-        $this->addSql("INSERT INTO `api` VALUES(5, NULL, 'TariochEveapiFetcherEveWorker', 'map', 'Sovereignty', 1);");
+        $this->addSql("INSERT INTO `api` VALUES(5, NULL, 'TariochEveapiFetcherEveWorker', 'map', 'Sovereignty', 60);");
         $this->addSql("INSERT INTO `apiCall` SET apiID=5");
     }
 
