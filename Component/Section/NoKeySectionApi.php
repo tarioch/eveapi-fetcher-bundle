@@ -42,6 +42,6 @@ class NoKeySectionApi implements SectionApi
         $pheal = $this->phealFactory->createEveOnline();
         $specificApi = $this->specificApiFactory->create($call->getApi());
 
-        return $specificApi->update($call, $pheal);
+        return new \DateTime($specificApi->update($call, $pheal));
     }
 }

@@ -11,7 +11,7 @@ use Pheal\Exceptions\PhealException;
 
 class KeySectionApiTest extends \PHPUnit_Framework_TestCase
 {
-    const CACHED_UNTIL = 'CACHED_UNTIL';
+    const CACHED_UNTIL = '2001-11-21 23:21:22.333';
 
     /**
      * @var SpecificApiFactory
@@ -68,7 +68,7 @@ class KeySectionApiTest extends \PHPUnit_Framework_TestCase
             ->andReturn(self::CACHED_UNTIL);
         $this->key->shouldReceive('clearErrorCount')->once();
 
-        $this->assertEquals(self::CACHED_UNTIL, $this->keySectionApi->update($this->apiCall));
+        $this->assertEquals(new \DateTime(self::CACHED_UNTIL), $this->keySectionApi->update($this->apiCall));
     }
 
     public function testUpdateFailed()

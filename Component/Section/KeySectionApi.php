@@ -45,7 +45,7 @@ class KeySectionApi implements SectionApi
                 $updateService = $this->specificApiFactory->create($call->getApi());
                 $cachedUntil = $updateService->update($call, $key, $pheal);
                 $key->clearErrorCount();
-                return $cachedUntil;
+                return new \DateTime($cachedUntil);
             } catch (PhealException $e) {
                 $key->increaseErrorCount();
                 if ($key->getErrorCount() > self::ERROR_MAX) {

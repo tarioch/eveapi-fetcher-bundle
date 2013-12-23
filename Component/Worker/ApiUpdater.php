@@ -55,7 +55,7 @@ class ApiUpdater
                 $cachedUntil = $sectionApi->update($call);
 
                 $call->clearErrorCount();
-                $call->setCachedUntil(new \DateTime($cachedUntil));
+                $call->setCachedUntil($cachedUntil);
             } catch (PhealException $e) {
                 $this->logger->error('{callId}: Api call failed', array('callId' => $apiCallId, 'exception' => $e));
                 $call->increaseErrorCount();
