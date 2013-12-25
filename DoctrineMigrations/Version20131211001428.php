@@ -19,7 +19,7 @@ class Version20131211001428 extends AbstractMigration
         $this->addSql("INSERT INTO `api` VALUES(1, NULL, 'TariochEveapiFetcherEveWorker', 'server', 'ServerStatus', 5);");
         $this->addSql("INSERT INTO `api` VALUES(2, 33554432, 'TariochEveapiFetcherEveWorker', 'account', 'AccountStatus', 120);");
         $this->addSql("INSERT INTO `api` VALUES(3, NULL, 'TariochEveapiFetcherEveWorker', 'account', 'APIKeyInfo', 60);");
-        $this->addSql("INSERT INTO `apiCall` SET apiID=1;");
+        $this->addSql("INSERT INTO `apiCall` SET apiID=1, active=1;");
     }
 
     /**

@@ -7,11 +7,12 @@ use Tarioch\EveapiFetcherBundle\Component\EveApi\NoKeyApi;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Pheal;
 use Tarioch\EveapiFetcherBundle\Entity\MapSovereignty;
+use Tarioch\EveapiFetcherBundle\Entity\EveRefType;
 
 /**
- * @DI\Service("tarioch.eveapi.map.Sovereignty")
+ * @DI\Service("tarioch.eveapi.eve.RefTypes")
  */
-class MapSovereigntyUpdater implements NoKeyApi
+class EveRefTypesUpdater implements NoKeyApi
 {
     private $entityManager;
 
@@ -30,17 +31,11 @@ class MapSovereigntyUpdater implements NoKeyApi
      */
     public function update(ApiCall $call, Pheal $pheal)
     {
-        $this->entityManager->createQuery('delete from TariochEveapiFetcherBundle:MapSovereignty')->execute();
+        $this->entityManager->createQuery('delete from TariochEveapiFetcherBundle:EveRefType')->execute();
 
-        $api = $pheal->mapScope->Sovereignty();
-        foreach ($api->solarSystems as $solarSystem) {
-            $mapSov = new MapSovereignty(
-                $solarSystem->solarSystemID,
-                $solarSystem->allianceID,
-                $solarSystem->corporationID,
-                $solarSystem->factionID,
-                $solarSystem->solarSystemName
-            );
+        $api = $pheal->eveScope->RefTypes();
+        foreach ($api->refTypes as $type) {
+            $mapSov = new EveRefType($type->refTypeID, $type->refTypeName);
             $this->entityManager->persist($mapSov);
         }
 
