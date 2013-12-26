@@ -41,7 +41,7 @@ class EveAlliance
     private $startDate;
 
     /**
-     * @ORM\OneToMany(targetEntity="EveMemberCorporation", mappedBy="allianceId")
+     * @ORM\OneToMany(targetEntity="EveMemberCorporation", mappedBy="alliance")
      */
     private $memberCorporations;
 

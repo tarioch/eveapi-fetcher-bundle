@@ -49,7 +49,7 @@ class ApiCall
     private $api;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ApiKey", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="ApiKey", fetch="EAGER", inversedBy="apiCalls")
      * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=true, onDelete="cascade")
      */
     private $key;

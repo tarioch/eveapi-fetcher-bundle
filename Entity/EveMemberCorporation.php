@@ -20,7 +20,7 @@ class EveMemberCorporation
     private $startDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="EveAlliance", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="EveAlliance", fetch="EAGER", inversedBy="memberCorporations")
      * @ORM\JoinColumn(name="allianceID", referencedColumnName="allianceID", nullable=false, onDelete="cascade")
      */
     private $alliance;

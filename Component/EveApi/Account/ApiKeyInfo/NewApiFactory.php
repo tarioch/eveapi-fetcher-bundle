@@ -24,7 +24,7 @@ class NewApiFactory
         $this->newApiOwnersFactory = $newApiOwnersFactory;
     }
 
-    public function createNewApiMap($accessMask, $keyType, $keyId, array $chars, array $corps)
+    public function createNewApiMap($accessMask, $keyType, $keyId, array $chars)
     {
         $apiRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:Api');
         $validApis = $apiRepo->loadValidApis($accessMask, $keyType);
@@ -35,7 +35,7 @@ class NewApiFactory
             $newApiMap[$apiId] = array();
 
             $section = $api->getSection();
-            $owners = $this->newApiOwnersFactory->createOwners($section, $keyId, $chars, $corps);
+            $owners = $this->newApiOwnersFactory->createOwners($section, $keyId, $chars);
             foreach ($owners as $owner) {
                 $newApiMap[$apiId][$owner] = $api;
             }

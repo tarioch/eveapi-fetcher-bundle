@@ -8,16 +8,12 @@ use JMS\DiExtraBundle\Annotation as DI;
  */
 class NewApiOwnersFactory
 {
-    public function createOwners($section, $keyId, array $chars, array $corps)
+    public function createOwners($section, $keyId, array $chars)
     {
         if ($section === 'account') {
             return array($keyId);
-        } elseif ($section === 'char') {
-            return $chars;
-        } elseif ($section === 'corp') {
-            return $corps;
         } else {
-            throw new \InvalidArgumentException('Invalid section ' . $section);
+            return $chars;
         }
     }
 }

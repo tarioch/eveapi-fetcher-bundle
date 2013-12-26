@@ -28,7 +28,6 @@ class NewApiFactoryTest extends \PHPUnit_Framework_TestCase
         $ownerId22 = 'ownerId22';
         $keyId = 'keyId';
         $chars = array();
-        $corps = array();
 
         $expected = array(
             $apiId1 => array(
@@ -52,16 +51,16 @@ class NewApiFactoryTest extends \PHPUnit_Framework_TestCase
         $this->api1->shouldReceive('getApiId')->andReturn($apiId1);
         $this->api1->shouldReceive('getSection')->andReturn($section1);
         $this->newApiOwnersFactory->shouldReceive('createOwners')
-            ->with($section1, $keyId, $chars, $corps)
+            ->with($section1, $keyId, $chars)
             ->andReturn(array($ownerId11, $ownerId12));
 
         $this->api2->shouldReceive('getApiId')->andReturn($apiId2);
         $this->api2->shouldReceive('getSection')->andReturn($section2);
         $this->newApiOwnersFactory->shouldReceive('createOwners')
-            ->with($section2, $keyId, $chars, $corps)
+            ->with($section2, $keyId, $chars)
             ->andReturn(array($ownerId21, $ownerId22));
 
-        $actual = $this->factory->createNewApiMap($accessMask, $keyType, $keyId, $chars, $corps);
+        $actual = $this->factory->createNewApiMap($accessMask, $keyType, $keyId, $chars);
 
         $this->assertEquals($expected, $actual);
     }

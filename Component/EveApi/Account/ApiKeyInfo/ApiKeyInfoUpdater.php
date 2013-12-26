@@ -63,7 +63,6 @@ class ApiKeyInfoUpdater implements KeyApi
         }
 
         $chars = array();
-        $corps = array();
         foreach ($apiKey->characters as $char) {
             $charId = $char->characterID;
             if (isset($charEntityMap[$charId])) {
@@ -79,7 +78,6 @@ class ApiKeyInfoUpdater implements KeyApi
 
             $corpId = $char->corporationID;
             $charEntity->setCorporationId($corpId);
-            $corps[] = $corpId;
             $charEntity->setCorporationName($char->corporationName);
         }
 
@@ -88,15 +86,15 @@ class ApiKeyInfoUpdater implements KeyApi
             $this->entityManager->remove($characterEntity);
         }
 
-        $this->updateApiCalls($key, $apiKey->accessMask, $apiKey->type, $chars, $corps);
+        $this->updateApiCalls($key, $apiKey->accessMask, $apiKey->type, $chars);
 
         return $api->cached_until;
     }
 
-    private function updateApiCalls(ApiKey $key, $accessMask, $keyType, array $chars, array $corps)
+    private function updateApiCalls(ApiKey $key, $accessMask, $keyType, array $chars)
     {
         $currentApiCallMap = $this->currentApiCallFactory->createCurrentApiCallMap($key);
-        $newApiMap = $this->newApiFactory->createNewApiMap($accessMask, $keyType, $key->getKeyId(), $chars, $corps);
+        $newApiMap = $this->newApiFactory->createNewApiMap($accessMask, $keyType, $key->getKeyId(), $chars);
         $apisToAdd = $this->diffCalculator->getOnlyInSource($newApiMap, $currentApiCallMap);
 
         foreach ($apisToAdd as $apis) {
