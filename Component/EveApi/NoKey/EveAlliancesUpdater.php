@@ -6,7 +6,6 @@ use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\NoKeyApi;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Pheal;
-use Tarioch\EveapiFetcherBundle\Entity\EveRefType;
 use Tarioch\EveapiFetcherBundle\Entity\EveAlliance;
 use Tarioch\EveapiFetcherBundle\Entity\EveMemberCorporation;
 
