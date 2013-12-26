@@ -8,7 +8,6 @@ use Pheal\Pheal;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\KeyApi;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 use Tarioch\EveapiFetcherBundle\Entity\CorpAccountBalance;
-use Tarioch\EveapiFetcherBundle\Entity\AccountCharacter;
 
 /**
  * @DI\Service("tarioch.eveapi.corp.AccountBalance")
