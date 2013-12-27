@@ -13,20 +13,8 @@ use Tarioch\EveapiFetcherBundle\Entity\AccountCharacter;
 /**
  * @DI\Service("tarioch.eveapi.corp.AccountBalance")
  */
-class CorpAccountBalanceUpdater implements KeyApi
+class AccountBalanceUpdater extends AbstractCorpUpdater
 {
-    private $entityManager;
-
-    /**
-     * @DI\InjectParams({
-     * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager")
-     * })
-     */
-    public function __construct(EntityManager $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
-
     /**
      * @inheritdoc
      */
@@ -45,13 +33,6 @@ class CorpAccountBalanceUpdater implements KeyApi
         }
 
         return $api->cached_until;
-    }
-
-    private function getCorpId($charId)
-    {
-        $charRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountCharacter');
-        $char = $charRepo->findOneByCharacterId($charId);
-        return $char->getCorporationId();
     }
 
     private function loadOrCreate($accountId)
