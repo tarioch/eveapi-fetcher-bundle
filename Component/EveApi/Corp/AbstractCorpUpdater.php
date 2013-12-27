@@ -3,12 +3,6 @@ namespace Tarioch\EveapiFetcherBundle\Component\EveApi\Corp;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
-use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
-use Pheal\Pheal;
-use Tarioch\EveapiFetcherBundle\Component\EveApi\KeyApi;
-use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
-use Tarioch\EveapiFetcherBundle\Entity\CorpAccountBalance;
-use Tarioch\EveapiFetcherBundle\Entity\AccountCharacter;
 
 abstract class AbstractCorpUpdater implements KeyApi
 {
