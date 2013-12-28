@@ -10,7 +10,6 @@ class NewApiFactoryTest extends \PHPUnit_Framework_TestCase
     private $repository;
     private $api1;
     private $api2;
-    private $newApiOwnersFactory;
 
     private $factory;
 
@@ -21,22 +20,16 @@ class NewApiFactoryTest extends \PHPUnit_Framework_TestCase
         $apiId1 = 'apiId1';
         $apiId2 = 'apiId2';
         $section1 = 'section1';
-        $section2 = 'section2';
-        $ownerId11 = 'ownerId11';
-        $ownerId12 = 'ownerId12';
-        $ownerId21 = 'ownerId21';
-        $ownerId22 = 'ownerId22';
-        $keyId = 'keyId';
-        $chars = array();
+        $ownerId1 = 'ownerId1';
+        $ownerId2 = 'ownerId2';
 
         $expected = array(
             $apiId1 => array(
-                $ownerId11 => $this->api1,
-                $ownerId12 => $this->api1
+                $ownerId1 => $this->api1,
+                $ownerId2 => $this->api1
             ),
             $apiId2 => array(
-                $ownerId21 => $this->api2,
-                $ownerId22 => $this->api2
+                0 => $this->api2
             )
         );
 
@@ -47,20 +40,13 @@ class NewApiFactoryTest extends \PHPUnit_Framework_TestCase
             ->with($accessMask, $keyType)
             ->andReturn(array($this->api1, $this->api2));
 
-
         $this->api1->shouldReceive('getApiId')->andReturn($apiId1);
         $this->api1->shouldReceive('getSection')->andReturn($section1);
-        $this->newApiOwnersFactory->shouldReceive('createOwners')
-            ->with($section1, $keyId, $chars)
-            ->andReturn(array($ownerId11, $ownerId12));
 
         $this->api2->shouldReceive('getApiId')->andReturn($apiId2);
-        $this->api2->shouldReceive('getSection')->andReturn($section2);
-        $this->newApiOwnersFactory->shouldReceive('createOwners')
-            ->with($section2, $keyId, $chars)
-            ->andReturn(array($ownerId21, $ownerId22));
+        $this->api2->shouldReceive('getSection')->andReturn('account');
 
-        $actual = $this->factory->createNewApiMap($accessMask, $keyType, $keyId, $chars);
+        $actual = $this->factory->createNewApiMap($accessMask, $keyType, array($ownerId1, $ownerId2));
 
         $this->assertEquals($expected, $actual);
     }
@@ -71,9 +57,7 @@ class NewApiFactoryTest extends \PHPUnit_Framework_TestCase
         $this->repository = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiRepository');
         $this->api1 = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
         $this->api2 = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
-        $apiKeyInfoNamespace = 'Tarioch\EveapiFetcherBundle\Component\EveApi\Account\ApiKeyInfo';
-        $this->newApiOwnersFactory = m::mock($apiKeyInfoNamespace . '\NewApiOwnersFactory');
 
-        $this->factory = new NewApiFactory($this->entityManager, $this->newApiOwnersFactory);
+        $this->factory = new NewApiFactory($this->entityManager);
     }
 }

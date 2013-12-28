@@ -42,6 +42,7 @@ class ApiUpdater
 
     public function update($apiCallId)
     {
+        print('CallId ' . $apiCallId . "\n");
         $call = $this->entityManager->find('TariochEveapiFetcherBundle:ApiCall', $apiCallId);
         if ($this->apiTimeCalculator->isCallStillValid($call)) {
             $api = $call->getApi();

@@ -10,21 +10,18 @@ use Doctrine\ORM\EntityManager;
 class NewApiFactory
 {
     private $entityManager;
-    private $newApiOwnersFactory;
 
     /**
      * @DI\InjectParams({
-     * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager"),
-     * "newApiOwnersFactory" = @DI\Inject("tarioch.eveapi.account.api_key_info.new_api_owners_factory")
+     * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager")
      * })
      */
-    public function __construct(EntityManager $entityManager, NewApiOwnersFactory $newApiOwnersFactory)
+    public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->newApiOwnersFactory = $newApiOwnersFactory;
     }
 
-    public function createNewApiMap($accessMask, $keyType, $keyId, array $chars)
+    public function createNewApiMap($accessMask, $keyType, array $chars)
     {
         $apiRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:Api');
         $validApis = $apiRepo->loadValidApis($accessMask, $keyType);
@@ -35,9 +32,12 @@ class NewApiFactory
             $newApiMap[$apiId] = array();
 
             $section = $api->getSection();
-            $owners = $this->newApiOwnersFactory->createOwners($section, $keyId, $chars);
-            foreach ($owners as $owner) {
-                $newApiMap[$apiId][$owner] = $api;
+            if ($section == 'account') {
+                $newApiMap[$apiId][0] = $api;
+            } else {
+                foreach ($chars as $ownerId) {
+                    $newApiMap[$apiId][$ownerId] = $api;
+                }
             }
         }
 

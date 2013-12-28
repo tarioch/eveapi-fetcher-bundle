@@ -31,7 +31,7 @@ class UpcomingCalendarEventsUpdater implements KeyApi
      */
     public function update(ApiCall $call, ApiKey $key, Pheal $pheal)
     {
-        $charId = $call->getOwnerId();
+        $charId = $call->getOwner()->getCharacterId();
         $api = $pheal->charScope->UpcomingCalendarEvents(array('characterID' => $charId));
 
         foreach ($api->upcomingEvents as $event) {

@@ -20,7 +20,7 @@ class CorporationSheetUpdater extends AbstractCorpUpdater
      */
     public function update(ApiCall $call, ApiKey $key, Pheal $pheal)
     {
-        $charId = $call->getOwnerId();
+        $charId = $call->getOwner()->getCharacterId();
         $api = $pheal->corpScope->CorporationSheet(array('characterID' => $charId));
 
         $entity = $this->loadOrCreate($api->corporationID);

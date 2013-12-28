@@ -17,8 +17,8 @@ class StarbaseListUpdater extends AbstractCorpUpdater
      */
     public function update(ApiCall $call, ApiKey $key, Pheal $pheal)
     {
-        $charId = $call->getOwnerId();
-        $corpId = $this->getCorpId($charId);
+        $owner = $call->getOwner();
+        $corpId = $owner->getCorporationId();
         $api = $pheal->corpScope->StarbaseList();
 
         $this->entityManager

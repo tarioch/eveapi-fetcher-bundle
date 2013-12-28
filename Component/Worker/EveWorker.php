@@ -36,19 +36,15 @@ class EveWorker
     public function apiUpdate(\GearmanJob $job)
     {
         $apiCallId = '?';
-        $connection = $this->entityManager->getConnection();
-        $connection->beginTransaction();
+
         try {
             $apiCallId = $job->workload();
 
-            $this->apiUpdater->update($apiCallId);
-
-            $this->entityManager->flush();
-            $connection->commit();
+            $this->entityManager->transactional(function () use ($apiCallId) {
+                $this->apiUpdater->update($apiCallId);
+            });
         } catch (\Exception $e) {
             $this->logger->critical('{callId}: Unhandled exception', array('callId' => $apiCallId, 'exception' => $e));
-            $connection->rollBack();
-            $this->entityManager->close();
 
             throw $e;
         }

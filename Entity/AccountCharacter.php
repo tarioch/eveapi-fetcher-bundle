@@ -93,4 +93,9 @@ class AccountCharacter
     {
         return $this->createDate;
     }
+
+    public function __toString()
+    {
+        return $this->id . ': characterId: ' . $this->characterId . ' corpId: ' . $this->corporationId;
+    }
 }

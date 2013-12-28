@@ -18,6 +18,7 @@ class CurrentApiCallFactoryTest extends \PHPUnit_Framework_TestCase
     private $apiCall1;
     private $apiCall2;
     private $api;
+    private $owner1;
 
     private $factory;
 
@@ -25,11 +26,10 @@ class CurrentApiCallFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $apiId = 'apiId';
         $ownerId1 = 'ownerId1';
-        $ownerId2 = 'ownerId2';
 
         $expected = array($apiId => array(
             $ownerId1 => $this->apiCall1,
-            $ownerId2 => $this->apiCall2
+            0 => $this->apiCall2
         ));
 
         $this->entityManager->shouldReceive('getRepository')
@@ -41,10 +41,11 @@ class CurrentApiCallFactoryTest extends \PHPUnit_Framework_TestCase
         $this->api->shouldReceive('getApiId')->andReturn($apiId);
 
         $this->apiCall1->shouldReceive('getApi')->andReturn($this->api);
-        $this->apiCall1->shouldReceive('getOwnerId')->andReturn($ownerId1);
+        $this->apiCall1->shouldReceive('getOwner')->andReturn($this->owner1);
+        $this->owner1->shouldReceive('getId')->andReturn($ownerId1);
 
         $this->apiCall2->shouldReceive('getApi')->andReturn($this->api);
-        $this->apiCall2->shouldReceive('getOwnerId')->andReturn($ownerId2);
+        $this->apiCall2->shouldReceive('getOwner')->andReturn(null);
 
 
         $actual = $this->factory->createCurrentApiCallMap($this->apiKey);
@@ -60,6 +61,7 @@ class CurrentApiCallFactoryTest extends \PHPUnit_Framework_TestCase
         $this->apiCall1 = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiCall');
         $this->apiCall2 = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiCall');
         $this->api = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
+        $this->owner1 = m::mock('Tarioch\EveapiFetcherBundle\Entity\AccountCharacter');
 
         $this->factory = new CurrentApiCallFactory($this->entityManager);
     }

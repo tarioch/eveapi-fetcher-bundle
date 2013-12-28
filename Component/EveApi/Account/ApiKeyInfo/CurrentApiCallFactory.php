@@ -35,7 +35,8 @@ class CurrentApiCallFactory
                 $currentApiCallMap[$apiId] = array();
             }
 
-            $currentApiCallMap[$apiId][$apiCall->getOwnerId()] = $apiCall;
+            $owner = $apiCall->getOwner();
+            $currentApiCallMap[$apiId][$owner == null ? 0 : $owner->getId()] = $apiCall;
         }
 
         return $currentApiCallMap;

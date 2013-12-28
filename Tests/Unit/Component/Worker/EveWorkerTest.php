@@ -40,15 +40,9 @@ class EveWorkerTest extends \PHPUnit_Framework_TestCase
     {
         $apiCallId = 'apiCallId';
 
-        $this->entityManager->shouldReceive('getConnection')
-            ->andReturn($this->connection);
-        $this->connection->shouldReceive('beginTransaction');
         $this->job->shouldReceive('workload')
             ->andReturn($apiCallId);
-        $this->apiUpdater->shouldReceive('update')
-            ->with($apiCallId);
-        $this->entityManager->shouldReceive('flush');
-        $this->connection->shouldReceive('commit');
+        $this->entityManager->shouldReceive('transactional');
 
         $this->eveWorker->apiUpdate($this->job);
     }
@@ -58,16 +52,9 @@ class EveWorkerTest extends \PHPUnit_Framework_TestCase
         $apiCallId = 'apiCallId';
         $exception = new \Exception('myexception');
 
-        $this->entityManager->shouldReceive('getConnection')
-            ->andReturn($this->connection);
-        $this->connection->shouldReceive('beginTransaction');
         $this->job->shouldReceive('workload')
             ->andReturn($apiCallId);
-        $this->apiUpdater->shouldReceive('update')
-            ->with($apiCallId)
-            ->andThrow($exception);
-        $this->connection->shouldReceive('rollBack');
-        $this->entityManager->shouldReceive('close');
+        $this->entityManager->shouldReceive('transactional')->andThrow($exception);
         $this->logger->shouldReceive('critical')
             ->with(
                 '{callId}: Unhandled exception',

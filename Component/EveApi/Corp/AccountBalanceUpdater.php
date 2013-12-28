@@ -17,8 +17,9 @@ class AccountBalanceUpdater extends AbstractCorpUpdater
      */
     public function update(ApiCall $call, ApiKey $key, Pheal $pheal)
     {
-        $charId = $call->getOwnerId();
-        $corpId = $this->getCorpId($charId);
+        $owner = $call->getOwner();
+        $charId = $owner->getCharacterId();
+        $corpId = $owner->getCorporationId();
         $api = $pheal->corpScope->AccountBalance(array('characterID' => $charId));
 
         foreach ($api->accounts as $account) {

@@ -18,11 +18,6 @@ class ApiCall
     private $apiCallId;
 
     /**
-     * @ORM\Column(name="ownerID", type="bigint", nullable=true, options={"unsigned"=true})
-     */
-    private $ownerId;
-
-    /**
      * @ORM\Column(name="earliestNextCall", type="datetime", nullable=true)
      */
     private $earliestNextCall;
@@ -43,6 +38,12 @@ class ApiCall
     private $errorCount;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AccountCharacter", fetch="EAGER")
+     * @ORM\JoinColumn(name="ownerID", referencedColumnName="ID", nullable=true, onDelete="cascade")
+     */
+    private $owner;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Api", fetch="EAGER")
      * @ORM\JoinColumn(name="apiID", referencedColumnName="apiID", nullable=false, onDelete="cascade")
      */
@@ -54,10 +55,10 @@ class ApiCall
      */
     private $key;
 
-    public function __construct($api, $ownerId = null, $key = null)
+    public function __construct($api, AccountCharacter $owner = null, $key = null)
     {
         $this->api = $api;
-        $this->ownerId = $ownerId;
+        $this->owner = $owner;
         $this->key = $key;
         $this->active = true;
         $this->errorCount = 0;
@@ -68,9 +69,9 @@ class ApiCall
         return $this->apiCallId;
     }
 
-    public function getOwnerId()
+    public function getOwner()
     {
-        return $this->ownerId;
+        return $this->owner;
     }
 
     public function getEarliestNextCall()

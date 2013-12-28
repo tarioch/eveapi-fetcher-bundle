@@ -18,11 +18,4 @@ abstract class AbstractCorpUpdater implements KeyApi
     {
         $this->entityManager = $entityManager;
     }
-
-    protected function getCorpId($charId)
-    {
-        $charRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountCharacter');
-        $char = $charRepo->findOneByCharacterId($charId);
-        return $char->getCorporationId();
-    }
 }

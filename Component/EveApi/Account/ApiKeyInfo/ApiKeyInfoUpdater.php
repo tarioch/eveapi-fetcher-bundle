@@ -72,13 +72,15 @@ class ApiKeyInfoUpdater implements KeyApi
                 $charEntity = new AccountCharacter($key, $charId);
                 $this->entityManager->persist($charEntity);
             }
-            $chars[] = $charId;
 
             $charEntity->setCharacterName($char->characterName);
 
             $corpId = $char->corporationID;
             $charEntity->setCorporationId($corpId);
             $charEntity->setCorporationName($char->corporationName);
+
+            $this->entityManager->flush($charEntity);
+            $chars[] = $charEntity->getId();
         }
 
         // remove old, no longer valid characters
@@ -94,11 +96,17 @@ class ApiKeyInfoUpdater implements KeyApi
     private function updateApiCalls(ApiKey $key, $accessMask, $keyType, array $chars)
     {
         $currentApiCallMap = $this->currentApiCallFactory->createCurrentApiCallMap($key);
-        $newApiMap = $this->newApiFactory->createNewApiMap($accessMask, $keyType, $key->getKeyId(), $chars);
+        $newApiMap = $this->newApiFactory->createNewApiMap($accessMask, $keyType, $chars);
         $apisToAdd = $this->diffCalculator->getOnlyInSource($newApiMap, $currentApiCallMap);
 
         foreach ($apisToAdd as $apis) {
-            foreach ($apis as $owner => $api) {
+            foreach ($apis as $ownerId => $api) {
+                if ($ownerId != 0) {
+                    $owner = $this->entityManager->find('TariochEveapiFetcherBundle:AccountCharacter', $ownerId);
+                } else {
+                    $owner = null;
+                }
+
                 $this->entityManager->persist(new ApiCall($api, $owner, $key));
             }
         }

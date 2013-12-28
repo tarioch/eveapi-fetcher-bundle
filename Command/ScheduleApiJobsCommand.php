@@ -28,7 +28,7 @@ class ScheduleApiJobsCommand extends ContainerAwareCommand
         if (!empty($newKeys)) {
             $api = $entityManager->getRepository('TariochEveapiFetcherBundle:Api')->loadApiKeyInfoApi();
             foreach ($newKeys as $key) {
-                $entityManager->persist(new ApiCall($api, $key->getKeyId(), $key));
+                $entityManager->persist(new ApiCall($api, null, $key));
             }
             $entityManager->flush();
         }
