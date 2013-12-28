@@ -40,6 +40,8 @@ class ApiKey
         $this->keyId = $keyId;
         $this->vCode = $vCode;
         $this->apiCalls = new ArrayCollection();
+        $this->active = true;
+        $this->errorCount = 0;
     }
 
     public function getKeyId()
