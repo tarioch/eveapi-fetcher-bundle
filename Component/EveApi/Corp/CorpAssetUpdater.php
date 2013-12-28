@@ -5,7 +5,6 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Pheal;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
-use Tarioch\EveapiFetcherBundle\Entity\CorpMemberTracking;
 use Tarioch\EveapiFetcherBundle\Entity\CorpAsset;
 
 /**
