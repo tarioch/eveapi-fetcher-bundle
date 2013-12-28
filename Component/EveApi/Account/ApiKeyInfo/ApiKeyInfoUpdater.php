@@ -84,7 +84,7 @@ class ApiKeyInfoUpdater implements KeyApi
         }
 
         // remove old, no longer valid characters
-        foreach ($characterEntities as $characterEntity) {
+        foreach ($charEntityMap as $characterEntity) {
             $this->entityManager->remove($characterEntity);
         }
 
