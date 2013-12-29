@@ -25,7 +25,7 @@ class CorpAsset
     private $itemId;
 
     /**
-     * @ORM\Column(name="locationID", type="bigint", options={"unsigned"=true}, nullable=true)
+     * @ORM\Column(name="locationID", type="bigint", options={"unsigned"=true})
      */
     private $locationId;
 

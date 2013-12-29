@@ -31,15 +31,19 @@ class CorpAssetUpdater extends AbstractCorpUpdater
         return $api->cached_until;
     }
 
-    private function addAssets($assets, $lvl, $count, $corpId)
+    private function addAssets($assets, $lvl, $count, $corpId, $parentLocationId = null)
     {
         foreach ($assets as $asset) {
+            if (isset($asset->locationID)) {
+                $locationId = $asset->locationID;
+            } else {
+                $locationId = $parentLocationId;
+            }
+
             $entity = new CorpAsset();
             $entity->setOwnerId($corpId);
+            $entity->setLocationId($parentLocationId);
             $entity->setItemId($asset->itemID);
-            if (isset($asset->locationID)) {
-                $entity->setLocationId($asset->locationID);
-            }
             $entity->setTypeId($asset->typeID);
             $entity->setQuantity($asset->quantity);
             if (isset($asset->rawQuantity)) {
@@ -52,7 +56,7 @@ class CorpAssetUpdater extends AbstractCorpUpdater
             $entity->setLevel($lvl);
             $entity->setLeft($count++);
             if (!empty($asset->contents)) {
-                $count = $this->addAssets($asset->contents, $lvl + 1, $count, $corpId);
+                $count = $this->addAssets($asset->contents, $lvl + 1, $count, $corpId, $locationId);
             }
             $entity->setRight($count++);
 
