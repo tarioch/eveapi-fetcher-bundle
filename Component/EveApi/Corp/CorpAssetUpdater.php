@@ -42,7 +42,7 @@ class CorpAssetUpdater extends AbstractCorpUpdater
 
             $entity = new CorpAsset();
             $entity->setOwnerId($corpId);
-            $entity->setLocationId($parentLocationId);
+            $entity->setLocationId($locationId);
             $entity->setItemId($asset->itemID);
             $entity->setTypeId($asset->typeID);
             $entity->setQuantity($asset->quantity);
