@@ -10,7 +10,7 @@ use Tarioch\EveapiFetcherBundle\Entity\CorpAsset;
 /**
  * @DI\Service("tarioch.eveapi.corp.AssetList")
  */
-class CorpAssetUpdater extends AbstractCorpUpdater
+class AssetUpdater extends AbstractCorpUpdater
 {
     /**
      * @inheritdoc
