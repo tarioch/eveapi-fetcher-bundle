@@ -2,8 +2,6 @@
 namespace Tarioch\EveapiFetcherBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity
