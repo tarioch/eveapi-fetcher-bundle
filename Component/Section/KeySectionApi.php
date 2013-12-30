@@ -13,7 +13,7 @@ use Pheal\Exceptions\PhealException;
  */
 class KeySectionApi implements SectionApi
 {
-    const ERROR_MAX = 5;
+    const ERROR_MAX = 20;
 
     private $phealFactory;
     private $specificApiFactory;
