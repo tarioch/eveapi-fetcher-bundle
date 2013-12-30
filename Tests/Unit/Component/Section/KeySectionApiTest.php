@@ -79,7 +79,7 @@ class KeySectionApiTest extends \PHPUnit_Framework_TestCase
             ->andThrow(new PhealException());
 
         $this->key->shouldReceive('increaseErrorCount');
-        $this->key->shouldReceive('getErrorCount')->andReturn(30);
+        $this->key->shouldReceive('getErrorCount')->andReturn(20);
 
         try {
             $this->keySectionApi->update($this->apiCall);
@@ -96,7 +96,7 @@ class KeySectionApiTest extends \PHPUnit_Framework_TestCase
             ->andThrow(new PhealException());
 
         $this->key->shouldReceive('increaseErrorCount');
-        $this->key->shouldReceive('getErrorCount')->andReturn(6);
+        $this->key->shouldReceive('getErrorCount')->andReturn(21);
         $this->key->shouldReceive('setActive')
             ->with(false)
             ->once();
