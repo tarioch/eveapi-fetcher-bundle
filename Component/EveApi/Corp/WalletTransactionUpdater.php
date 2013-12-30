@@ -34,11 +34,11 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
             ));
 
             foreach ($api->transactions as $transaction) {
-                $transactionId = $transaction->transactionID;
+                $transId = $transaction->transactionID;
 
-                $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CorpWalletTransaction', $transactionId);
+                $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CorpWalletTransaction', $transId);
                 if ($entity == null) {
-                    $entity = new CorpWalletTransaction($transactionId);
+                    $entity = new CorpWalletTransaction($transId);
                     $this->entityManager->persist($entity);
 
                     $entity->setOwnerId($corpId);
