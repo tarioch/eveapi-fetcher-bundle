@@ -4,7 +4,6 @@ namespace Tarioch\EveapiFetcherBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Symfony\Component\Console\Input\InputArgument;
 
 class ScheduleSpecificJobCommand extends ContainerAwareCommand

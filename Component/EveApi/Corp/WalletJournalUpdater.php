@@ -6,7 +6,6 @@ use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Pheal;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 use Tarioch\EveapiFetcherBundle\Entity\CorpWalletJournal;
-use Tarioch\EveapiFetcherBundle\Entity\CorpAccountBalance;
 
 /**
  * @DI\Service("tarioch.eveapi.corp.WalletJournal")
