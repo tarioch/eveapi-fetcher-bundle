@@ -20,7 +20,7 @@ class CharCorporateContact
     private $ownerId;
 
     /**
-     * @ORM\Column(name="itemID", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="contactID", type="bigint", options={"unsigned"=true})
      */
     private $contactId;
 
