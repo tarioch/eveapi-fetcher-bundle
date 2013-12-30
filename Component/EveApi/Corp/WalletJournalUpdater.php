@@ -6,6 +6,7 @@ use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Pheal;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 use Tarioch\EveapiFetcherBundle\Entity\CorpWalletJournal;
+use Tarioch\EveapiFetcherBundle\Entity\CorpAccountBalance;
 
 /**
  * @DI\Service("tarioch.eveapi.corp.WalletJournal")
@@ -20,28 +21,43 @@ class WalletJournalUpdater extends AbstractCorpUpdater
         $owner = $call->getOwner();
         $charId = $owner->getCharacterId();
         $corpId = $owner->getCorporationId();
-        $api = $pheal->corpScope->WalletJournal(array('characterID' => $charId));
 
-        foreach ($api->transactions as $transaction) {
-            $refId = $transaction->refID;
+        $accountRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpAccountBalance');
+        $accounts = $accountRepo->findByOwnerId($corpId);
 
-            $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CorpWalletJournal', $refId);
-            if ($entity == null) {
-                $entity = new CorpWalletJournal($refId);
-                $this->entityManager->persist($entity);
+        foreach ($accounts as $account) {
+            $accountKey = $account->getAccountKey();
 
-                $entity->setOwnerId($corpId);
-                $entity->setDate(new \DateTime($transaction->date));
-                $entity->setRefTypeId($transaction->refTypeID);
-                $entity->setOwnerName1($transaction->ownerName1);
-                $entity->setOwnerId1($transaction->ownerID1);
-                $entity->setOwnerName2($transaction->ownerName2);
-                $entity->setOwnerId2($transaction->ownerID2);
-                $entity->setArgName1($transaction->argName1);
-                $entity->setArgId1($transaction->argID1);
-                $entity->setAmount($transaction->amount);
-                $entity->setBalance($transaction->balance);
-                $entity->setReason($transaction->reason);
+            $api = $pheal->corpScope->WalletJournal(array(
+                'characterID' => $charId,
+                'rowCount' => 2560,
+                'accountKey' => $accountKey
+            ));
+
+            foreach ($api->entries as $entry) {
+                $refId = $entry->refID;
+
+                $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CorpWalletJournal', $refId);
+                if ($entity == null) {
+                    $entity = new CorpWalletJournal($refId);
+                    $this->entityManager->persist($entity);
+
+                    $entity->setOwnerId($corpId);
+                    $entity->setAccountKey($accountKey);
+                    $entity->setDate(new \DateTime($entry->date));
+                    $entity->setRefTypeId($entry->refTypeID);
+                    $entity->setOwnerName1($entry->ownerName1);
+                    $entity->setOwnerId1($entry->ownerID1);
+                    $entity->setOwnerName2($entry->ownerName2);
+                    $entity->setOwnerId2($entry->ownerID2);
+                    $entity->setArgName1($entry->argName1);
+                    $entity->setArgId1($entry->argID1);
+                    $entity->setAmount($entry->amount);
+                    $entity->setBalance($entry->balance);
+                    $entity->setReason($entry->reason);
+                    $entity->setOwner1TypeId($entry->owner1TypeID);
+                    $entity->setOwner2TypeId($entry->owner2TypeID);
+                }
             }
         }
 

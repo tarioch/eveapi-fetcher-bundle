@@ -20,28 +20,45 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
         $owner = $call->getOwner();
         $charId = $owner->getCharacterId();
         $corpId = $owner->getCorporationId();
-        $api = $pheal->corpScope->WalletTransactions(array('characterID' => $charId));
 
-        foreach ($api->transactions as $transaction) {
-            $transactionId = $transaction->transactionID;
+        $accountRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpAccountBalance');
+        $accounts = $accountRepo->findByOwnerId($corpId);
 
-            $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CorpWalletTransaction', $transactionId);
-            if ($entity == null) {
-                $entity = new CorpWalletTransaction($transactionId);
-                $this->entityManager->persist($entity);
+        foreach ($accounts as $account) {
+            $accountKey = $account->getAccountKey();
 
-                $entity->setOwnerId($corpId);
-                $entity->setTransactionDateTime(new \DateTime($transaction->transactionDateTime));
-                $entity->setQuantity($transaction->quantity);
-                $entity->setTypeName($transaction->typeName);
-                $entity->setTypeId($transaction->typeID);
-                $entity->setPrice($transaction->price);
-                $entity->setClientId($transaction->clientID);
-                $entity->setClientName($transaction->clientName);
-                $entity->setStationId($transaction->stationID);
-                $entity->setStationName($transaction->stationName);
-                $entity->setTransaction($transaction->transactionType);
-                $entity->setTransactionFor($transaction->transactionFor);
+            $api = $pheal->corpScope->WalletTransactions(array(
+                'characterID' => $charId,
+                'rowCount' => 2560,
+                'accountKey' => $accountKey
+            ));
+
+            foreach ($api->transactions as $transaction) {
+                $transactionId = $transaction->transactionID;
+
+                $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CorpWalletTransaction', $transactionId);
+                if ($entity == null) {
+                    $entity = new CorpWalletTransaction($transactionId);
+                    $this->entityManager->persist($entity);
+
+                    $entity->setOwnerId($corpId);
+                    $entity->setAccountKey($accountKey);
+                    $entity->setJournalTransactionId($transaction->journalTransactionID);
+                    $entity->setTransactionDateTime(new \DateTime($transaction->transactionDateTime));
+                    $entity->setQuantity($transaction->quantity);
+                    $entity->setTypeName($transaction->typeName);
+                    $entity->setTypeId($transaction->typeID);
+                    $entity->setPrice($transaction->price);
+                    $entity->setClientId($transaction->clientID);
+                    $entity->setClientName($transaction->clientName);
+                    $entity->setClientTypeId($transaction->clientTypeID);
+                    $entity->setStationId($transaction->stationID);
+                    $entity->setStationName($transaction->stationName);
+                    $entity->setTransactionType($transaction->transactionType);
+                    $entity->setTransactionFor($transaction->transactionFor);
+                    $entity->setCharacterId($transaction->characterID);
+                    $entity->setCharacterName($transaction->characterName);
+                }
             }
         }
 
