@@ -22,6 +22,17 @@ class Version20131230001216 extends AbstractMigration
         $this->addSql("CREATE TABLE corpWalletTransaction (transactionID BIGINT UNSIGNED NOT NULL, ownerID BIGINT UNSIGNED NOT NULL, accountKey SMALLINT UNSIGNED NOT NULL, characterID BIGINT UNSIGNED DEFAULT NULL, characterName VARCHAR(255) DEFAULT NULL, clientID BIGINT UNSIGNED DEFAULT NULL, clientName VARCHAR(255) DEFAULT NULL, journalTransactionID BIGINT UNSIGNED NOT NULL, price NUMERIC(17, 2) NOT NULL, quantity BIGINT UNSIGNED NOT NULL, stationID BIGINT UNSIGNED DEFAULT NULL, stationName VARCHAR(255) DEFAULT NULL, transactionDateTime DATETIME NOT NULL, transactionFor VARCHAR(255) NOT NULL, transactionType VARCHAR(255) NOT NULL, typeID BIGINT UNSIGNED NOT NULL, typeName VARCHAR(255) NOT NULL, clientTypeID BIGINT UNSIGNED DEFAULT NULL, PRIMARY KEY(transactionID)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
         $this->addSql("CREATE TABLE corpWalletJournal (refID BIGINT UNSIGNED NOT NULL, ownerID BIGINT UNSIGNED NOT NULL, accountKey SMALLINT UNSIGNED NOT NULL, amount NUMERIC(17, 2) NOT NULL, argID1 BIGINT UNSIGNED DEFAULT NULL, argName1 VARCHAR(255) DEFAULT NULL, balance NUMERIC(17, 2) NOT NULL, date DATETIME NOT NULL, ownerID1 BIGINT UNSIGNED DEFAULT NULL, ownerID2 BIGINT UNSIGNED DEFAULT NULL, ownerName1 VARCHAR(255) DEFAULT NULL, ownerName2 VARCHAR(255) DEFAULT NULL, reason LONGTEXT DEFAULT NULL, refTypeID SMALLINT UNSIGNED NOT NULL, owner1TypeID BIGINT UNSIGNED DEFAULT NULL, owner2TypeID BIGINT UNSIGNED DEFAULT NULL, PRIMARY KEY(refID)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB");
 
+        $this->addSql("CREATE INDEX transactionDate ON corpWalletTransaction (transactionDateTime)");
+        $this->addSql("CREATE INDEX owner ON corpWalletTransaction (ownerID, accountKey)");
+        $this->addSql("CREATE INDEX journalTransactionID ON corpWalletTransaction (journalTransactionID)");
+        $this->addSql("CREATE INDEX transactionType ON corpWalletTransaction (transactionType)");
+        $this->addSql("CREATE INDEX typeID ON corpWalletTransaction (typeID)");
+        $this->addSql("CREATE INDEX entryDate ON corpWalletJournal (date)");
+        $this->addSql("CREATE INDEX owner ON corpWalletJournal (ownerID, accountKey)");
+        $this->addSql("CREATE INDEX owner1 ON corpWalletJournal (ownerID1)");
+        $this->addSql("CREATE INDEX owner2 ON corpWalletJournal (ownerID2)");
+        $this->addSql("CREATE INDEX refType ON corpWalletJournal (refTypeID)");
+
         $this->addSql("INSERT INTO `api` VALUES(14, 128, 'TariochEveapiFetcherEveWorker', 'corp', 'IndustryJobs', 5);");
         $this->addSql("INSERT INTO `api` VALUES(15, 1048576, 'TariochEveapiFetcherEveWorker', 'corp', 'WalletJournal', 5);");
         $this->addSql("INSERT INTO `api` VALUES(16, 2097152, 'TariochEveapiFetcherEveWorker', 'corp', 'WalletTransactions', 5);");

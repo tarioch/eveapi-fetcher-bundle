@@ -6,7 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="corpWalletTransaction")
+ * @ORM\Table(name="corpWalletTransaction", indexes={
+ *     @ORM\Index(name="transactionDate", columns={"transactionDateTime"}),
+ *     @ORM\Index(name="owner", columns={"ownerID", "accountKey"}),
+ *     @ORM\Index(name="journalTransactionID", columns={"journalTransactionID"}),
+ *     @ORM\Index(name="transactionType", columns={"transactionType"}),
+ *     @ORM\Index(name="typeID", columns={"typeID"})
+ * })
  */
 class CorpWalletTransaction
 {
