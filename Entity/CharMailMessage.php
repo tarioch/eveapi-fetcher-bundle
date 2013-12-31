@@ -4,13 +4,18 @@ namespace Tarioch\EveapiFetcherBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="MailMessageRepository")
  * @ORM\Table(name="charMailMessage")
  */
 class CharMailMessage
 {
     /**
-     * @ORM\Id @ORM\Column(name="messageID", type="bigint", options={"unsigned"=true})
+     * @ORM\Id @ORM\GeneratedValue @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(name="messageID", type="bigint", options={"unsigned"=true})
      */
     private $messageId;
 
@@ -54,9 +59,20 @@ class CharMailMessage
      */
     private $toListId;
 
-    public function __construct($messageId)
+    public function __construct($messageId, $ownerId)
     {
         $this->messageId = $messageId;
+        $this->ownerId = $ownerId;
+    }
+
+    /**
+     * Get Id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -67,19 +83,6 @@ class CharMailMessage
     public function getMessageId()
     {
         return $this->messageId;
-    }
-
-    /**
-     * Set ownerId
-     *
-     * @param integer $ownerId
-     * @return CharMailMessage
-     */
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-
-        return $this;
     }
 
     /**
