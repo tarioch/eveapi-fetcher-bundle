@@ -5,7 +5,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="MailMessageRepository")
- * @ORM\Table(name="charMailMessage")
+ * @ORM\Table(name="charMailMessage", uniqueConstraints={
+ *     @ORM\UniqueConstraint(name="message_owner", columns={"ownerId", "messageId"})
+ * })
  */
 class CharMailMessage
 {
