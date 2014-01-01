@@ -75,6 +75,9 @@ class AccountAPIKeyInfo
         $this->type = $type;
     }
 
+    /**
+     * @return ApiKey
+     */
     public function getKey()
     {
         return $this->createDate;
