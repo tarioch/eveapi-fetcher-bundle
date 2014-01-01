@@ -30,11 +30,6 @@ class CharContact
     private $contactName;
 
     /**
-     * @ORM\Column(name="inWatchlist", type="boolean")
-     */
-    private $inWatchlist;
-
-    /**
      * @ORM\Column(name="standing", type="smallint")
      */
     private $standing;
@@ -96,29 +91,6 @@ class CharContact
     public function getContactName()
     {
         return $this->contactName;
-    }
-
-    /**
-     * Set inWatchlist
-     *
-     * @param boolean $inWatchlist
-     * @return CharContact
-     */
-    public function setInWatchlist($inWatchlist)
-    {
-        $this->inWatchlist = $inWatchlist;
-
-        return $this;
-    }
-
-    /**
-     * Get inWatchlist
-     *
-     * @return boolean
-     */
-    public function isInWatchlist()
-    {
-        return $this->inWatchlist;
     }
 
     /**

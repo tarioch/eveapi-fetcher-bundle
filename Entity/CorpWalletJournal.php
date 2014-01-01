@@ -11,7 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     @ORM\Index(name="owner", columns={"ownerID", "accountKey"}),
  *     @ORM\Index(name="owner1", columns={"ownerID1"}),
  *     @ORM\Index(name="owner2", columns={"ownerID2"}),
- *     @ORM\Index(name="refType", columns={"refTypeID"})
+ *     @ORM\Index(name="refType", columns={"refTypeID"})}, uniqueConstraints={
+ *     @ORM\UniqueConstraint(name="entry_owner", columns={"refId", "ownerId"})
  * })
  */
 class CorpWalletJournal
@@ -19,9 +20,18 @@ class CorpWalletJournal
     /**
      * @var integer
      *
-     * @ORM\Id @ORM\Column(name="refID", type="bigint", options={"unsigned"=true})
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
      */
-    private $refid;
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="refID", type="bigint", options={"unsigned"=true})
+     */
+    private $refId;
 
     /**
      * @var integer
@@ -132,9 +142,20 @@ class CorpWalletJournal
     /**
      * @param integer $refid
      */
-    public function __construct($refid)
+    public function __construct($refId, $ownerId)
     {
-        $this->refid = $refid;
+        $this->refId = $refId;
+        $this->ownerId = $ownerId;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -144,20 +165,7 @@ class CorpWalletJournal
      */
     public function getRefid()
     {
-        return $this->refid;
-    }
-
-    /**
-     * Set ownerId
-     *
-     * @param integer $ownerId
-     * @return CorpWalletJournal
-     */
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-
-        return $this;
+        return $this->refId;
     }
 
     /**

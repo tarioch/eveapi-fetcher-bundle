@@ -33,15 +33,15 @@ class WalletJournalUpdater extends AbstractCorpUpdater
                 'accountKey' => $accountKey
             ));
 
+            $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpWalletJournal');
             foreach ($api->entries as $entry) {
                 $refId = $entry->refID;
 
-                $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CorpWalletJournal', $refId);
+                $entity = $repo->findOneBy(array('refId' => $refId, 'ownerId' => $corpId));
                 if ($entity == null) {
-                    $entity = new CorpWalletJournal($refId);
+                    $entity = new CorpWalletJournal($refId, $corpId);
                     $this->entityManager->persist($entity);
 
-                    $entity->setOwnerId($corpId);
                     $entity->setAccountKey($accountKey);
                     $entity->setDate(new \DateTime($entry->date));
                     $entity->setRefTypeId($entry->refTypeID);

@@ -32,15 +32,15 @@ class WalletTransactionUpdater extends AbstractCharUpdater
                 'accountKey' => $accountKey
             ));
 
+            $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharWalletTransaction');
             foreach ($api->transactions as $transaction) {
                 $transId = $transaction->transactionID;
 
-                $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CharWalletTransaction', $transId);
+                $entity = $repo->findOneBy(array('transactionId' => $transId, 'ownerId' => $charId));
                 if ($entity == null) {
-                    $entity = new CharWalletTransaction($transId);
+                    $entity = new CharWalletTransaction($transId, $charId);
                     $this->entityManager->persist($entity);
 
-                    $entity->setOwnerId($charId);
                     $entity->setAccountKey($accountKey);
                     $entity->setJournalTransactionId($transaction->journalTransactionID);
                     $entity->setTransactionDateTime(new \DateTime($transaction->transactionDateTime));
@@ -55,8 +55,6 @@ class WalletTransactionUpdater extends AbstractCharUpdater
                     $entity->setStationName($transaction->stationName);
                     $entity->setTransactionType($transaction->transactionType);
                     $entity->setTransactionFor($transaction->transactionFor);
-                    $entity->setCharacterId($transaction->characterID);
-                    $entity->setCharacterName($transaction->characterName);
                 }
             }
         }

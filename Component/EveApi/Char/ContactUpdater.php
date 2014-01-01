@@ -14,6 +14,7 @@ use Tarioch\EveapiFetcherBundle\Entity\CharAllianceContact;
  */
 class ContactUpdater extends AbstractCharUpdater
 {
+
     /**
      * @inheritdoc
      */
@@ -22,42 +23,43 @@ class ContactUpdater extends AbstractCharUpdater
         $charId = $call->getOwner()->getCharacterId();
 
         $query = 'delete from TariochEveapiFetcherBundle:CharContact c where c.ownerId=:ownerId';
-        $this->entityManager
-            ->createQuery($query)
+        $this->entityManager->createQuery($query)
             ->setParameter('ownerId', $charId)
             ->execute();
 
         $query = 'delete from TariochEveapiFetcherBundle:CharCorporateContact c where c.ownerId=:ownerId';
-        $this->entityManager
-            ->createQuery($query)
+        $this->entityManager->createQuery($query)
             ->setParameter('ownerId', $charId)
             ->execute();
 
         $query = 'delete from TariochEveapiFetcherBundle:CharAllianceContact c where c.ownerId=:ownerId';
-        $this->entityManager
-            ->createQuery($query)
+        $this->entityManager->createQuery($query)
             ->setParameter('ownerId', $charId)
             ->execute();
 
-        $api = $pheal->charScope->ContactList(array('characterID' => $charId));
+        $api = $pheal->charScope->ContactList(array(
+            'characterID' => $charId
+        ));
 
         foreach ($api->contactList as $contactApi) {
             $entity = new CharContact($charId, $contactApi->contactID);
             $entity->setContactName($contactApi->contactName);
             $entity->setStanding($contactApi->standing);
-            $entity->setInWatchlist(filter_var($contactApi->inWatchlist, FILTER_VALIDATE_BOOLEAN));
+            $this->entityManager->persist($entity);
         }
 
         foreach ($api->corporateContactList as $contactApi) {
             $entity = new CharCorporateContact($charId, $contactApi->contactID);
             $entity->setContactName($contactApi->contactName);
             $entity->setStanding($contactApi->standing);
+            $this->entityManager->persist($entity);
         }
 
         foreach ($api->allianceContactList as $contactApi) {
             $entity = new CharAllianceContact($charId, $contactApi->contactID);
             $entity->setContactName($contactApi->contactName);
             $entity->setStanding($contactApi->standing);
+            $this->entityManager->persist($entity);
         }
 
         return $api->cached_until;

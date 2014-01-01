@@ -11,7 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     @ORM\Index(name="owner", columns={"ownerID", "accountKey"}),
  *     @ORM\Index(name="journalTransactionID", columns={"journalTransactionID"}),
  *     @ORM\Index(name="transactionType", columns={"transactionType"}),
- *     @ORM\Index(name="typeID", columns={"typeID"})
+ *     @ORM\Index(name="typeID", columns={"typeID"})}, uniqueConstraints={
+ *     @ORM\UniqueConstraint(name="transaction_owner", columns={"transactionId", "ownerId"})
  * })
  */
 class CorpWalletTransaction
@@ -20,6 +21,14 @@ class CorpWalletTransaction
      * @var integer
      *
      * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="transactionID", type="bigint", options={"unsigned"=true})
      */
     private $transactionId;
@@ -146,9 +155,20 @@ class CorpWalletTransaction
     /**
      * @param integer $transactionId
      */
-    public function __construct($transactionId)
+    public function __construct($transactionId, $ownerId)
     {
         $this->transactionId = $transactionId;
+        $this->ownerId = $ownerId;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -159,19 +179,6 @@ class CorpWalletTransaction
     public function getTransactionId()
     {
         return $this->transactionId;
-    }
-
-    /**
-     * Set ownerId
-     *
-     * @param integer $ownerId
-     * @return CorpWalletTransaction
-     */
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-
-        return $this;
     }
 
     /**

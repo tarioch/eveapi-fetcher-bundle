@@ -22,7 +22,7 @@ class ContractUpdater extends AbstractCharUpdater
 
         $api = $pheal->charScope->Contracts(array('characterID' => $charId));
         foreach ($api->contractList as $entry) {
-            $contract = $this->loadOrCreate($entry->contractID);
+            $contract = $this->loadOrCreate($entry->contractID, $charId);
             $contract->setIssuerId($entry->issuerID);
             $contract->setIssuerCorpId($entry->issuerCorpID);
             $contract->setAssigneeId($entry->assigneeID);
@@ -42,16 +42,19 @@ class ContractUpdater extends AbstractCharUpdater
             $contract->setReward($entry->reward);
             $contract->setCollateral($entry->collateral);
             $contract->setVolume($entry->volume);
+            $contract->setAvailability($entry->availability);
+            $contract->setBuyout($entry->buyout);
         }
 
         return $api->cached_until;
     }
 
-    private function loadOrCreate($contractId)
+    private function loadOrCreate($contractId, $ownerId)
     {
-        $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CharContract', $contractId);
+        $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharContract');
+        $entity = $repo->findOneBy(array('contractId' => $contractId, 'ownerId' => $ownerId));
         if ($entity == null) {
-            $entity = new CharContract($contractId);
+            $entity = new CharContract($contractId, $ownerId);
             $this->entityManager->persist($entity);
         }
 

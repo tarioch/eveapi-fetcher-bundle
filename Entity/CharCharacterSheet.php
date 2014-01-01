@@ -82,37 +82,37 @@ class CharCharacterSheet
     private $balance;
 
     /**
-     * @ORM\OneToMany(targetEntity="CharSkill", mappedBy="character")
+     * @ORM\OneToMany(targetEntity="CharSkill", mappedBy="character", cascade="all")
      */
     private $skills;
 
     /**
-     * @ORM\OneToMany(targetEntity="CharCorporationRole", mappedBy="character")
+     * @ORM\OneToMany(targetEntity="CharCorporationRole", mappedBy="character", cascade="all")
      */
     private $corporationRoles;
 
     /**
-     * @ORM\OneToMany(targetEntity="CharCorporationRoleAtHq", mappedBy="character")
+     * @ORM\OneToMany(targetEntity="CharCorporationRoleAtHq", mappedBy="character", cascade="all")
      */
     private $corporationRolesAtHq;
 
     /**
-     * @ORM\OneToMany(targetEntity="CharCorporationRoleAtBase", mappedBy="character")
+     * @ORM\OneToMany(targetEntity="CharCorporationRoleAtBase", mappedBy="character", cascade="all")
      */
     private $corporationRolesAtBase;
 
     /**
-     * @ORM\OneToMany(targetEntity="CharCorporationRoleAtOther", mappedBy="character")
+     * @ORM\OneToMany(targetEntity="CharCorporationRoleAtOther", mappedBy="character", cascade="all")
      */
     private $corporationRolesAtOther;
 
     /**
-     * @ORM\OneToMany(targetEntity="CharCorporationTitle", mappedBy="character")
+     * @ORM\OneToMany(targetEntity="CharCorporationTitle", mappedBy="character", cascade="all")
      */
     private $corporationTitles;
 
     /**
-     * @ORM\OneToMany(targetEntity="CharAttributeEnhancer", mappedBy="character")
+     * @ORM\OneToMany(targetEntity="CharAttributeEnhancer", mappedBy="character", cascade="all")
      */
     private $attributeEnhancers;
 
@@ -125,7 +125,7 @@ class CharCharacterSheet
 
     public function __construct($characterId)
     {
-        $this->corporationId = $characterId;
+        $this->characterId = $characterId;
         $this->corporationRoles = new ArrayCollection();
         $this->corporationRolesAtHq = new ArrayCollection();
         $this->corporationRolesAtBase = new ArrayCollection();

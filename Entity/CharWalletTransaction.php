@@ -11,7 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     @ORM\Index(name="owner", columns={"ownerID", "accountKey"}),
  *     @ORM\Index(name="journalTransactionID", columns={"journalTransactionID"}),
  *     @ORM\Index(name="transactionType", columns={"transactionType"}),
- *     @ORM\Index(name="typeID", columns={"typeID"})
+ *     @ORM\Index(name="typeID", columns={"typeID"})}, uniqueConstraints={
+ *     @ORM\UniqueConstraint(name="transaction_owner", columns={"transactionId", "ownerId"})
  * })
  */
 class CharWalletTransaction
@@ -20,6 +21,14 @@ class CharWalletTransaction
      * @var integer
      *
      * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="transactionID", type="bigint", options={"unsigned"=true})
      */
     private $transactionId;
@@ -37,20 +46,6 @@ class CharWalletTransaction
      * @ORM\Column(name="accountKey", type="smallint", options={"unsigned"=true})
      */
     private $accountKey;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="characterID", type="bigint", nullable=true, options={"unsigned"=true})
-     */
-    private $characterId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="characterName", type="string", length=255, nullable=true)
-     */
-    private $characterName;
 
     /**
      * @var integer
@@ -146,9 +141,20 @@ class CharWalletTransaction
     /**
      * @param integer $transactionId
      */
-    public function __construct($transactionId)
+    public function __construct($transactionId, $ownerId)
     {
         $this->transactionId = $transactionId;
+        $this->ownerId = $ownerId;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -159,19 +165,6 @@ class CharWalletTransaction
     public function getTransactionId()
     {
         return $this->transactionId;
-    }
-
-    /**
-     * Set ownerId
-     *
-     * @param integer $ownerId
-     * @return CorpWalletTransaction
-     */
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-
-        return $this;
     }
 
     /**
@@ -205,52 +198,6 @@ class CharWalletTransaction
     public function getAccountKey()
     {
         return $this->accountKey;
-    }
-
-    /**
-     * Set characterId
-     *
-     * @param integer $characterId
-     * @return CorpWalletTransaction
-     */
-    public function setCharacterId($characterId)
-    {
-        $this->characterId = $characterId;
-
-        return $this;
-    }
-
-    /**
-     * Get characterId
-     *
-     * @return integer
-     */
-    public function getCharacterId()
-    {
-        return $this->characterId;
-    }
-
-    /**
-     * Set characterName
-     *
-     * @param string $characterName
-     * @return CorpWalletTransaction
-     */
-    public function setCharacterName($characterName)
-    {
-        $this->characterName = $characterName;
-
-        return $this;
-    }
-
-    /**
-     * Get characterName
-     *
-     * @return string
-     */
-    public function getCharacterName()
-    {
-        return $this->characterName;
     }
 
     /**

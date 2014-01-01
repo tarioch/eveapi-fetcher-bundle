@@ -17,6 +17,7 @@ use Tarioch\EveapiFetcherBundle\Entity\CharAttributeEnhancer;
 
 /**
  * @DI\Service("tarioch.eveapi.char.CharacterSheet")
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class CharacterSheetUpdater extends AbstractCharUpdater
 {
@@ -37,9 +38,9 @@ class CharacterSheetUpdater extends AbstractCharUpdater
 
         $entity = new CharCharacterSheet($charId);
         $entity->setName($api->name);
-        $entity->setDateOfBirth($api->DoB);
+        $entity->setDateOfBirth(new \DateTime($api->DoB));
         $entity->setRace($api->race);
-        $entity->setBloodLine($api->blooLine);
+        $entity->setBloodLine($api->bloodLine);
         $entity->setAncestry($api->ancestry);
         $entity->setGender($api->gender);
         $entity->setCorporationId($api->corporationID);
@@ -50,12 +51,15 @@ class CharacterSheetUpdater extends AbstractCharUpdater
         $entity->setCloneSkillPoints($api->cloneSkillPoints);
         $entity->setBalance($api->balance);
 
-        foreach ($api->attributeEnhancers as $enhancerApi) {
-            $enhancer = new CharAttributeEnhancer($entity);
-            $enhancer->setBonusName($enhancerApi->_name);
-            $enhancer->setAugmentatorName($enhancerApi->augmentorName);
-            $enhancer->setAugmentatorValue($enhancerApi->augmentorValue);
-            $entity->addAttributeEnhancer($enhancer);
+        $enhancers = $api->attributeEnhancers;
+        if (!empty($enhancers)) {
+            foreach ($enhancers->toArray() as $bonus => $enhancerApi) {
+                $enhancer = new CharAttributeEnhancer($entity);
+                $enhancer->setBonusName($bonus);
+                $enhancer->setAugmentatorName($enhancerApi['augmentatorName']);
+                $enhancer->setAugmentatorValue($enhancerApi['augmentatorValue']);
+                $entity->addAttributeEnhancer($enhancer);
+            }
         }
 
         $attributes = new CharAttributes();
@@ -110,7 +114,7 @@ class CharacterSheetUpdater extends AbstractCharUpdater
             $title->setTitleName($titleApi->titleName);
             $entity->addCorporationTitle($title);
         }
-
+        $this->entityManager->persist($entity);
         return $api->cached_until;
     }
 }

@@ -5,12 +5,23 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="corpIndustryJob")
+ * @ORM\Table(name="corpIndustryJob", uniqueConstraints={
+ *     @ORM\UniqueConstraint(name="job_owner", columns={"jobId", "ownerId"})
+ * })
  */
 class CorpIndustryJob
 {
     /**
-     * @ORM\Id @ORM\Column(name="jobID", type="bigint", options={"unsigned"=true})
+     * @var integer
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(name="jobID", type="bigint", options={"unsigned"=true})
      */
     private $jobId;
 
@@ -179,9 +190,20 @@ class CorpIndustryJob
      */
     private $timeMultiplier;
 
-    public function __construct($jobId)
+    public function __construct($jobId, $ownerId)
     {
         $this->jobId = $jobId;
+        $this->ownerId = $ownerId;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -192,19 +214,6 @@ class CorpIndustryJob
     public function getJobId()
     {
         return $this->jobId;
-    }
-
-    /**
-     * Set ownerId
-     *
-     * @param integer $ownerId
-     * @return CorpIndustryJob
-     */
-    public function setOwnerId($ownerId)
-    {
-        $this->ownerId = $ownerId;
-
-        return $this;
     }
 
     /**

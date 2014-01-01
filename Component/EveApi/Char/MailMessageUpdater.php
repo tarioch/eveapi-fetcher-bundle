@@ -37,6 +37,8 @@ class MailMessageUpdater extends AbstractCharUpdater
                 $entity->setToCharacterIds($message->toCharacterIDs);
                 $entity->setToCorpOrAllianceId($message->toCorpOrAllianceID);
                 $entity->setToListId($message->toListID);
+
+                $this->entityManager->persist($entity);
             }
         }
 

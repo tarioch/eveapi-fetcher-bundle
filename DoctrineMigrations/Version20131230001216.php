@@ -47,8 +47,8 @@ class Version20131230001216 extends AbstractMigration
 
         $this->addSql("DROP TABLE corpIndustryJob");
         $this->addSql("DROP TABLE corpWalletTransaction");
+        $this->addSql("DROP TABLE corpWalletJournal");
 
         $this->addSql("DELETE FROM `api` WHERE apiID IN (14, 15, 16)");
-        $this->addSql("DROP TABLE corpWalletJournal");
     }
 }

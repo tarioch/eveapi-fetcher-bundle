@@ -19,8 +19,16 @@ class CharContract
     /**
      * @var integer
      *
-     * @ORM\Column(name="contractID", type="bigint", options={"unsigned"=true})
      * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="contractID", type="bigint", options={"unsigned"=true})
      */
     private $contractId;
 
@@ -178,9 +186,20 @@ class CharContract
      */
     private $volume;
 
-    public function __construct($contractId)
+    public function __construct($contractId, $ownerId)
     {
         $this->contractId = $contractId;
+        $this->ownerId = $ownerId;
+    }
+
+    /**
+     * Get Id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**

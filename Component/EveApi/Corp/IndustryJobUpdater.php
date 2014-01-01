@@ -23,9 +23,8 @@ class IndustryJobUpdater extends AbstractCorpUpdater
         $api = $pheal->corpScope->IndustryJobs(array('characterID' => $charId));
 
         foreach ($api->jobs as $job) {
-            $entity = $this->loadOrCreate($job->jobID);
+            $entity = $this->loadOrCreate($job->jobID, $corpId);
 
-            $entity->setOwnerId($corpId);
             $entity->setAssemblyLineId($job->assemblyLineID);
             $entity->setContainerId($job->containerID);
             $entity->setInstalledItemId($job->installedItemID);
@@ -64,11 +63,12 @@ class IndustryJobUpdater extends AbstractCorpUpdater
         return $api->cached_until;
     }
 
-    private function loadOrCreate($jobId)
+    private function loadOrCreate($jobId, $ownerId)
     {
-        $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CorpIndustryJob', $jobId);
+        $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpIndustryJob');
+        $entity = $repo->findOneBy(array('jobId' => $jobId, 'ownerId' => $ownerId));
         if ($entity == null) {
-            $entity = new CorpIndustryJob($jobId);
+            $entity = new CorpIndustryJob($jobId, $ownerId);
             $this->entityManager->persist($entity);
         }
 

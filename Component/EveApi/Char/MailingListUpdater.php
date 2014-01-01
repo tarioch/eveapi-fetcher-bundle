@@ -30,6 +30,7 @@ class MailingListUpdater extends AbstractCharUpdater
         foreach ($api->mailingLists as $listApi) {
             $entity = new CharMailingList($charId, $listApi->listID);
             $entity->setDisplayName($listApi->displayName);
+            $this->entityManager->persist($entity);
         }
 
         return $api->cached_until;

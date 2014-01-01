@@ -32,15 +32,15 @@ class WalletJournalUpdater extends AbstractCharUpdater
                 'accountKey' => $accountKey
             ));
 
-            foreach ($api->entries as $entry) {
+            $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharWalletJournal');
+            foreach ($api->transactions as $entry) {
                 $refId = $entry->refID;
 
-                $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CharWalletJournal', $refId);
+                $entity = $repo->findOneBy(array('refId' => $refId, 'ownerId' => $charId));
                 if ($entity == null) {
-                    $entity = new CharWalletJournal($refId);
+                    $entity = new CharWalletJournal($refId, $charId);
                     $this->entityManager->persist($entity);
 
-                    $entity->setOwnerId($charId);
                     $entity->setAccountKey($accountKey);
                     $entity->setDate(new \DateTime($entry->date));
                     $entity->setRefTypeId($entry->refTypeID);
@@ -55,6 +55,8 @@ class WalletJournalUpdater extends AbstractCharUpdater
                     $entity->setReason($entry->reason);
                     $entity->setOwner1TypeId($entry->owner1TypeID);
                     $entity->setOwner2TypeId($entry->owner2TypeID);
+                    $entity->setTaxAmount($entry->taxAmount);
+                    $entity->setTaxReceiverId($entry->taxReceiverID);
                 }
             }
         }

@@ -28,12 +28,13 @@ class MailMessageBodyUpdater extends AbstractCharUpdater
         }
 
         if (!empty($messageIds)) {
-            $api = $pheal->charScope->MailBodies(array('characterID' => $charId, 'ids' => array_keys($messageIds)));
+            $ids = join(',', array_keys($messageIds));
+            $api = $pheal->charScope->MailBodies(array('characterID' => $charId, 'ids' => $ids));
 
             foreach ($api->messages as $message) {
                 $messageId = $message->messageID;
                 $entity = $messageIds[$messageId];
-                $entity->setBody($message->_value);
+                $entity->setBody((string)$message);
             }
 
             return $api->cached_until;
