@@ -39,7 +39,7 @@ class MailMessageBodyUpdater extends AbstractCharUpdater
 
             return $api->cached_until;
         } else {
-            return new \DateTime('now', new \DateTimeZone('UTC'));
+            return 'now';
         }
 
     }
