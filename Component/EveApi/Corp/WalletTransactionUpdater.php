@@ -42,7 +42,6 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
                     $entity = new CorpWalletTransaction($transId, $corpId);
                     $this->entityManager->persist($entity);
 
-                    $entity->setOwnerId($corpId);
                     $entity->setAccountKey($accountKey);
                     $entity->setJournalTransactionId($transaction->journalTransactionID);
                     $entity->setTransactionDateTime(new \DateTime($transaction->transactionDateTime));

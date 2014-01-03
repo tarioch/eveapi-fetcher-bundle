@@ -80,6 +80,6 @@ class AccountAPIKeyInfo
      */
     public function getKey()
     {
-        return $this->createDate;
+        return $this->key;
     }
 }
