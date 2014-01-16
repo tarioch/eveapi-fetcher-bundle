@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     @ORM\Index(name="journalTransactionID", columns={"journalTransactionID"}),
  *     @ORM\Index(name="transactionType", columns={"transactionType"}),
  *     @ORM\Index(name="typeID", columns={"typeID"})}, uniqueConstraints={
- *     @ORM\UniqueConstraint(name="transaction_owner", columns={"transactionId", "ownerId"})
+ *     @ORM\UniqueConstraint(name="transaction_owner", columns={"transactionId", "ownerId", "accountKey"})
  * })
  */
 class CorpWalletTransaction

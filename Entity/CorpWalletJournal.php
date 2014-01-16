@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     @ORM\Index(name="owner1", columns={"ownerID1"}),
  *     @ORM\Index(name="owner2", columns={"ownerID2"}),
  *     @ORM\Index(name="refType", columns={"refTypeID"})}, uniqueConstraints={
- *     @ORM\UniqueConstraint(name="entry_owner", columns={"refId", "ownerId"})
+ *     @ORM\UniqueConstraint(name="entry_owner", columns={"refId", "ownerId", "accountKey"})
  * })
  */
 class CorpWalletJournal
