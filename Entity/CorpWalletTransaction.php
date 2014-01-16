@@ -155,10 +155,11 @@ class CorpWalletTransaction
     /**
      * @param integer $transactionId
      */
-    public function __construct($transactionId, $ownerId)
+    public function __construct($transactionId, $ownerId, $accountKey)
     {
         $this->transactionId = $transactionId;
         $this->ownerId = $ownerId;
+        $this->accountKey = $accountKey;
     }
 
     /**
@@ -189,19 +190,6 @@ class CorpWalletTransaction
     public function getOwnerId()
     {
         return $this->ownerId;
-    }
-
-    /**
-     * Set accountKey
-     *
-     * @param integer $accountKey
-     * @return CorpWalletTransaction
-     */
-    public function setAccountKey($accountKey)
-    {
-        $this->accountKey = $accountKey;
-
-        return $this;
     }
 
     /**

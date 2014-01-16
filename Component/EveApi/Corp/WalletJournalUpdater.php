@@ -37,12 +37,11 @@ class WalletJournalUpdater extends AbstractCorpUpdater
             foreach ($api->entries as $entry) {
                 $refId = $entry->refID;
 
-                $entity = $repo->findOneBy(array('refId' => $refId, 'ownerId' => $corpId));
+                $entity = $repo->findOneBy(array('refId' => $refId, 'ownerId' => $corpId, 'accountKey' => $accountKey));
                 if ($entity == null) {
-                    $entity = new CorpWalletJournal($refId, $corpId);
+                    $entity = new CorpWalletJournal($refId, $corpId, $accountKey);
                     $this->entityManager->persist($entity);
 
-                    $entity->setAccountKey($accountKey);
                     $entity->setDate(new \DateTime($entry->date));
                     $entity->setRefTypeId($entry->refTypeID);
                     $entity->setOwnerName1($entry->ownerName1);

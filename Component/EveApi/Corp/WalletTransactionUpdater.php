@@ -37,12 +37,12 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
             foreach ($api->transactions as $transaction) {
                 $transId = $transaction->transactionID;
 
-                $entity = $repo->findOneBy(array('transactionId' => $transId, 'ownerId' => $corpId));
+                $criteria = array('transactionId' => $transId, 'ownerId' => $corpId, 'accountKey' => $accountKey);
+                $entity = $repo->findOneBy($criteria);
                 if ($entity == null) {
-                    $entity = new CorpWalletTransaction($transId, $corpId);
+                    $entity = new CorpWalletTransaction($transId, $corpId, $accountKey);
                     $this->entityManager->persist($entity);
 
-                    $entity->setAccountKey($accountKey);
                     $entity->setJournalTransactionId($transaction->journalTransactionID);
                     $entity->setTransactionDateTime(new \DateTime($transaction->transactionDateTime));
                     $entity->setQuantity($transaction->quantity);

@@ -142,10 +142,11 @@ class CorpWalletJournal
     /**
      * @param integer $refid
      */
-    public function __construct($refId, $ownerId)
+    public function __construct($refId, $ownerId, $accountKey)
     {
         $this->refId = $refId;
         $this->ownerId = $ownerId;
+        $this->accountKey = $accountKey;
     }
 
     /**
@@ -176,19 +177,6 @@ class CorpWalletJournal
     public function getOwnerId()
     {
         return $this->ownerId;
-    }
-
-    /**
-     * Set accountKey
-     *
-     * @param integer $accountKey
-     * @return CorpWalletJournal
-     */
-    public function setAccountKey($accountKey)
-    {
-        $this->accountKey = $accountKey;
-
-        return $this;
     }
 
     /**
