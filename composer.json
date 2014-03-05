@@ -16,16 +16,16 @@
     },
     "require": {
         "php": ">=5.4.4",
-	"symfony/framework-bundle": "2.3.*",
-	"jms/di-extra-bundle" : "1.4.*",
+	"symfony/framework-bundle": ">=2.3",
+	"jms/di-extra-bundle" : ">=1.4",
 	"tarioch/pheal-bundle" : "0.1.*",
-	"doctrine/orm" : ">=2.2.3,<2.4-dev",
-	"doctrine/doctrine-bundle": "1.2.*",
-	"symfony/monolog-bundle": "2.3.*",
+	"doctrine/orm" : ">=2.2.3",
+	"doctrine/doctrine-bundle": ">=1.2",
+	"symfony/monolog-bundle": ">=2.3",
 	"mmoreram/gearman-bundle": "2.3.*@dev",
-	"doctrine/doctrine-migrations-bundle": "1.0.0-BETA2",
-	"doctrine/migrations": "~1.0@dev",
-	"liip/doctrine-cache-bundle": "1.0.3"
+	"doctrine/doctrine-migrations-bundle": "1.0.0-BETA3",
+	"doctrine/migrations": ">=1.0@dev",
+	"liip/doctrine-cache-bundle": ">=1.0.3"
     },
     "require-dev": {
 	"phpunit/phpunit" : "3.7.*",
