@@ -58,6 +58,8 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
                     $entity->setTransactionFor($transaction->transactionFor);
                     $entity->setCharacterId($transaction->characterID);
                     $entity->setCharacterName($transaction->characterName);
+
+                    $this->entityManager->flush($entity);
                 }
             }
         }

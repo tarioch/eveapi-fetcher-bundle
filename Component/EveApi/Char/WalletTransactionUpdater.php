@@ -55,6 +55,8 @@ class WalletTransactionUpdater extends AbstractCharUpdater
                     $entity->setStationName($transaction->stationName);
                     $entity->setTransactionType($transaction->transactionType);
                     $entity->setTransactionFor($transaction->transactionFor);
+
+                    $this->entityManager->flush($entity);
                 }
             }
         }

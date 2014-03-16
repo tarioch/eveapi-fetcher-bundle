@@ -55,6 +55,8 @@ class WalletJournalUpdater extends AbstractCorpUpdater
                     $entity->setReason($entry->reason);
                     $entity->setOwner1TypeId($entry->owner1TypeID);
                     $entity->setOwner2TypeId($entry->owner2TypeID);
+
+                    $this->entityManager->flush($entity);
                 }
             }
         }
