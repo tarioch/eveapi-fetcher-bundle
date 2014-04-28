@@ -104,7 +104,7 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 
         $this->logger->shouldReceive('error');
         $this->apiCall->shouldReceive('increaseErrorCount');
-        $this->apiCall->shouldReceive('getErrorCount')->andReturn(6);
+        $this->apiCall->shouldReceive('getErrorCount')->andReturn(21);
         $this->apiCall->shouldReceive('setActive')->with(false)->once();
 
         $this->mockFinishApiCall();
