@@ -13,7 +13,7 @@ use Tarioch\EveapiFetcherBundle\Component\Section\SectionApiFactory;
  */
 class ApiUpdater
 {
-    const ERROR_MAX = 10;
+    const ERROR_MAX = 20;
 
     private $logger;
     private $entityManager;
