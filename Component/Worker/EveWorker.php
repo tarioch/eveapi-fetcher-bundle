@@ -39,11 +39,15 @@ class EveWorker
 
         try {
             $apiCallId = $job->workload();
+            $entityManager->getConnection()->beginTransaction();
 
-            $this->entityManager->transactional(function () use ($apiCallId) {
-                $this->apiUpdater->update($apiCallId);
-            });
+            $this->apiUpdater->update($apiCallId);
+
+            $entityManager->flush();
+            $entityManager->getConnection()->commit();
         } catch (\Exception $e) {
+            $entityManager->getConnection()->rollback();
+            $entityManager->close();
             $this->logger->critical('{callId}: Unhandled exception', array('callId' => $apiCallId, 'exception' => $e));
 
             throw $e;
