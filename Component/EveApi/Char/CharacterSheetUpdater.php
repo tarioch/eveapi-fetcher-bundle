@@ -28,12 +28,6 @@ class CharacterSheetUpdater extends AbstractCharUpdater
     {
         $charId = $call->getOwner()->getCharacterId();
 
-        $query = 'delete from TariochEveapiFetcherBundle:CharCharacterSheet c where c.characterId=:characterId';
-        $this->entityManager
-            ->createQuery($query)
-            ->setParameter('characterId', $charId)
-            ->execute();
-
         $api = $pheal->charScope->CharacterSheet(array('characterID' => $charId));
 
         $entity = new CharCharacterSheet($charId);
@@ -114,6 +108,13 @@ class CharacterSheetUpdater extends AbstractCharUpdater
             $title->setTitleName($titleApi->titleName);
             $entity->addCorporationTitle($title);
         }
+
+        $query = 'delete from TariochEveapiFetcherBundle:CharCharacterSheet c where c.characterId=:characterId';
+        $this->entityManager
+            ->createQuery($query)
+            ->setParameter('characterId', $charId)
+            ->execute();
+
         $this->entityManager->persist($entity);
         return $api->cached_until;
     }
