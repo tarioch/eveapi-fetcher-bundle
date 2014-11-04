@@ -112,11 +112,6 @@ class CharCharacterSheet
     private $corporationTitles;
 
     /**
-     * @ORM\OneToMany(targetEntity="CharAttributeEnhancer", mappedBy="character", cascade="all")
-     */
-    private $attributeEnhancers;
-
-    /**
      * @ORM\OneToOne(targetEntity="CharAttributes", cascade="all")
      * @JoinColumn(name="attributesId", referencedColumnName="id", onDelete="cascade")
      */
@@ -131,7 +126,6 @@ class CharCharacterSheet
         $this->corporationRolesAtBase = new ArrayCollection();
         $this->corporationRolesAtOther = new ArrayCollection();
         $this->corporationTitles = new ArrayCollection();
-        $this->attributeEnhancers = new ArrayCollection();
     }
 
 
@@ -653,39 +647,6 @@ class CharCharacterSheet
     public function getCorporationTitles()
     {
         return $this->corporationTitles;
-    }
-
-    /**
-     * Add attributeEnhancers
-     *
-     * @param \Tarioch\EveapiFetcherBundle\Entity\CharAttributeEnhancer $attributeEnhancers
-     * @return CharCharacterSheet
-     */
-    public function addAttributeEnhancer(CharAttributeEnhancer $attributeEnhancers)
-    {
-        $this->attributeEnhancers[] = $attributeEnhancers;
-
-        return $this;
-    }
-
-    /**
-     * Remove attributeEnhancers
-     *
-     * @param \Tarioch\EveapiFetcherBundle\Entity\CharAttributeEnhancer $attributeEnhancers
-     */
-    public function removeAttributeEnhancer(CharAttributeEnhancer $attributeEnhancers)
-    {
-        $this->attributeEnhancers->removeElement($attributeEnhancers);
-    }
-
-    /**
-     * Get attributeEnhancers
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAttributeEnhancers()
-    {
-        return $this->attributeEnhancers;
     }
 
     /**

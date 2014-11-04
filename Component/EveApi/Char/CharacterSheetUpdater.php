@@ -45,17 +45,6 @@ class CharacterSheetUpdater extends AbstractCharUpdater
         $entity->setCloneSkillPoints($api->cloneSkillPoints);
         $entity->setBalance($api->balance);
 
-        $enhancers = $api->attributeEnhancers;
-        if (!empty($enhancers)) {
-            foreach ($enhancers->toArray() as $bonus => $enhancerApi) {
-                $enhancer = new CharAttributeEnhancer($entity);
-                $enhancer->setBonusName($bonus);
-                $enhancer->setAugmentatorName($enhancerApi['augmentatorName']);
-                $enhancer->setAugmentatorValue($enhancerApi['augmentatorValue']);
-                $entity->addAttributeEnhancer($enhancer);
-            }
-        }
-
         $attributes = new CharAttributes();
         $entity->setAttributes($attributes);
         $attributesApi = $api->attributes;
