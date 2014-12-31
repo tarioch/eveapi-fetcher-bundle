@@ -1,5 +1,5 @@
 <?php
-namespace Tarioch\EveApiFetcherBundle\Component\EveApi;
+namespace Tarioch\EveapiFetcherBundle\Component\EveApi;
 
 use Pheal\Pheal;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
