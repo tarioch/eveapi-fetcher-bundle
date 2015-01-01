@@ -25,50 +25,44 @@ class IndustryJobUpdater extends AbstractCorpUpdater
         foreach ($api->jobs as $job) {
             $entity = $this->loadOrCreate($job->jobID, $corpId);
 
-            $entity->setAssemblyLineId($job->assemblyLineID);
-            $entity->setContainerId($job->containerID);
-            $entity->setInstalledItemId($job->installedItemID);
-            $entity->setInstalledItemLocationId($job->installedItemLocationID);
-            $entity->setInstalledItemQuantity($job->installedItemQuantity);
-            $entity->setInstalledItemProductivityLevel($job->installedItemProductivityLevel);
-            $entity->setInstalledItemMaterialLevel($job->installedItemMaterialLevel);
-            $runsRemain = $job->installedItemLicensedProductionRunsRemaining;
-            $entity->setInstalledItemLicensedProductionRunsRemaining($runsRemain);
-            $entity->setOutputLocationId($job->outputLocationID);
             $entity->setInstallerId($job->installerID);
-            $entity->setRuns($job->runs);
-            $entity->setLicensedProductionRuns($job->licensedProductionRuns);
-            $entity->setInstalledInSolarSystemId($job->installedInSolarSystemID);
-            $entity->setContainerLocationId($job->containerLocationID);
-            $entity->setMaterialMultiplier($job->materialMultiplier);
-            $entity->setCharMaterialMultiplier($job->charMaterialMultiplier);
-            $entity->setTimeMultiplier($job->timeMultiplier);
-            $entity->setCharTimeMultiplier($job->charTimeMultiplier);
-            $entity->setInstalledItemTypeId($job->installedItemTypeID);
-            $entity->setOutputTypeId($job->outputTypeID);
-            $entity->setContainerTypeId($job->containerTypeID);
-            $entity->setInstalledItemCopy($job->installedItemCopy);
-            $entity->setCompleted(filter_var($job->completed, FILTER_VALIDATE_BOOLEAN));
-            $entity->setCompletedSuccessfully($job->completedSuccessfully);
-            $entity->setInstalledItemFlag($job->installedItemFlag);
-            $entity->setOutputFlag($job->outputFlag);
+            $entity->setInstallerName($job->installerName);
+            $entity->setFacilityId($job->facilityID);
+            $entity->setSolarSystemId($job->solarSystemID);
+            $entity->setSolarSystemName($job->solarSystemName);
+            $entity->setStationId($job->stationID);
             $entity->setActivityId($job->activityID);
-            $entity->setCompletedStatus($job->completedStatus);
-            $entity->setInstallTime(new \DateTime($job->installTime));
-            $entity->setBeginProductionTime(new \DateTime($job->beginProductionTime));
-            $entity->setEndProductionTime(new \DateTime($job->endProductionTime));
-            $entity->setPauseProductionTime(new \DateTime($job->pauseProductionTime));
+            $entity->setBlueprintId($job->blueprintID);
+            $entity->setBlueprintTypeId($job->blueprintTypeID);
+            $entity->setBlueprintTypeName($job->blueprintTypeName);
+            $entity->setBlueprintLocationId($job->blueprintLocationID);
+            $entity->setOutputLocationId($job->outputLocationID);
+            $entity->setRuns($job->runs);
+            $entity->setCost($job->cost);
+            $entity->setTeamId($job->teamID);
+            $entity->setLicensedRuns($job->licensedRuns);
+            $entity->setProbability($job->probability);
+            $entity->setProductTypeId($job->productTypeID);
+            $entity->setProductTypeName($job->productTypeName);
+            $entity->setStatus($job->status);
+            $entity->setTimeInSeconds($job->timeInSeconds);
+            $entity->setStartDate(new \DateTime($job->startDate));
+            $entity->setEndDate(new \DateTime($job->endDate));
+            $entity->setPauseDate(new \DateTime($job->pauseDate));
+            $entity->setCompletedDate(new \DateTime($job->completedDate));
+            $entity->setCompletedCharacterId($job->completedCharacterID);
+            $entity->setSuccessfulRuns($job->successfulRuns);
         }
 
         return $api->cached_until;
     }
 
-    private function loadOrCreate($jobId, $ownerId)
+    private function loadOrCreate($jobId, $installerId)
     {
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpIndustryJob');
-        $entity = $repo->findOneBy(array('jobId' => $jobId, 'ownerId' => $ownerId));
+        $entity = $repo->findOneBy(array('jobId' => $jobId, 'installerId' => $installerId));
         if ($entity == null) {
-            $entity = new CorpIndustryJob($jobId, $ownerId);
+            $entity = new CorpIndustryJob($jobId, $installerId);
             $this->entityManager->persist($entity);
         }
 
