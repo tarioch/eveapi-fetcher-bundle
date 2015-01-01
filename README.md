@@ -119,6 +119,13 @@ gearman:
 
 ```
 
+## Database ##
+For getting the correct database schema, run
+
+```
+php app/console doctrine:migrations:migrate --em=eveapi
+```
+
 ## Running ##
 The best way to run this is to have a minutely cron job that schedules missing api calls and use supervisord for actually running the workers.
 
