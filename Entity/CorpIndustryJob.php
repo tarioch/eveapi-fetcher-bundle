@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="corpIndustryJob", uniqueConstraints={
- *     @ORM\UniqueConstraint(name="job_owner", columns={"jobId", "ownerId"})
+ *     @ORM\UniqueConstraint(name="job_owner", columns={"jobId", "installerId"})
  * })
  */
 class CorpIndustryJob
@@ -26,124 +26,34 @@ class CorpIndustryJob
     private $jobId;
 
     /**
-     * @ORM\Column(name="ownerID", type="bigint", options={"unsigned"=true})
-     */
-    private $ownerId;
-
-    /**
-     * @ORM\Column(name="assemblyLineID", type="bigint", options={"unsigned"=true})
-     */
-    private $assemblyLineId;
-
-    /**
-     * @ORM\Column(name="containerID", type="bigint", options={"unsigned"=true})
-     */
-    private $containerId;
-
-    /**
-     * @ORM\Column(name="containerLocationID", type="bigint", options={"unsigned"=true})
-     */
-    private $containerLocationId;
-
-    /**
-     * @ORM\Column(name="containerTypeID", type="bigint", options={"unsigned"=true})
-     */
-    private $containerTypeId;
-
-    /**
-     * @ORM\Column(name="installedInSolarSystemID", type="bigint", options={"unsigned"=true})
-     */
-    private $installedInSolarSystemId;
-
-    /**
-     * @ORM\Column(name="installedItemCopy", type="bigint", options={"unsigned"=true})
-     */
-    private $installedItemCopy;
-
-    /**
-     * @ORM\Column(name="installedItemID", type="bigint", options={"unsigned"=true})
-     */
-    private $installedItemId;
-
-    /**
-     * @ORM\Column(name="installedItemLocationID", type="bigint", options={"unsigned"=true})
-     */
-    private $installedItemLocationId;
-
-    /**
-     * @ORM\Column(name="installedItemQuantity", type="bigint", options={"unsigned"=true})
-     */
-    private $installedItemQuantity;
-
-    /**
-     * @ORM\Column(name="installedItemTypeID", type="bigint", options={"unsigned"=true})
-     */
-    private $installedItemTypeId;
-
-    /**
      * @ORM\Column(name="installerID", type="bigint", options={"unsigned"=true})
      */
     private $installerId;
 
     /**
-     * @ORM\Column(name="outputLocationID", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="installerName", type="string", length=255, options={"unsigned"=true})
      */
-    private $outputLocationId;
+    private $installerName;
 
     /**
-     * @ORM\Column(name="outputTypeID", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="facilityID", type="bigint", options={"unsigned"=true})
      */
-    private $outputTypeId;
+    private $facilityId;
 
     /**
-     * @ORM\Column(name="runs", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="solarSystemID", type="bigint", options={"unsigned"=true})
      */
-    private $runs;
+    private $solarSystemId;
 
     /**
-     * @ORM\Column(name="licensedProductionRuns", type="bigint")
+     * @ORM\Column(name="solarSystemName", type="string", length=255, options={"unsigned"=true})
      */
-    private $licensedProductionRuns;
+    private $solarSystemName;
 
     /**
-     * @ORM\Column(name="installedItemMaterialLevel", type="bigint")
+     * @ORM\Column(name="stationID", type="bigint", options={"unsigned"=true})
      */
-    private $installedItemMaterialLevel;
-
-    /**
-     * @ORM\Column(name="installedItemProductivityLevel", type="bigint")
-     */
-    private $installedItemProductivityLevel;
-
-    /**
-     * @ORM\Column(name="installedItemLicensedProductionRunsRemaining", type="bigint")
-     */
-    private $installedItemLicensedProductionRunsRemaining;
-
-    /**
-     * @ORM\Column(name="beginProductionTime", type="datetime")
-     */
-    private $beginProductionTime;
-
-    /**
-     * @ORM\Column(name="endProductionTime", type="datetime")
-     */
-    private $endProductionTime;
-
-    /**
-     * @ORM\Column(name="installTime", type="datetime")
-     */
-    private $installTime;
-
-    /**
-     * @ORM\Column(name="pauseProductionTime", type="datetime")
-     */
-    private $pauseProductionTime;
-
-    /**
-     * @ORM\Column(name="completed", type="boolean")
-     */
-    private $completed;
+    private $stationId;
 
     /**
      * @ORM\Column(name="activityID", type="smallint", options={"unsigned"=true})
@@ -151,55 +61,115 @@ class CorpIndustryJob
     private $activityId;
 
     /**
-     * @ORM\Column(name="completedStatus", type="smallint", options={"unsigned"=true})
+     * @ORM\Column(name="blueprintID", type="bigint", options={"unsigned"=true})
      */
-    private $completedStatus;
+    private $blueprintId;
 
     /**
-     * @ORM\Column(name="completedSuccessfully", type="smallint", options={"unsigned"=true})
+     * @ORM\Column(name="blueprintTypeID", type="bigint", options={"unsigned"=true})
      */
-    private $completedSuccessfully;
+    private $blueprintTypeId;
 
     /**
-     * @ORM\Column(name="installedItemFlag", type="smallint", options={"unsigned"=true})
+     * @ORM\Column(name="blueprintTypeName", type="string", length=255, options={"unsigned"=true})
      */
-    private $installedItemFlag;
+    private $blueprintTypeName;
 
     /**
-     * @ORM\Column(name="outputFlag", type="smallint", options={"unsigned"=true})
+     * @ORM\Column(name="blueprintLocationID", type="bigint", options={"unsigned"=true})
      */
-    private $outputFlag;
+    private $blueprintLocationId;
 
     /**
-     * @ORM\Column(name="materialMultiplier", type="decimal", precision=4, scale=2)
+     * @ORM\Column(name="outputLocationID", type="bigint", options={"unsigned"=true})
      */
-    private $materialMultiplier;
+    private $outputLocationId;
 
     /**
-     * @ORM\Column(name="charMaterialMultiplier", type="decimal", precision=4, scale=2)
+     * @ORM\Column(name="runs", type="bigint", options={"unsigned"=true})
      */
-    private $charMaterialMultiplier;
+    private $runs;
 
     /**
-     * @ORM\Column(name="charTimeMultiplier", type="decimal", precision=4, scale=2)
+     * @ORM\Column(name="cost", type="bigint", options={"unsigned"=true})
      */
-    private $charTimeMultiplier;
+    private $cost;
 
     /**
-     * @ORM\Column(name="timeMultiplier", type="decimal", precision=4, scale=2)
+     * @ORM\Column(name="teamID", type="bigint", options={"unsigned"=true})
      */
-    private $timeMultiplier;
+    private $teamId;
 
-    public function __construct($jobId, $ownerId)
+    /**
+     * @ORM\Column(name="licensedRuns", type="bigint", options={"unsigned"=true})
+     */
+    private $licensedRuns;
+
+    /**
+     * @ORM\Column(name="probability", type="bigint", options={"unsigned"=true})
+     */
+    private $probability;
+
+    /**
+     * @ORM\Column(name="productTypeID", type="bigint", options={"unsigned"=true})
+     */
+    private $productTypeId;
+
+    /**
+     * @ORM\Column(name="productTypeName", type="string", length=255, options={"unsigned"=true})
+     */
+    private $productTypeName;
+
+    /**
+     * @ORM\Column(name="status", type="smallint", options={"unsigned"=true})
+     */
+    private $status;
+
+    /**
+     * @ORM\Column(name="timeInSeconds", type="bigint", options={"unsigned"=true})
+     */
+    private $timeInSeconds;
+
+    /**
+     * @ORM\Column(name="startDate", type="datetime")
+     */
+    private $startDate;
+
+    /**
+     * @ORM\Column(name="endDate", type="datetime")
+     */
+    private $endDate;
+
+    /**
+     * @ORM\Column(name="pauseDate", type="datetime")
+     */
+    private $pauseDate;
+
+    /**
+     * @ORM\Column(name="completedDate", type="datetime")
+     */
+    private $completedDate;
+
+    /**
+     * @ORM\Column(name="completedCharacterID", type="bigint", options={"unsigned"=true})
+     */
+    private $completedCharacterID;
+
+    /**
+     * @ORM\Column(name="successfulRuns", type="bigint", options={"unsigned"=true})
+     */
+    private $successfulRuns;
+
+    public function __construct($jobId, $installerId)
     {
         $this->jobId = $jobId;
-        $this->ownerId = $ownerId;
+        $this->installerId = $installerId;
     }
 
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -207,253 +177,26 @@ class CorpIndustryJob
     }
 
     /**
+     * Set jobId
+     *
+     * @param integer $jobId
+     * @return CorpIndustryJob
+     */
+    public function setJobId($jobId)
+    {
+        $this->jobId = $jobId;
+
+        return $this;
+    }
+
+    /**
      * Get jobId
      *
-     * @return integer
+     * @return integer 
      */
     public function getJobId()
     {
         return $this->jobId;
-    }
-
-    /**
-     * Get ownerId
-     *
-     * @return integer
-     */
-    public function getOwnerId()
-    {
-        return $this->ownerId;
-    }
-
-    /**
-     * Set assemblyLineId
-     *
-     * @param integer $assemblyLineId
-     * @return CorpIndustryJob
-     */
-    public function setAssemblyLineId($assemblyLineId)
-    {
-        $this->assemblyLineId = $assemblyLineId;
-
-        return $this;
-    }
-
-    /**
-     * Get assemblyLineId
-     *
-     * @return integer
-     */
-    public function getAssemblyLineId()
-    {
-        return $this->assemblyLineId;
-    }
-
-    /**
-     * Set containerId
-     *
-     * @param integer $containerId
-     * @return CorpIndustryJob
-     */
-    public function setContainerId($containerId)
-    {
-        $this->containerId = $containerId;
-
-        return $this;
-    }
-
-    /**
-     * Get containerId
-     *
-     * @return integer
-     */
-    public function getContainerId()
-    {
-        return $this->containerId;
-    }
-
-    /**
-     * Set containerLocationId
-     *
-     * @param integer $containerLocationId
-     * @return CorpIndustryJob
-     */
-    public function setContainerLocationId($containerLocationId)
-    {
-        $this->containerLocationId = $containerLocationId;
-
-        return $this;
-    }
-
-    /**
-     * Get containerLocationId
-     *
-     * @return integer
-     */
-    public function getContainerLocationId()
-    {
-        return $this->containerLocationId;
-    }
-
-    /**
-     * Set containerTypeId
-     *
-     * @param integer $containerTypeId
-     * @return CorpIndustryJob
-     */
-    public function setContainerTypeId($containerTypeId)
-    {
-        $this->containerTypeId = $containerTypeId;
-
-        return $this;
-    }
-
-    /**
-     * Get containerTypeId
-     *
-     * @return integer
-     */
-    public function getContainerTypeId()
-    {
-        return $this->containerTypeId;
-    }
-
-    /**
-     * Set installedInSolarSystemId
-     *
-     * @param integer $installedInSolarSystemId
-     * @return CorpIndustryJob
-     */
-    public function setInstalledInSolarSystemId($installedInSolarSystemId)
-    {
-        $this->installedInSolarSystemId = $installedInSolarSystemId;
-
-        return $this;
-    }
-
-    /**
-     * Get installedInSolarSystemId
-     *
-     * @return integer
-     */
-    public function getInstalledInSolarSystemId()
-    {
-        return $this->installedInSolarSystemId;
-    }
-
-    /**
-     * Set installedItemCopy
-     *
-     * @param integer $installedItemCopy
-     * @return CorpIndustryJob
-     */
-    public function setInstalledItemCopy($installedItemCopy)
-    {
-        $this->installedItemCopy = $installedItemCopy;
-
-        return $this;
-    }
-
-    /**
-     * Get installedItemCopy
-     *
-     * @return integer
-     */
-    public function getInstalledItemCopy()
-    {
-        return $this->installedItemCopy;
-    }
-
-    /**
-     * Set installedItemId
-     *
-     * @param integer $installedItemId
-     * @return CorpIndustryJob
-     */
-    public function setInstalledItemId($installedItemId)
-    {
-        $this->installedItemId = $installedItemId;
-
-        return $this;
-    }
-
-    /**
-     * Get installedItemId
-     *
-     * @return integer
-     */
-    public function getInstalledItemId()
-    {
-        return $this->installedItemId;
-    }
-
-    /**
-     * Set installedItemLocationId
-     *
-     * @param integer $installedItemLocationId
-     * @return CorpIndustryJob
-     */
-    public function setInstalledItemLocationId($installedItemLocationId)
-    {
-        $this->installedItemLocationId = $installedItemLocationId;
-
-        return $this;
-    }
-
-    /**
-     * Get installedItemLocationId
-     *
-     * @return integer
-     */
-    public function getInstalledItemLocationId()
-    {
-        return $this->installedItemLocationId;
-    }
-
-    /**
-     * Set installedItemQuantity
-     *
-     * @param integer $installedItemQuantity
-     * @return CorpIndustryJob
-     */
-    public function setInstalledItemQuantity($installedItemQuantity)
-    {
-        $this->installedItemQuantity = $installedItemQuantity;
-
-        return $this;
-    }
-
-    /**
-     * Get installedItemQuantity
-     *
-     * @return integer
-     */
-    public function getInstalledItemQuantity()
-    {
-        return $this->installedItemQuantity;
-    }
-
-    /**
-     * Set installedItemTypeId
-     *
-     * @param integer $installedItemTypeId
-     * @return CorpIndustryJob
-     */
-    public function setInstalledItemTypeId($installedItemTypeId)
-    {
-        $this->installedItemTypeId = $installedItemTypeId;
-
-        return $this;
-    }
-
-    /**
-     * Get installedItemTypeId
-     *
-     * @return integer
-     */
-    public function getInstalledItemTypeId()
-    {
-        return $this->installedItemTypeId;
     }
 
     /**
@@ -472,7 +215,7 @@ class CorpIndustryJob
     /**
      * Get installerId
      *
-     * @return integer
+     * @return integer 
      */
     public function getInstallerId()
     {
@@ -480,279 +223,118 @@ class CorpIndustryJob
     }
 
     /**
-     * Set outputLocationId
+     * Set installerName
      *
-     * @param integer $outputLocationId
+     * @param string $installerName
      * @return CorpIndustryJob
      */
-    public function setOutputLocationId($outputLocationId)
+    public function setInstallerName($installerName)
     {
-        $this->outputLocationId = $outputLocationId;
+        $this->installerName = $installerName;
 
         return $this;
     }
 
     /**
-     * Get outputLocationId
+     * Get installerName
      *
-     * @return integer
+     * @return string 
      */
-    public function getOutputLocationId()
+    public function getInstallerName()
     {
-        return $this->outputLocationId;
+        return $this->installerName;
     }
 
     /**
-     * Set outputTypeId
+     * Set facilityId
      *
-     * @param integer $outputTypeId
+     * @param integer $facilityId
      * @return CorpIndustryJob
      */
-    public function setOutputTypeId($outputTypeId)
+    public function setFacilityId($facilityId)
     {
-        $this->outputTypeId = $outputTypeId;
+        $this->facilityId = $facilityId;
 
         return $this;
     }
 
     /**
-     * Get outputTypeId
+     * Get facilityId
      *
-     * @return integer
+     * @return integer 
      */
-    public function getOutputTypeId()
+    public function getFacilityId()
     {
-        return $this->outputTypeId;
+        return $this->facilityId;
     }
 
     /**
-     * Set runs
+     * Set solarSystemId
      *
-     * @param integer $runs
+     * @param integer $solarSystemId
      * @return CorpIndustryJob
      */
-    public function setRuns($runs)
+    public function setSolarSystemId($solarSystemId)
     {
-        $this->runs = $runs;
+        $this->solarSystemId = $solarSystemId;
 
         return $this;
     }
 
     /**
-     * Get runs
+     * Get solarSystemId
      *
-     * @return integer
+     * @return integer 
      */
-    public function getRuns()
+    public function getSolarSystemId()
     {
-        return $this->runs;
+        return $this->solarSystemId;
     }
 
     /**
-     * Set licensedProductionRuns
+     * Set solarSystemName
      *
-     * @param integer $licensedProductionRuns
+     * @param string $solarSystemName
      * @return CorpIndustryJob
      */
-    public function setLicensedProductionRuns($licensedProductionRuns)
+    public function setSolarSystemName($solarSystemName)
     {
-        $this->licensedProductionRuns = $licensedProductionRuns;
+        $this->solarSystemName = $solarSystemName;
 
         return $this;
     }
 
     /**
-     * Get licensedProductionRuns
+     * Get solarSystemName
      *
-     * @return integer
+     * @return string 
      */
-    public function getLicensedProductionRuns()
+    public function getSolarSystemName()
     {
-        return $this->licensedProductionRuns;
+        return $this->solarSystemName;
     }
 
     /**
-     * Set installedItemMaterialLevel
+     * Set stationId
      *
-     * @param integer $installedItemMaterialLevel
+     * @param integer $stationId
      * @return CorpIndustryJob
      */
-    public function setInstalledItemMaterialLevel($installedItemMaterialLevel)
+    public function setStationId($stationId)
     {
-        $this->installedItemMaterialLevel = $installedItemMaterialLevel;
+        $this->stationId = $stationId;
 
         return $this;
     }
 
     /**
-     * Get installedItemMaterialLevel
+     * Get stationId
      *
-     * @return integer
+     * @return integer 
      */
-    public function getInstalledItemMaterialLevel()
+    public function getStationId()
     {
-        return $this->installedItemMaterialLevel;
-    }
-
-    /**
-     * Set installedItemProductivityLevel
-     *
-     * @param integer $installedItemProductivityLevel
-     * @return CorpIndustryJob
-     */
-    public function setInstalledItemProductivityLevel($installedItemProductivityLevel)
-    {
-        $this->installedItemProductivityLevel = $installedItemProductivityLevel;
-
-        return $this;
-    }
-
-    /**
-     * Get installedItemProductivityLevel
-     *
-     * @return integer
-     */
-    public function getInstalledItemProductivityLevel()
-    {
-        return $this->installedItemProductivityLevel;
-    }
-
-    /**
-     * Set installedItemLicensedProductionRunsRemaining
-     *
-     * @param integer $installedItemLicensedProductionRunsRemaining
-     * @return CorpIndustryJob
-     */
-    public function setInstalledItemLicensedProductionRunsRemaining($installedItemLicensedProductionRunsRemaining)
-    {
-        $this->installedItemLicensedProductionRunsRemaining = $installedItemLicensedProductionRunsRemaining;
-
-        return $this;
-    }
-
-    /**
-     * Get installedItemLicensedProductionRunsRemaining
-     *
-     * @return integer
-     */
-    public function getInstalledItemLicensedProductionRunsRemaining()
-    {
-        return $this->installedItemLicensedProductionRunsRemaining;
-    }
-
-    /**
-     * Set beginProductionTime
-     *
-     * @param \DateTime $beginProductionTime
-     * @return CorpIndustryJob
-     */
-    public function setBeginProductionTime($beginProductionTime)
-    {
-        $this->beginProductionTime = $beginProductionTime;
-
-        return $this;
-    }
-
-    /**
-     * Get beginProductionTime
-     *
-     * @return \DateTime
-     */
-    public function getBeginProductionTime()
-    {
-        return $this->beginProductionTime;
-    }
-
-    /**
-     * Set endProductionTime
-     *
-     * @param \DateTime $endProductionTime
-     * @return CorpIndustryJob
-     */
-    public function setEndProductionTime($endProductionTime)
-    {
-        $this->endProductionTime = $endProductionTime;
-
-        return $this;
-    }
-
-    /**
-     * Get endProductionTime
-     *
-     * @return \DateTime
-     */
-    public function getEndProductionTime()
-    {
-        return $this->endProductionTime;
-    }
-
-    /**
-     * Set installTime
-     *
-     * @param \DateTime $installTime
-     * @return CorpIndustryJob
-     */
-    public function setInstallTime($installTime)
-    {
-        $this->installTime = $installTime;
-
-        return $this;
-    }
-
-    /**
-     * Get installTime
-     *
-     * @return \DateTime
-     */
-    public function getInstallTime()
-    {
-        return $this->installTime;
-    }
-
-    /**
-     * Set pauseProductionTime
-     *
-     * @param \DateTime $pauseProductionTime
-     * @return CorpIndustryJob
-     */
-    public function setPauseProductionTime($pauseProductionTime)
-    {
-        $this->pauseProductionTime = $pauseProductionTime;
-
-        return $this;
-    }
-
-    /**
-     * Get pauseProductionTime
-     *
-     * @return \DateTime
-     */
-    public function getPauseProductionTime()
-    {
-        return $this->pauseProductionTime;
-    }
-
-    /**
-     * Set completed
-     *
-     * @param boolean $completed
-     * @return CorpIndustryJob
-     */
-    public function setCompleted($completed)
-    {
-        $this->completed = $completed;
-
-        return $this;
-    }
-
-    /**
-     * Get completed
-     *
-     * @return boolean
-     */
-    public function isCompleted()
-    {
-        return $this->completed;
+        return $this->stationId;
     }
 
     /**
@@ -771,7 +353,7 @@ class CorpIndustryJob
     /**
      * Get activityId
      *
-     * @return integer
+     * @return integer 
      */
     public function getActivityId()
     {
@@ -779,186 +361,462 @@ class CorpIndustryJob
     }
 
     /**
-     * Set completedStatus
+     * Set blueprintId
      *
-     * @param integer $completedStatus
+     * @param integer $blueprintId
      * @return CorpIndustryJob
      */
-    public function setCompletedStatus($completedStatus)
+    public function setBlueprintId($blueprintId)
     {
-        $this->completedStatus = $completedStatus;
+        $this->blueprintId = $blueprintId;
 
         return $this;
     }
 
     /**
-     * Get completedStatus
+     * Get blueprintId
      *
-     * @return integer
+     * @return integer 
      */
-    public function getCompletedStatus()
+    public function getBlueprintId()
     {
-        return $this->completedStatus;
+        return $this->blueprintId;
     }
 
     /**
-     * Set completedSuccessfully
+     * Set blueprintTypeId
      *
-     * @param integer $completedSuccessfully
+     * @param integer $blueprintTypeId
      * @return CorpIndustryJob
      */
-    public function setCompletedSuccessfully($completedSuccessfully)
+    public function setBlueprintTypeId($blueprintTypeId)
     {
-        $this->completedSuccessfully = $completedSuccessfully;
+        $this->blueprintTypeId = $blueprintTypeId;
 
         return $this;
     }
 
     /**
-     * Get completedSuccessfully
+     * Get blueprintTypeId
      *
-     * @return integer
+     * @return integer 
      */
-    public function getCompletedSuccessfully()
+    public function getBlueprintTypeId()
     {
-        return $this->completedSuccessfully;
+        return $this->blueprintTypeId;
     }
 
     /**
-     * Set installedItemFlag
+     * Set blueprintTypeName
      *
-     * @param integer $installedItemFlag
+     * @param string $blueprintTypeName
      * @return CorpIndustryJob
      */
-    public function setInstalledItemFlag($installedItemFlag)
+    public function setBlueprintTypeName($blueprintTypeName)
     {
-        $this->installedItemFlag = $installedItemFlag;
+        $this->blueprintTypeName = $blueprintTypeName;
 
         return $this;
     }
 
     /**
-     * Get installedItemFlag
+     * Get blueprintTypeName
      *
-     * @return integer
+     * @return string 
      */
-    public function getInstalledItemFlag()
+    public function getBlueprintTypeName()
     {
-        return $this->installedItemFlag;
+        return $this->blueprintTypeName;
     }
 
     /**
-     * Set outputFlag
+     * Set blueprintLocationId
      *
-     * @param integer $outputFlag
+     * @param integer $blueprintLocationId
      * @return CorpIndustryJob
      */
-    public function setOutputFlag($outputFlag)
+    public function setBlueprintLocationId($blueprintLocationId)
     {
-        $this->outputFlag = $outputFlag;
+        $this->blueprintLocationId = $blueprintLocationId;
 
         return $this;
     }
 
     /**
-     * Get outputFlag
+     * Get blueprintLocationId
      *
-     * @return integer
+     * @return integer 
      */
-    public function getOutputFlag()
+    public function getBlueprintLocationId()
     {
-        return $this->outputFlag;
+        return $this->blueprintLocationId;
     }
 
     /**
-     * Set materialMultiplier
+     * Set outputLocationId
      *
-     * @param float $materialMultiplier
+     * @param integer $outputLocationId
      * @return CorpIndustryJob
      */
-    public function setMaterialMultiplier($materialMultiplier)
+    public function setOutputLocationId($outputLocationId)
     {
-        $this->materialMultiplier = $materialMultiplier;
+        $this->outputLocationId = $outputLocationId;
 
         return $this;
     }
 
     /**
-     * Get materialMultiplier
+     * Get outputLocationId
      *
-     * @return float
+     * @return integer 
      */
-    public function getMaterialMultiplier()
+    public function getOutputLocationId()
     {
-        return $this->materialMultiplier;
+        return $this->outputLocationId;
     }
 
     /**
-     * Set charMaterialMultiplier
+     * Set runs
      *
-     * @param float $charMaterialMultiplier
+     * @param integer $runs
      * @return CorpIndustryJob
      */
-    public function setCharMaterialMultiplier($charMaterialMultiplier)
+    public function setRuns($runs)
     {
-        $this->charMaterialMultiplier = $charMaterialMultiplier;
+        $this->runs = $runs;
 
         return $this;
     }
 
     /**
-     * Get charMaterialMultiplier
+     * Get runs
      *
-     * @return float
+     * @return integer 
      */
-    public function getCharMaterialMultiplier()
+    public function getRuns()
     {
-        return $this->charMaterialMultiplier;
+        return $this->runs;
     }
 
     /**
-     * Set charTimeMultiplier
+     * Set cost
      *
-     * @param float $charTimeMultiplier
+     * @param integer $cost
      * @return CorpIndustryJob
      */
-    public function setCharTimeMultiplier($charTimeMultiplier)
+    public function setCost($cost)
     {
-        $this->charTimeMultiplier = $charTimeMultiplier;
+        $this->cost = $cost;
 
         return $this;
     }
 
     /**
-     * Get charTimeMultiplier
+     * Get cost
      *
-     * @return float
+     * @return integer 
      */
-    public function getCharTimeMultiplier()
+    public function getCost()
     {
-        return $this->charTimeMultiplier;
+        return $this->cost;
     }
 
     /**
-     * Set timeMultiplier
+     * Set teamId
      *
-     * @param float $timeMultiplier
+     * @param integer $teamId
      * @return CorpIndustryJob
      */
-    public function setTimeMultiplier($timeMultiplier)
+    public function setTeamId($teamId)
     {
-        $this->timeMultiplier = $timeMultiplier;
+        $this->teamId = $teamId;
 
         return $this;
     }
 
     /**
-     * Get timeMultiplier
+     * Get teamId
      *
-     * @return float
+     * @return integer 
      */
-    public function getTimeMultiplier()
+    public function getTeamId()
     {
-        return $this->timeMultiplier;
+        return $this->teamId;
+    }
+
+    /**
+     * Set licensedRuns
+     *
+     * @param integer $licensedRuns
+     * @return CorpIndustryJob
+     */
+    public function setLicensedRuns($licensedRuns)
+    {
+        $this->licensedRuns = $licensedRuns;
+
+        return $this;
+    }
+
+    /**
+     * Get licensedRuns
+     *
+     * @return integer 
+     */
+    public function getLicensedRuns()
+    {
+        return $this->licensedRuns;
+    }
+
+    /**
+     * Set probability
+     *
+     * @param integer $probability
+     * @return CorpIndustryJob
+     */
+    public function setProbability($probability)
+    {
+        $this->probability = $probability;
+
+        return $this;
+    }
+
+    /**
+     * Get probability
+     *
+     * @return integer 
+     */
+    public function getProbability()
+    {
+        return $this->probability;
+    }
+
+    /**
+     * Set productTypeId
+     *
+     * @param integer $productTypeId
+     * @return CorpIndustryJob
+     */
+    public function setProductTypeId($productTypeId)
+    {
+        $this->productTypeId = $productTypeId;
+
+        return $this;
+    }
+
+    /**
+     * Get productTypeId
+     *
+     * @return integer 
+     */
+    public function getProductTypeId()
+    {
+        return $this->productTypeId;
+    }
+
+    /**
+     * Set productTypeName
+     *
+     * @param string $productTypeName
+     * @return CorpIndustryJob
+     */
+    public function setProductTypeName($productTypeName)
+    {
+        $this->productTypeName = $productTypeName;
+
+        return $this;
+    }
+
+    /**
+     * Get productTypeName
+     *
+     * @return string 
+     */
+    public function getProductTypeName()
+    {
+        return $this->productTypeName;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return CorpIndustryJob
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set timeInSeconds
+     *
+     * @param integer $timeInSeconds
+     * @return CorpIndustryJob
+     */
+    public function setTimeInSeconds($timeInSeconds)
+    {
+        $this->timeInSeconds = $timeInSeconds;
+
+        return $this;
+    }
+
+    /**
+     * Get timeInSeconds
+     *
+     * @return integer 
+     */
+    public function getTimeInSeconds()
+    {
+        return $this->timeInSeconds;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     * @return CorpIndustryJob
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime 
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     * @return CorpIndustryJob
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime 
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * Set pauseDate
+     *
+     * @param \DateTime $pauseDate
+     * @return CorpIndustryJob
+     */
+    public function setPauseDate($pauseDate)
+    {
+        $this->pauseDate = $pauseDate;
+
+        return $this;
+    }
+
+    /**
+     * Get pauseDate
+     *
+     * @return \DateTime 
+     */
+    public function getPauseDate()
+    {
+        return $this->pauseDate;
+    }
+
+    /**
+     * Set completedDate
+     *
+     * @param \DateTime $completedDate
+     * @return CorpIndustryJob
+     */
+    public function setCompletedDate($completedDate)
+    {
+        $this->completedDate = $completedDate;
+
+        return $this;
+    }
+
+    /**
+     * Get completedDate
+     *
+     * @return \DateTime 
+     */
+    public function getCompletedDate()
+    {
+        return $this->completedDate;
+    }
+
+    /**
+     * Set completedCharacterID
+     *
+     * @param integer $completedCharacterID
+     * @return CorpIndustryJob
+     */
+    public function setCompletedCharacterID($completedCharacterID)
+    {
+        $this->completedCharacterID = $completedCharacterID;
+
+        return $this;
+    }
+
+    /**
+     * Get completedCharacterID
+     *
+     * @return integer 
+     */
+    public function getCompletedCharacterID()
+    {
+        return $this->completedCharacterID;
+    }
+
+    /**
+     * Set successfulRuns
+     *
+     * @param integer $successfulRuns
+     * @return CorpIndustryJob
+     */
+    public function setSuccessfulRuns($successfulRuns)
+    {
+        $this->successfulRuns = $successfulRuns;
+
+        return $this;
+    }
+
+    /**
+     * Get successfulRuns
+     *
+     * @return integer 
+     */
+    public function getSuccessfulRuns()
+    {
+        return $this->successfulRuns;
     }
 }
