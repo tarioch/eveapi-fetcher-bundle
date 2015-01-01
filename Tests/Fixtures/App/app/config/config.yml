@@ -13,6 +13,7 @@ doctrine:
                 dbname:   "tarioch_eveapi_fetcher_bundle"
                 user:     "travis"
                 password: ""
+                server_version: 15.1 
                 charset:  UTF8
                 mapping_types:
                         enum: string
