@@ -11,8 +11,8 @@ class AbstractFunctionalTestCase extends WebTestCase
     {
         $this->runCommand('doctrine:database:drop', array('--connection' => 'eveapi', '--force' => true));
         $this->runCommand('doctrine:database:create', array('--connection' => 'eveapi', '--no-interaction' => true));
-	$out = $this->runCommand('doctrine:migrations:migrate', array('--em' => 'eveapi', '--no-interaction' => true));
-	$this->assertContains('++ migrated', $out, 'Doctrine Migrations Failed');
+        $out = $this->runCommand('doctrine:migrations:migrate', array('--em' => 'eveapi', '--no-interaction' => true));
+        $this->assertContains('++ migrated', $out, 'Doctrine Migrations Failed');
         $this->entityManager = $this->getContainer()->get('doctrine.orm.eveapi_entity_manager');
     }
 
