@@ -59,7 +59,7 @@ class ApiUpdater
                 $call->setCachedUntil($cachedUntil);
             } catch (APIException $e) {
                 if (in_array($e->code, array(203, 221))) {
-                    $this->logger->info('{callId}: Api call failed with common issue', array('callId' => $apiCallId, 'exception' => $e));
+                    $this->logger->info('{callId}: Api call failed', array('callId' => $apiCallId, 'exception' => $e));
                 } else {
                     $this->logger->error('{callId}: Api call failed', array('callId' => $apiCallId, 'exception' => $e));
                 }
