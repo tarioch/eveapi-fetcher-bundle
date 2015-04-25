@@ -42,7 +42,6 @@ class ScheduleApiJobsCommand extends ContainerAwareCommand
             $callId = $call->getApiCallId();
 
             $gearman->doBackgroundJob($job, $callId, $callId);
-            $output->writeln('Scheduled ' . $callId . ': ' . $worker . ' ' . $api->getSection() . $api->getName());
         }
     }
 }
