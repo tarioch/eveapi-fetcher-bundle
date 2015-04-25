@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Psr\Log\LoggerInterface;
 use Tarioch\EveapiFetcherBundle\Component\Worker\ApiUpdater;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
-use Pheal\Exceptions\PhealException;
+use Pheal\Exceptions\APIException;
 
 class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 {
@@ -83,7 +83,7 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 
         $this->sectionApi->shouldReceive('update')
             ->with($this->apiCall)
-            ->andThrow(new PhealException());
+            ->andThrow(new APIException(111, "", new \SimpleXMLElement("<foo></foo>")));
 
         $this->logger->shouldReceive('error');
         $this->apiCall->shouldReceive('increaseErrorCount');
@@ -100,7 +100,7 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 
         $this->sectionApi->shouldReceive('update')
             ->with($this->apiCall)
-            ->andThrow(new PhealException());
+            ->andThrow(new APIException(111, "", new \SimpleXMLElement("<foo></foo>")));
 
         $this->logger->shouldReceive('error');
         $this->apiCall->shouldReceive('increaseErrorCount');
