@@ -13,7 +13,6 @@ use Tarioch\EveapiFetcherBundle\Entity\CharCorporationRoleAtBase;
 use Tarioch\EveapiFetcherBundle\Entity\CharCorporationRoleAtOther;
 use Tarioch\EveapiFetcherBundle\Entity\CharCorporationTitle;
 use Tarioch\EveapiFetcherBundle\Entity\CharSkill;
-use Tarioch\EveapiFetcherBundle\Entity\CharAttributeEnhancer;
 
 /**
  * @DI\Service("tarioch.eveapi.char.CharacterSheet")

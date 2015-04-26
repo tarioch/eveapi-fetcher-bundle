@@ -38,7 +38,7 @@ class WalletJournalUpdater extends AbstractCorpUpdater
                 $refId = $entry->refID;
 
                 $entity = $repo->findOneBy(array('refId' => $refId, 'ownerId' => $corpId, 'accountKey' => $accountKey));
-                if ($entity == null) {
+                if ($entity === null) {
                     $entity = new CorpWalletJournal($refId, $corpId, $accountKey);
                     $this->entityManager->persist($entity);
 

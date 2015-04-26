@@ -27,7 +27,7 @@ class MailMessageUpdater extends AbstractCharUpdater
 
             $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharMailMessage');
             $entity = $repo->findBy(array('messageId' => $messageId, 'ownerId' => $charId));
-            if ($entity == null) {
+            if ($entity === null) {
                 $entity = new CharMailMessage($messageId, $charId);
                 $this->entityManager->persist($entity);
 

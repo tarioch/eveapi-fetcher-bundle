@@ -37,7 +37,7 @@ class WalletJournalUpdater extends AbstractCharUpdater
                 $refId = $entry->refID;
 
                 $entity = $repo->findOneBy(array('refId' => $refId, 'ownerId' => $charId));
-                if ($entity == null) {
+                if ($entity === null) {
                     $entity = new CharWalletJournal($refId, $charId);
                     $this->entityManager->persist($entity);
 

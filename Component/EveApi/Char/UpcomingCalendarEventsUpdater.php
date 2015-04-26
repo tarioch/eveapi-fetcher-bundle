@@ -41,7 +41,7 @@ class UpcomingCalendarEventsUpdater extends AbstractCharUpdater
     {
         $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharUpcomingEvent');
         $entity = $repository->findOneBy(array('ownerId' => $charId, 'eventId' => $eventId));
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new CharUpcomingEvent($eventId, $charId);
             $this->entityManager->persist($entity);
         }

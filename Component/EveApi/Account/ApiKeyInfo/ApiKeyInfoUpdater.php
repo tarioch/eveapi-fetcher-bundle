@@ -133,7 +133,7 @@ class ApiKeyInfoUpdater implements KeyApi
     {
         $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountAPIKeyInfo');
         $entity = $repository->findOneByKey($key);
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new AccountAPIKeyInfo($key);
             $this->entityManager->persist($entity);
         }

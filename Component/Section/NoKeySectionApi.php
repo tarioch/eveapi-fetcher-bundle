@@ -14,23 +14,19 @@ use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;
 class NoKeySectionApi implements SectionApi
 {
     private $phealFactory;
-    private $entityManager;
     private $specificApiFactory;
 
     /**
      * @DI\InjectParams({
      * "phealFactory" = @DI\Inject("tarioch.pheal.factory"),
-     * "entityManager" = @DI\Inject("doctrine.orm.eveapi_entity_manager"),
      * "specificApiFactory" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.eve_api.specific_api_factory")
      * })
      */
     public function __construct(
         PhealFactory $phealFactory,
-        EntityManager $entityManager,
         SpecificApiFactory $specificApiFactory
     ) {
         $this->phealFactory = $phealFactory;
-        $this->entityManager = $entityManager;
         $this->specificApiFactory = $specificApiFactory;
     }
 

@@ -43,7 +43,7 @@ class ServerStatusUpdater implements NoKeyApi
     {
         $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:ServerServerStatus');
         $entity = $repository->findOneBy(array());
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new ServerServerStatus();
             $this->entityManager->persist($entity);
         }

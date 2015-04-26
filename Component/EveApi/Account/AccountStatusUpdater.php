@@ -46,7 +46,7 @@ class AccountStatusUpdater implements KeyApi
     {
         $repository = $this->entityManager->getRepository('TariochEveapiFetcherBundle:AccountAccountStatus');
         $entity = $repository->findOneByKey($key);
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new AccountAccountStatus($key);
             $this->entityManager->persist($entity);
         }

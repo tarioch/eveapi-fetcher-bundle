@@ -35,7 +35,7 @@ class AccountBalanceUpdater extends AbstractCharUpdater
     private function loadOrCreate($accountId)
     {
         $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CharAccountBalance', $accountId);
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new CharAccountBalance($accountId);
             $this->entityManager->persist($entity);
         }

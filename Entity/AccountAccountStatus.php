@@ -62,6 +62,11 @@ class AccountAccountStatus
         return $this->id;
     }
 
+    public function getKey()
+    {
+        return $this->key;
+    }
+
     public function getCreateDate()
     {
         return $this->createDate;
@@ -102,8 +107,4 @@ class AccountAccountStatus
         $this->paidUntil = $paidUntil;
     }
 
-    public function getKey()
-    {
-        return $this->createDate;
-    }
 }

@@ -61,7 +61,7 @@ class IndustryJobUpdater extends AbstractCorpUpdater
     {
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpIndustryJob');
         $entity = $repo->findOneBy(array('jobId' => $jobId, 'installerId' => $installerId));
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new CorpIndustryJob($jobId, $installerId);
             $this->entityManager->persist($entity);
         }

@@ -54,6 +54,11 @@ class AccountCharacter
         return $this->id;
     }
 
+    public function getKey()
+    {
+        return $this->key;
+    }
+
     public function getCharacterId()
     {
         return $this->characterId;
@@ -87,11 +92,6 @@ class AccountCharacter
     public function setCorporationName($corporationName)
     {
         $this->corporationName = $corporationName;
-    }
-
-    public function getKey()
-    {
-        return $this->createDate;
     }
 
     public function __toString()

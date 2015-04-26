@@ -16,7 +16,7 @@ class ApiTimeCalculator
     public function isCallStillValid(ApiCall $call = null)
     {
         $now = new \DateTime('now', new \DateTimeZone('UTC'));
-        return $call != null && $call->getCachedUntil() < $now && $call->getEarliestNextCall() < $now;
+        return $call !== null && $call->getCachedUntil() < $now && $call->getEarliestNextCall() < $now;
     }
 
     public function calculateEarliestNextCall(ApiCall $call)

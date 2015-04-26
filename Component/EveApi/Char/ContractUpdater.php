@@ -53,7 +53,7 @@ class ContractUpdater extends AbstractCharUpdater
     {
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharContract');
         $entity = $repo->findOneBy(array('contractId' => $contractId, 'ownerId' => $ownerId));
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new CharContract($contractId, $ownerId);
             $this->entityManager->persist($entity);
         }

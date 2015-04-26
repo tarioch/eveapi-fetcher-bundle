@@ -37,7 +37,7 @@ class WalletTransactionUpdater extends AbstractCharUpdater
                 $transId = $transaction->transactionID;
 
                 $entity = $repo->findOneBy(array('transactionId' => $transId, 'ownerId' => $charId));
-                if ($entity == null) {
+                if ($entity === null) {
                     $entity = new CharWalletTransaction($transId, $charId);
                     $this->entityManager->persist($entity);
 

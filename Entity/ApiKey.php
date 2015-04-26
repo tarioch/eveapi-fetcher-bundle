@@ -78,4 +78,9 @@ class ApiKey
     {
         $this->errorCount = 0;
     }
+
+    public function getApiCalls()
+    {
+        return $this->apiCalls;
+    }
 }

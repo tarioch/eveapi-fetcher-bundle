@@ -39,7 +39,7 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
 
                 $criteria = array('transactionId' => $transId, 'ownerId' => $corpId, 'accountKey' => $accountKey);
                 $entity = $repo->findOneBy($criteria);
-                if ($entity == null) {
+                if ($entity === null) {
                     $entity = new CorpWalletTransaction($transId, $corpId, $accountKey);
                     $this->entityManager->persist($entity);
 

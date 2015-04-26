@@ -69,7 +69,7 @@ class CorporationSheetUpdater extends AbstractCorpUpdater
     private function loadOrCreate($corporationId)
     {
         $entity = $this->entityManager->find('TariochEveapiFetcherBundle:CorpCorporationSheet', $corporationId);
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new CorpCorporationSheet($corporationId);
             $entity->setLogo(new CorpLogo());
             $this->entityManager->persist($entity);
@@ -82,7 +82,7 @@ class CorporationSheetUpdater extends AbstractCorpUpdater
     {
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpDivision');
         $entity = $repo->findOneBy(array('corporation' => $corporation, 'accountKey' => $accountKey));
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new CorpDivision($accountKey, $corporation);
             $this->entityManager->persist($entity);
         }
@@ -94,7 +94,7 @@ class CorporationSheetUpdater extends AbstractCorpUpdater
     {
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpWalletDivision');
         $entity = $repo->findOneBy(array('corporation' => $corporation, 'accountKey' => $accountKey));
-        if ($entity == null) {
+        if ($entity === null) {
             $entity = new CorpWalletDivision($accountKey, $corporation);
             $this->entityManager->persist($entity);
         }
