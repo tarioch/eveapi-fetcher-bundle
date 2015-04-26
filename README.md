@@ -6,7 +6,7 @@ EVE Api Fetcher Bundle
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/tarioch/eveapi-fetcher-bundle/badges/quality-score.png?s=10b11825f1bf7cc31108d785491a783f071418d4)](https://scrutinizer-ci.com/g/tarioch/eveapi-fetcher-bundle/)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/3172bec4-e7d2-467d-800c-debefc17b118/mini.png)](https://insight.sensiolabs.com/projects/3172bec4-e7d2-467d-800c-debefc17b118)
 
-Copyright (C) 2013 by Patrick Ruckstuhl
+Copyright (C) 2013 - 2015 by Patrick Ruckstuhl
 All rights reserved.
 
 Symfony bundle for automatic fetching of the EVE Online API, heavily inspired by [Yapeal](http://code.google.com/p/yapeal/) and makes use of [PhealNG](https://github.com/3rdpartyeve/phealng)
