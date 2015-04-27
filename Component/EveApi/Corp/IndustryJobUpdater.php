@@ -52,6 +52,7 @@ class IndustryJobUpdater extends AbstractCorpUpdater
             $entity->setCompletedDate(new \DateTime($job->completedDate));
             $entity->setCompletedCharacterId($job->completedCharacterID);
             $entity->setSuccessfulRuns($job->successfulRuns);
+            $this->entityManager->flush($entity);
         }
 
         return $api->cached_until;
@@ -64,7 +65,6 @@ class IndustryJobUpdater extends AbstractCorpUpdater
         if ($entity === null) {
             $entity = new CorpIndustryJob($jobId, $installerId);
             $this->entityManager->persist($entity);
-            $this->entityManager->flush($entity);
         }
 
         return $entity;

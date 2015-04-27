@@ -32,6 +32,7 @@ class UpcomingCalendarEventsUpdater extends AbstractCharUpdater
             $entity->setImportance(filter_var($event->importance, FILTER_VALIDATE_BOOLEAN));
             $entity->setEventText($event->eventText);
             $entity->setResponse($event->response);
+            $this->entityManager->flush($entity);
         }
 
         return $api->cached_until;
@@ -44,7 +45,6 @@ class UpcomingCalendarEventsUpdater extends AbstractCharUpdater
         if ($entity === null) {
             $entity = new CharUpcomingEvent($eventId, $charId);
             $this->entityManager->persist($entity);
-            $this->entityManager->flush($entity);
         }
 
         return $entity;

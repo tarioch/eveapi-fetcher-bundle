@@ -44,6 +44,7 @@ class ContractUpdater extends AbstractCharUpdater
             $contract->setVolume($entry->volume);
             $contract->setAvailability($entry->availability);
             $contract->setBuyout($entry->buyout);
+            $this->entityManager->flush($entity);
         }
 
         return $api->cached_until;
@@ -56,7 +57,6 @@ class ContractUpdater extends AbstractCharUpdater
         if ($entity === null) {
             $entity = new CharContract($contractId, $ownerId);
             $this->entityManager->persist($entity);
-            $this->entityManager->flush($entity);
         }
 
         return $entity;

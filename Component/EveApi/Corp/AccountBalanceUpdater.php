@@ -28,6 +28,7 @@ class AccountBalanceUpdater extends AbstractCorpUpdater
             $entity->setOwnerId($corpId);
             $entity->setAccountKey($account->accountKey);
             $entity->setBalance($account->balance);
+            $this->entityManager->flush($entity);
         }
 
         return $api->cached_until;
@@ -39,7 +40,6 @@ class AccountBalanceUpdater extends AbstractCorpUpdater
         if ($entity === null) {
             $entity = new CorpAccountBalance($accountId);
             $this->entityManager->persist($entity);
-            $this->entityManager->flush($entity);
         }
 
         return $entity;
