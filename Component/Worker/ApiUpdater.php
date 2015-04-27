@@ -3,7 +3,7 @@ namespace Tarioch\EveapiFetcherBundle\Component\Worker;
 
 use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
-use Pheal\Exceptions\APIException;
+use Pheal\Exceptions\PhealException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Stopwatch\Stopwatch;
 use Tarioch\EveapiFetcherBundle\Component\Section\SectionApiFactory;
@@ -57,12 +57,8 @@ class ApiUpdater
 
                 $call->clearErrorCount();
                 $call->setCachedUntil($cachedUntil);
-            } catch (APIException $e) {
-                if (in_array($e->code, array(203, 221))) {
-                    $this->logger->info('{callId}: Api call failed', array('callId' => $apiCallId, 'exception' => $e));
-                } else {
-                    $this->logger->error('{callId}: Api call failed', array('callId' => $apiCallId, 'exception' => $e));
-                }
+            } catch (PhealException $e) {
+                $this->logger->info('{callId}: Api call failed', array('callId' => $apiCallId, 'exception' => $e));
                 $call->increaseErrorCount();
                 if ($call->getErrorCount() > self::ERROR_MAX) {
                     $call->setActive(false);
