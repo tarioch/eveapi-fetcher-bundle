@@ -106,5 +106,4 @@ class AccountAccountStatus
     {
         $this->paidUntil = $paidUntil;
     }
-
 }
