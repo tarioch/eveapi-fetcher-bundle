@@ -6,12 +6,12 @@ use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 
 class EveRefTypesTest extends AbstractFunctionalTestCase
 {
-	private $api;
-	private $pheal;
-	
+    private $api;
+    private $pheal;
+
     public function testLoadEveRefTypes()
     {
-    	$api->update(new ApiCall("dummy"), $this->pheal);
+        $api->update(new ApiCall("dummy"), $this->pheal);
     }
     
     public function setUp()

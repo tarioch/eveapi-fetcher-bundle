@@ -9,10 +9,10 @@ class AbstractFunctionalTestCase extends WebTestCase
 {
     protected $entityManager;
 
-	protected function get($dependency)
-	{
-		return $this->getContainer()->get($dependency);
-	}
+    protected function get($dependency)
+    {
+        return $this->getContainer()->get($dependency);
+    }
 
     public function setUp()
     {
