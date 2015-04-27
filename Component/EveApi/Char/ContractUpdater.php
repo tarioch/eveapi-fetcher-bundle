@@ -56,6 +56,7 @@ class ContractUpdater extends AbstractCharUpdater
         if ($entity === null) {
             $entity = new CharContract($contractId, $ownerId);
             $this->entityManager->persist($entity);
+            $this->entityManager->flush($entity);
         }
 
         return $entity;

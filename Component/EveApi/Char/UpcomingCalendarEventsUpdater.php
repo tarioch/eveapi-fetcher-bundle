@@ -44,6 +44,7 @@ class UpcomingCalendarEventsUpdater extends AbstractCharUpdater
         if ($entity === null) {
             $entity = new CharUpcomingEvent($eventId, $charId);
             $this->entityManager->persist($entity);
+            $this->entityManager->flush($entity);
         }
 
         return $entity;

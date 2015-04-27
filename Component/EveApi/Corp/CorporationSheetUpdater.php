@@ -73,6 +73,7 @@ class CorporationSheetUpdater extends AbstractCorpUpdater
             $entity = new CorpCorporationSheet($corporationId);
             $entity->setLogo(new CorpLogo());
             $this->entityManager->persist($entity);
+            $this->entityManager->flush($entity);
         }
 
         return $entity;
@@ -85,6 +86,7 @@ class CorporationSheetUpdater extends AbstractCorpUpdater
         if ($entity === null) {
             $entity = new CorpDivision($accountKey, $corporation);
             $this->entityManager->persist($entity);
+            $this->entityManager->flush($entity);
         }
 
         return $entity;
@@ -97,6 +99,7 @@ class CorporationSheetUpdater extends AbstractCorpUpdater
         if ($entity === null) {
             $entity = new CorpWalletDivision($accountKey, $corporation);
             $this->entityManager->persist($entity);
+            $this->entityManager->flush($entity);
         }
 
         return $entity;

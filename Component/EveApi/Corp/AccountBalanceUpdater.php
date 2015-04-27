@@ -39,6 +39,7 @@ class AccountBalanceUpdater extends AbstractCorpUpdater
         if ($entity === null) {
             $entity = new CorpAccountBalance($accountId);
             $this->entityManager->persist($entity);
+            $this->entityManager->flush($entity);
         }
 
         return $entity;

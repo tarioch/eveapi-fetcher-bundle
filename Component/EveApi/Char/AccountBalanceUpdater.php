@@ -38,6 +38,7 @@ class AccountBalanceUpdater extends AbstractCharUpdater
         if ($entity === null) {
             $entity = new CharAccountBalance($accountId);
             $this->entityManager->persist($entity);
+            $this->entityManager->flush($entity);
         }
 
         return $entity;

@@ -39,6 +39,7 @@ class MailMessageUpdater extends AbstractCharUpdater
                 $entity->setToListId($message->toListID);
 
                 $this->entityManager->persist($entity);
+                $this->entityManager->flush($entity);
             }
         }
 
