@@ -3,6 +3,8 @@ namespace Tarioch\EveapiFetcherBundle\Tests\Functional\Api\NoKey;
 
 use Tarioch\EveapiFetcherBundle\Tests\Functional\AbstractFunctionalTestCase;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
+use Tarioch\EveapiFetcherBundle\Component\EveApi\NoKey\EveRefTypesUpdater;
+use Pheal\Pheal;
 
 class EveRefTypesTest extends AbstractFunctionalTestCase
 {
@@ -11,14 +13,16 @@ class EveRefTypesTest extends AbstractFunctionalTestCase
 
     public function testLoadEveRefTypes()
     {
-        $api->update(new ApiCall("dummy"), $this->pheal);
+        $this->api->update(new ApiCall("dummyiapi"), $this->pheal);
+        $this->entityManager->flush();
+	$refType = $this->entityManager->getRepository('TariochEveapiFetcherBundle:EveRefType')->findOneByRefTypeId(42);
+	$this->assertEquals("Dummy", $refType->getRefTypeName());
     }
     
     public function setUp()
     {
         parent::setUp();
-        $this->api = $this->get('tarioch.eveapi.eve.RefTypes');
-        $phealFactory = $this->get('tarioch.pheal.factory');
-        $this->pheal = $phealFactory->createEveOnline();
+        $this->api = new EveRefTypesUpdater($this->entityManager);
+        $this->pheal = new Pheal(null, null);
     }
 }

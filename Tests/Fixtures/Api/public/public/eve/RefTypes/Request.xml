@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2015-04-28 19:43:34</currentTime>
+  <result>
+    <rowset name="refTypes" key="refTypeID" columns="refTypeID,refTypeName">
+      <row refTypeID="42" refTypeName="Dummy" />
+    </rowset>
+  </result>
+  <cachedUntil>2015-04-29 19:43:34</cachedUntil>
+</eveapi>
