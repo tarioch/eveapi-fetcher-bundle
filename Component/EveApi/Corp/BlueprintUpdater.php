@@ -8,7 +8,7 @@ use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 use Tarioch\EveapiFetcherBundle\Entity\CorpBlueprint;
 
 /**
- * @DI\Service("tarioch.eveapi.corp.Blueprint")
+ * @DI\Service("tarioch.eveapi.corp.Blueprints")
  */
 class BlueprintUpdater extends AbstractCorpUpdater
 {
