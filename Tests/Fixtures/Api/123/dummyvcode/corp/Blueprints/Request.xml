@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2015-05-01 20:55:38</currentTime>
+  <result>
+    <rowset name="blueprints" key="itemID" columns="itemID,locationID,typeID,typeName,flagID,quantity,timeEfficiency,materialEfficiency,runs">
+      <row itemID="42" locationID="11" typeID="22" typeName="TypeName" flagID="33" quantity="-44" timeEfficiency="12" materialEfficiency="13" runs="-55" />
+    </rowset>
+  </result>
+  <cachedUntil>2015-05-02 08:25:39</cachedUntil>
+</eveapi>
