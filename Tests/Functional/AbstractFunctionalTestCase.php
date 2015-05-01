@@ -23,7 +23,7 @@ class AbstractFunctionalTestCase extends WebTestCase
         $this->entityManager = $this->get('doctrine.orm.eveapi_entity_manager');
         
         $phealConfig = Config::getInstance();
-	$phealConfig->cache = new ForcedFileStorage(__DIR__ . '/../Fixtures/Api/');
+        $phealConfig->cache = new ForcedFileStorage(__DIR__ . '/../Fixtures/Api/');
     }
 
     public function tearDown()
