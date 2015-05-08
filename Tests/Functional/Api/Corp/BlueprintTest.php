@@ -13,7 +13,7 @@ class BlueprintTest extends AbstractFunctionalTestCase
     private $api;
     private $pheal;
 
-    public function testLoadEveRefTypes()
+    public function testUpdate()
     {
         $key = new ApiKey(123, 'dummyvcode');
         $owner = new AccountCharacter($key, 123);

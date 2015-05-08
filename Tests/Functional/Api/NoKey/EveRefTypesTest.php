@@ -11,7 +11,7 @@ class EveRefTypesTest extends AbstractFunctionalTestCase
     private $api;
     private $pheal;
 
-    public function testLoadEveRefTypes()
+    public function testUpdate()
     {
         $this->api->update(new ApiCall("dummyiapi"), $this->pheal);
         $this->entityManager->flush();
