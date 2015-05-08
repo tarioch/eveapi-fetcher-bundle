@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2015-05-08 22:00:03</currentTime>
+  <result>
+    <rowset name="jobs" key="jobID" columns="jobID,installerID,installerName,facilityID,solarSystemID,solarSystemName,stationID,activityID,blueprintID,blueprintTypeID,blueprintTypeName,blueprintLocationID,outputLocationID,runs,cost,teamID,licensedRuns,probability,productTypeID,productTypeName,status,timeInSeconds,startDate,endDate,pauseDate,completedDate,completedCharacterID,successfulRuns">
+      <row jobID="11" installerID="22" installerName="InstallerName" facilityID="33" solarSystemID="44" solarSystemName="SolarSystemName" stationID="55" activityID="66" blueprintID="77" blueprintTypeID="88" blueprintTypeName="BlueprintTypeName" blueprintLocationID="99" outputLocationID="2" runs="3" cost="4.1" teamID="0" licensedRuns="5" probability="0.2" productTypeID="6" productTypeName="ProductTypeName" status="1" timeInSeconds="816000" startDate="2015-04-01 12:32:59" endDate="2015-05-02 23:12:59" pauseDate="0001-01-01 00:00:00" completedDate="0001-01-01 00:00:00" completedCharacterID="0" successfulRuns="0" />
+    </rowset>
+  </result>
+  <cachedUntil>2015-05-08 22:15:03</cachedUntil>
+</eveapi>
