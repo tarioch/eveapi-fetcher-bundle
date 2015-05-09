@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2015-05-09 20:05:21</currentTime>
+  <result>
+    <rowset name="facilities" key="facilityID" columns="facilityID,typeID,typeName,solarSystemID,solarSystemName,regionID,regionName,starbaseModifier,tax">
+      <row facilityID="1" typeID="2" typeName="TypeName" solarSystemID="3" solarSystemName="SolarSystemName" regionID="4" regionName="RegionName" starbaseModifier="5" tax="6" />
+    </rowset>
+  </result>
+  <cachedUntil>2015-05-09 20:20:21</cachedUntil>
+</eveapi>
