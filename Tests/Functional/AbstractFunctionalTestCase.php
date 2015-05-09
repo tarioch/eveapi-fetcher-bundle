@@ -20,6 +20,7 @@ class AbstractFunctionalTestCase extends WebTestCase
         $this->runCommand('doctrine:database:create', array('--connection' => 'eveapi', '--no-interaction' => true));
         $out = $this->runCommand('doctrine:migrations:migrate', array('--em' => 'eveapi', '--no-interaction' => true));
         $this->assertContains('++ migrated', $out, 'Doctrine Migrations Failed');
+        $this->assertNotContains('Exception', $out, 'Doctrine Migrations Failed');
         $this->entityManager = $this->get('doctrine.orm.eveapi_entity_manager');
         
         $phealConfig = Config::getInstance();
