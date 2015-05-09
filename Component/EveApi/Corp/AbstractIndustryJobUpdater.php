@@ -1,7 +1,6 @@
 <?php
 namespace Tarioch\EveapiFetcherBundle\Component\EveApi\Corp;
 
-use JMS\DiExtraBundle\Annotation as DI;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Pheal\Pheal;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
@@ -65,6 +64,7 @@ abstract class AbstractIndustryJobUpdater extends AbstractCorpUpdater
         if ($entity === null) {
             $entity = new CorpIndustryJob($jobId, $installerId);
             $this->entityManager->persist($entity);
+            $this->entityManager->flush($entity);
         }
 
         return $entity;
