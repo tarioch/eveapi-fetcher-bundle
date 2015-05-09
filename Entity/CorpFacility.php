@@ -309,4 +309,3 @@ class CorpFacility
         return $this->tax;
     }
 }
-
