@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="corpIndustryJob", uniqueConstraints={
- *     @ORM\UniqueConstraint(name="job_owner", columns={"jobId", "installerId"})
+ *     @ORM\UniqueConstraint(name="job_owner", columns={"jobId", "ownerId"})
  * })
  */
 class CorpIndustryJob
@@ -19,6 +19,11 @@ class CorpIndustryJob
      * @ORM\Column(name="ID", type="bigint", options={"unsigned"=true})
      */
     private $id;
+
+    /**
+     * @ORM\Column(name="ownerID", type="bigint", options={"unsigned"=true})
+     */
+    private $ownerId;
 
     /**
      * @ORM\Column(name="jobID", type="bigint", options={"unsigned"=true})
@@ -160,10 +165,10 @@ class CorpIndustryJob
      */
     private $successfulRuns;
 
-    public function __construct($jobId, $installerId)
+    public function __construct($jobId, $ownerId)
     {
         $this->jobId = $jobId;
-        $this->installerId = $installerId;
+        $this->ownerId = $ownerId;
     }
 
     /**
@@ -197,6 +202,16 @@ class CorpIndustryJob
     public function getJobId()
     {
         return $this->jobId;
+    }
+
+    /**
+     * Get ownerId
+     *
+     * @return integer
+     */
+    public function getOwnerId()
+    {
+        return $this->ownerId;
     }
 
     /**

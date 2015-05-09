@@ -57,12 +57,12 @@ abstract class AbstractIndustryJobUpdater extends AbstractCorpUpdater
         return $api->cached_until;
     }
 
-    private function loadOrCreate($jobId, $installerId)
+    private function loadOrCreate($jobId, $ownerId)
     {
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpIndustryJob');
-        $entity = $repo->findOneBy(array('jobId' => $jobId, 'installerId' => $installerId));
+        $entity = $repo->findOneBy(array('jobId' => $jobId, 'ownerId' => $ownerId));
         if ($entity === null) {
-            $entity = new CorpIndustryJob($jobId, $installerId);
+            $entity = new CorpIndustryJob($jobId, $ownerId);
             $this->entityManager->persist($entity);
         }
 

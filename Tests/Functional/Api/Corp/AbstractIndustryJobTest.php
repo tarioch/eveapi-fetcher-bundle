@@ -23,6 +23,7 @@ abstract class AbstractIndustryJobTest extends AbstractFunctionalTestCase
         $this->entityManager->flush();
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpIndustryJob');
         $job = $repo->findOneByJobId(11);
+        $this->assertEquals(11, $job->getOwnerId());
         $this->assertEquals(22, $job->getInstallerId());
         $this->assertEquals('InstallerName', $job->getInstallerName());
         $this->assertEquals(33, $job->getFacilityId());
