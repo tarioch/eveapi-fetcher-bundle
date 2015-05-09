@@ -9,7 +9,7 @@ use Tarioch\EveapiFetcherBundle\Entity\CorpIndustryJob;
 abstract class AbstractIndustryJobUpdater extends AbstractCorpUpdater
 {
 
-    protected abstract function doApiCall(Pheal $pheal, $charId);
+    abstract protected function doApiCall(Pheal $pheal, $charId);
 
     /**
      * @inheritdoc
