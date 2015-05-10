@@ -7,7 +7,7 @@ interface SectionApi
 {
     /**
      * @param ApiCall $call
-     * @return cached until
+     * @return \DateTime cached until
      */
     public function update(ApiCall $call);
 }

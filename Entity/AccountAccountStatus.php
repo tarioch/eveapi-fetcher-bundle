@@ -45,7 +45,7 @@ class AccountAccountStatus
     private $paidUntil;
 
     /**
-     * @var Key
+     * @var ApiKey
      *
      * @ORM\OneToOne(targetEntity="ApiKey", fetch="EAGER")
      * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=false, onDelete="cascade")

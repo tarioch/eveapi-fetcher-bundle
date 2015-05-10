@@ -26,6 +26,7 @@ class MailMessageBodyUpdater extends AbstractCharUpdater
         foreach ($messages as $message) {
             $messageIds[$message->getMessageId()] = $message;
         }
+        $cached = 'now';
         if (!empty($messageIds)) {
             foreach (array_keys($messageIds) as $id) {
                 $api = $pheal->charScope->MailBodies(array('characterID' => $charId, 'ids' => $id));
@@ -38,10 +39,8 @@ class MailMessageBodyUpdater extends AbstractCharUpdater
 
                 $cached = $api->cached_until;
             }
-
-            return $cached;
-        } else {
-            return 'now';
         }
+
+        return $cached;
     }
 }

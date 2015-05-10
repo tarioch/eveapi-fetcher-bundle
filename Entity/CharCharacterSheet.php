@@ -82,6 +82,7 @@ class CharCharacterSheet
     private $balance;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="CharSkill", mappedBy="character", cascade="all")
      */
     private $skills;
