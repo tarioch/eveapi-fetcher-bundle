@@ -10,7 +10,6 @@ use Tarioch\EveapiFetcherBundle\Component\EveApi\KeyApi;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
 use Tarioch\EveapiFetcherBundle\Entity\AccountAPIKeyInfo;
 use Tarioch\EveapiFetcherBundle\Entity\AccountCharacter;
-use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\Account\ApiKeyInfo\NewApiFactory;
 
 /**

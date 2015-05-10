@@ -154,7 +154,7 @@ class CharWalletJournal
 
 
     /**
-     * @param integer $refid
+     * @param integer $refId
      */
     public function __construct($refId, $ownerId)
     {
@@ -196,7 +196,7 @@ class CharWalletJournal
      * Set accountKey
      *
      * @param integer $accountKey
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setAccountKey($accountKey)
     {
@@ -219,7 +219,7 @@ class CharWalletJournal
      * Set amount
      *
      * @param float $amount
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setAmount($amount)
     {
@@ -242,7 +242,7 @@ class CharWalletJournal
      * Set argId1
      *
      * @param integer $argId1
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setArgId1($argId1)
     {
@@ -265,7 +265,7 @@ class CharWalletJournal
      * Set argName1
      *
      * @param string $argName1
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setArgName1($argName1)
     {
@@ -288,7 +288,7 @@ class CharWalletJournal
      * Set balance
      *
      * @param float $balance
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setBalance($balance)
     {
@@ -311,7 +311,7 @@ class CharWalletJournal
      * Set date
      *
      * @param \DateTime $date
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setDate($date)
     {
@@ -334,7 +334,7 @@ class CharWalletJournal
      * Set ownerId1
      *
      * @param integer $ownerId1
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setOwnerId1($ownerId1)
     {
@@ -357,7 +357,7 @@ class CharWalletJournal
      * Set ownerId2
      *
      * @param integer $ownerId2
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setOwnerId2($ownerId2)
     {
@@ -380,7 +380,7 @@ class CharWalletJournal
      * Set ownerName1
      *
      * @param string $ownerName1
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setOwnerName1($ownerName1)
     {
@@ -403,7 +403,7 @@ class CharWalletJournal
      * Set ownerName2
      *
      * @param string $ownerName2
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setOwnerName2($ownerName2)
     {
@@ -426,7 +426,7 @@ class CharWalletJournal
      * Set reason
      *
      * @param string $reason
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setReason($reason)
     {
@@ -449,7 +449,7 @@ class CharWalletJournal
      * Set refTypeId
      *
      * @param integer $refTypeId
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setRefTypeId($refTypeId)
     {
@@ -472,7 +472,7 @@ class CharWalletJournal
      * Set owner1TypeId
      *
      * @param integer $owner1TypeId
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setOwner1TypeId($owner1TypeId)
     {
@@ -495,7 +495,7 @@ class CharWalletJournal
      * Set owner2TypeId
      *
      * @param integer $owner2TypeId
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setOwner2TypeId($owner2TypeId)
     {
@@ -518,7 +518,7 @@ class CharWalletJournal
      * Set taxReceiverId
      *
      * @param integer $taxReceiverId
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setTaxReceiverId($taxReceiverId)
     {
@@ -541,7 +541,7 @@ class CharWalletJournal
      * Set taxAmount
      *
      * @param float $taxAmount
-     * @return CorpWalletJournal
+     * @return CharWalletJournal
      */
     public function setTaxAmount($taxAmount)
     {
