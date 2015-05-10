@@ -24,6 +24,7 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
         $accountRepo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpAccountBalance');
         $accounts = $accountRepo->findByOwnerId($corpId);
 
+        $cached = 'now';
         foreach ($accounts as $account) {
             $accountKey = $account->getAccountKey();
 
@@ -31,7 +32,8 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
                 'characterID' => $charId,
                 'rowCount' => 2560,
                 'accountKey' => $accountKey
-            ));
+            ));$
+            $cached = $api->cached_until;
 
             $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpWalletTransaction');
             foreach ($api->transactions as $transaction) {
@@ -64,6 +66,6 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
             }
         }
 
-        return $api->cached_until;
+        return $cached;
     }
 }

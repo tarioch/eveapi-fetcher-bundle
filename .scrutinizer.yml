@@ -4,7 +4,7 @@ filter:
 tools:
     external_code_coverage:
         enabled: true
-        timeout: 600
+        timeout: 1200
     php_cpd:
         enabled: true
         excluded_dirs:
