@@ -174,7 +174,7 @@ class CorpIndustryJob
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -197,7 +197,7 @@ class CorpIndustryJob
     /**
      * Get jobId
      *
-     * @return integer 
+     * @return integer
      */
     public function getJobId()
     {
@@ -230,7 +230,7 @@ class CorpIndustryJob
     /**
      * Get installerId
      *
-     * @return integer 
+     * @return integer
      */
     public function getInstallerId()
     {
@@ -253,7 +253,7 @@ class CorpIndustryJob
     /**
      * Get installerName
      *
-     * @return string 
+     * @return string
      */
     public function getInstallerName()
     {
@@ -276,7 +276,7 @@ class CorpIndustryJob
     /**
      * Get facilityId
      *
-     * @return integer 
+     * @return integer
      */
     public function getFacilityId()
     {
@@ -299,7 +299,7 @@ class CorpIndustryJob
     /**
      * Get solarSystemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSolarSystemId()
     {
@@ -322,7 +322,7 @@ class CorpIndustryJob
     /**
      * Get solarSystemName
      *
-     * @return string 
+     * @return string
      */
     public function getSolarSystemName()
     {
@@ -345,7 +345,7 @@ class CorpIndustryJob
     /**
      * Get stationId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStationId()
     {
@@ -368,7 +368,7 @@ class CorpIndustryJob
     /**
      * Get activityId
      *
-     * @return integer 
+     * @return integer
      */
     public function getActivityId()
     {
@@ -391,7 +391,7 @@ class CorpIndustryJob
     /**
      * Get blueprintId
      *
-     * @return integer 
+     * @return integer
      */
     public function getBlueprintId()
     {
@@ -414,7 +414,7 @@ class CorpIndustryJob
     /**
      * Get blueprintTypeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getBlueprintTypeId()
     {
@@ -437,7 +437,7 @@ class CorpIndustryJob
     /**
      * Get blueprintTypeName
      *
-     * @return string 
+     * @return string
      */
     public function getBlueprintTypeName()
     {
@@ -460,7 +460,7 @@ class CorpIndustryJob
     /**
      * Get blueprintLocationId
      *
-     * @return integer 
+     * @return integer
      */
     public function getBlueprintLocationId()
     {
@@ -483,7 +483,7 @@ class CorpIndustryJob
     /**
      * Get outputLocationId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOutputLocationId()
     {
@@ -506,7 +506,7 @@ class CorpIndustryJob
     /**
      * Get runs
      *
-     * @return integer 
+     * @return integer
      */
     public function getRuns()
     {
@@ -529,7 +529,7 @@ class CorpIndustryJob
     /**
      * Get cost
      *
-     * @return integer 
+     * @return integer
      */
     public function getCost()
     {
@@ -552,7 +552,7 @@ class CorpIndustryJob
     /**
      * Get teamId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTeamId()
     {
@@ -575,7 +575,7 @@ class CorpIndustryJob
     /**
      * Get licensedRuns
      *
-     * @return integer 
+     * @return integer
      */
     public function getLicensedRuns()
     {
@@ -598,7 +598,7 @@ class CorpIndustryJob
     /**
      * Get probability
      *
-     * @return integer 
+     * @return integer
      */
     public function getProbability()
     {
@@ -621,7 +621,7 @@ class CorpIndustryJob
     /**
      * Get productTypeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductTypeId()
     {
@@ -644,7 +644,7 @@ class CorpIndustryJob
     /**
      * Get productTypeName
      *
-     * @return string 
+     * @return string
      */
     public function getProductTypeName()
     {
@@ -667,7 +667,7 @@ class CorpIndustryJob
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
@@ -690,7 +690,7 @@ class CorpIndustryJob
     /**
      * Get timeInSeconds
      *
-     * @return integer 
+     * @return integer
      */
     public function getTimeInSeconds()
     {
@@ -713,7 +713,7 @@ class CorpIndustryJob
     /**
      * Get startDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -736,7 +736,7 @@ class CorpIndustryJob
     /**
      * Get endDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndDate()
     {
@@ -759,7 +759,7 @@ class CorpIndustryJob
     /**
      * Get pauseDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPauseDate()
     {
@@ -782,7 +782,7 @@ class CorpIndustryJob
     /**
      * Get completedDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCompletedDate()
     {
@@ -805,7 +805,7 @@ class CorpIndustryJob
     /**
      * Get completedCharacterId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCompletedCharacterId()
     {
@@ -828,7 +828,7 @@ class CorpIndustryJob
     /**
      * Get successfulRuns
      *
-     * @return integer 
+     * @return integer
      */
     public function getSuccessfulRuns()
     {

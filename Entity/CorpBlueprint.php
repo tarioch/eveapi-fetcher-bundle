@@ -72,7 +72,7 @@ class CorpBlueprint
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -95,7 +95,7 @@ class CorpBlueprint
     /**
      * Get ownerId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOwnerId()
     {
@@ -118,7 +118,7 @@ class CorpBlueprint
     /**
      * Get itemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemId()
     {
@@ -141,7 +141,7 @@ class CorpBlueprint
     /**
      * Get locationId
      *
-     * @return integer 
+     * @return integer
      */
     public function getLocationId()
     {
@@ -164,7 +164,7 @@ class CorpBlueprint
     /**
      * Get typeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTypeId()
     {
@@ -187,7 +187,7 @@ class CorpBlueprint
     /**
      * Get typeName
      *
-     * @return string 
+     * @return string
      */
     public function getTypeName()
     {
@@ -210,7 +210,7 @@ class CorpBlueprint
     /**
      * Get quantity
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuantity()
     {
@@ -233,7 +233,7 @@ class CorpBlueprint
     /**
      * Get flag
      *
-     * @return integer 
+     * @return integer
      */
     public function getFlag()
     {
@@ -256,7 +256,7 @@ class CorpBlueprint
     /**
      * Get timeEfficiency
      *
-     * @return integer 
+     * @return integer
      */
     public function getTimeEfficiency()
     {
@@ -279,7 +279,7 @@ class CorpBlueprint
     /**
      * Get materialEfficiency
      *
-     * @return integer 
+     * @return integer
      */
     public function getMaterialEfficiency()
     {
@@ -302,7 +302,7 @@ class CorpBlueprint
     /**
      * Get runs
      *
-     * @return integer 
+     * @return integer
      */
     public function getRuns()
     {

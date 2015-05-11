@@ -72,7 +72,7 @@ class CorpFacility
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -95,7 +95,7 @@ class CorpFacility
     /**
      * Get ownerId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOwnerId()
     {
@@ -118,7 +118,7 @@ class CorpFacility
     /**
      * Get facilityId
      *
-     * @return integer 
+     * @return integer
      */
     public function getFacilityId()
     {
@@ -141,7 +141,7 @@ class CorpFacility
     /**
      * Get typeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTypeId()
     {
@@ -164,7 +164,7 @@ class CorpFacility
     /**
      * Get typeName
      *
-     * @return string 
+     * @return string
      */
     public function getTypeName()
     {
@@ -187,7 +187,7 @@ class CorpFacility
     /**
      * Get solarSystemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSolarSystemId()
     {
@@ -210,7 +210,7 @@ class CorpFacility
     /**
      * Get solarSystemName
      *
-     * @return integer 
+     * @return integer
      */
     public function getSolarSystemName()
     {
@@ -233,7 +233,7 @@ class CorpFacility
     /**
      * Get regionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getRegionId()
     {
@@ -256,7 +256,7 @@ class CorpFacility
     /**
      * Get regionName
      *
-     * @return integer 
+     * @return integer
      */
     public function getRegionName()
     {
@@ -279,7 +279,7 @@ class CorpFacility
     /**
      * Get starbaseModifier
      *
-     * @return integer 
+     * @return integer
      */
     public function getStarbaseModifier()
     {
@@ -302,7 +302,7 @@ class CorpFacility
     /**
      * Get tax
      *
-     * @return integer 
+     * @return integer
      */
     public function getTax()
     {

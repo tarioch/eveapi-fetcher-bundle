@@ -38,7 +38,7 @@ class AccountAccountStatus
     private $logonMinutes;
 
     /**
-     * @var \DateTime 
+     * @var \DateTime
      *
      * @ORM\Column(name="paidUntil", type="datetime")
      */
