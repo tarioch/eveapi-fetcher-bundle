@@ -18,19 +18,19 @@ class BlueprintTest extends AbstractFunctionalTestCase
         $key = new ApiKey(123, 'dummyvcode');
         $owner = new AccountCharacter($key, 123);
         $owner->setCorporationId(11);
-        $call = new ApiCall("dummyapi", $owner, $key);
+        $call = new ApiCall('dummyapi', $owner, $key);
         $this->api->update($call, $key, $this->pheal);
         $this->entityManager->flush();
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpBlueprint');
         $blueprint = $repo->findOneByItemId(42);
         $this->assertEquals(11, $blueprint->getLocationId());
         $this->assertEquals(22, $blueprint->getTypeId());
-        $this->assertEquals("TypeName", $blueprint->getTypeName());
-        $this->assertEquals("33", $blueprint->getFlag());
-        $this->assertEquals("-44", $blueprint->getQuantity());
-        $this->assertEquals("12", $blueprint->getTimeEfficiency());
-        $this->assertEquals("13", $blueprint->getMaterialEfficiency());
-        $this->assertEquals("-55", $blueprint->getRuns());
+        $this->assertEquals('TypeName', $blueprint->getTypeName());
+        $this->assertEquals(33, $blueprint->getFlag());
+        $this->assertEquals(-44, $blueprint->getQuantity());
+        $this->assertEquals(12, $blueprint->getTimeEfficiency());
+        $this->assertEquals(13, $blueprint->getMaterialEfficiency());
+        $this->assertEquals(-55, $blueprint->getRuns());
     }
     
     public function setUp()

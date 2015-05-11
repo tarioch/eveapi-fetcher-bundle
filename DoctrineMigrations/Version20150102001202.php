@@ -75,37 +75,37 @@ class Version20150102001202 extends AbstractMigration
 	$this->addSql('ALTER TABLE charCorporationRoleAtOther ADD CONSTRAINT FK_DCD86C38DB30DDED FOREIGN KEY (ownerID) REFERENCES charCharacterSheet (characterID) ON DELETE CASCADE');
 
 	// data
-	$this->addSql("INSERT INTO `api` VALUES(1, NULL, 'TariochEveapiFetcherEveWorker', 'server', 'ServerStatus', 5);");
-	$this->addSql("INSERT INTO `api` VALUES(2, 33554432, 'TariochEveapiFetcherEveWorker', 'account', 'AccountStatus', 120);");
-	$this->addSql("INSERT INTO `api` VALUES(3, NULL, 'TariochEveapiFetcherEveWorker', 'account', 'APIKeyInfo', 60);");
-	$this->addSql("INSERT INTO `apiCall` SET apiID=1, active=1;");
-	$this->addSql("INSERT INTO `api` VALUES(4, 1048576, 'TariochEveapiFetcherEveWorker', 'char', 'UpcomingCalendarEvents', 30);");
-	$this->addSql("INSERT INTO `api` VALUES(5, NULL, 'TariochEveapiFetcherEveWorker', 'map', 'Sovereignty', 60);");
-	$this->addSql("INSERT INTO `apiCall` SET apiID=5, active=1");
-	$this->addSql("INSERT INTO `api` VALUES(6, NULL, 'TariochEveapiFetcherEveWorker', 'eve', 'RefTypes', 60);");
-	$this->addSql("INSERT INTO `apiCall` SET apiID=6, active=1");
-	$this->addSql("INSERT INTO `api` VALUES(7, NULL, 'TariochEveapiFetcherEveWorker', 'eve', 'ConquerableStationList', 60);");
-	$this->addSql("INSERT INTO `apiCall` SET apiID=7, active=1");
-	$this->addSql("INSERT INTO `api` VALUES(8, NULL, 'TariochEveapiFetcherEveWorker', 'eve', 'AllianceList', 60);");
-	$this->addSql("INSERT INTO `apiCall` SET apiID=8, active=1");
-	$this->addSql("INSERT INTO `api` VALUES(9, 1, 'TariochEveapiFetcherEveWorker', 'corp', 'AccountBalance', 60);");
-	$this->addSql("INSERT INTO `api` VALUES(10, 8, 'TariochEveapiFetcherEveWorker', 'corp', 'CorporationSheet', 360);");
-	$this->addSql("INSERT INTO `api` VALUES(11, 524288, 'TariochEveapiFetcherEveWorker', 'corp', 'StarbaseList', 360);");
-	$this->addSql("INSERT INTO `api` VALUES(12, 2048, 'TariochEveapiFetcherEveWorker', 'corp', 'MemberTracking', 180);");
-	$this->addSql("INSERT INTO `api` VALUES(13, 2, 'TariochEveapiFetcherEveWorker', 'corp', 'AssetList', 180);");
-	$this->addSql("INSERT INTO `api` VALUES(14, 128, 'TariochEveapiFetcherEveWorker', 'corp', 'IndustryJobs', 5);");
-	$this->addSql("INSERT INTO `api` VALUES(15, 1048576, 'TariochEveapiFetcherEveWorker', 'corp', 'WalletJournal', 5);");
-	$this->addSql("INSERT INTO `api` VALUES(16, 2097152, 'TariochEveapiFetcherEveWorker', 'corp', 'WalletTransactions', 5);");
-	$this->addSql("INSERT INTO `api` VALUES(17, 8, 'TariochEveapiFetcherEveWorker', 'char', 'CharacterSheet', 60)");
-	$this->addSql("INSERT INTO `api` VALUES(18, 1, 'TariochEveapiFetcherEveWorker', 'char', 'AccountBalance', 60)");
-	$this->addSql("INSERT INTO `api` VALUES(19, 2, 'TariochEveapiFetcherEveWorker', 'char', 'AssetList', 360)");
-	$this->addSql("INSERT INTO `api` VALUES(20, 16, 'TariochEveapiFetcherEveWorker', 'char', 'ContactList', 1380)");
-	$this->addSql("INSERT INTO `api` VALUES(21, 67108864, 'TariochEveapiFetcherEveWorker', 'char', 'Contracts', 60)");
-	$this->addSql("INSERT INTO `api` VALUES(22, 2048, 'TariochEveapiFetcherEveWorker', 'char', 'MailMessages', 1380)");
-	$this->addSql("INSERT INTO `api` VALUES(23, 512, 'TariochEveapiFetcherEveWorker', 'char', 'MailBodies', 1380)");
-	$this->addSql("INSERT INTO `api` VALUES(24, 1024, 'TariochEveapiFetcherEveWorker', 'char', 'MailingLists', 60)");
-	$this->addSql("INSERT INTO `api` VALUES(25, 2097152, 'TariochEveapiFetcherEveWorker', 'char', 'WalletJournal', 30)");
-	$this->addSql("INSERT INTO `api` VALUES(26, 4194304, 'TariochEveapiFetcherEveWorker', 'char', 'WalletTransactions', 60)");
+	$this->addSql('INSERT INTO api VALUES(1, NULL, "TariochEveapiFetcherEveWorker", "server", "ServerStatus", 5);');
+	$this->addSql('INSERT INTO api VALUES(2, 33554432, "TariochEveapiFetcherEveWorker", "account", "AccountStatus", 120);');
+	$this->addSql('INSERT INTO api VALUES(3, NULL, "TariochEveapiFetcherEveWorker", "account", "APIKeyInfo", 60);');
+	$this->addSql('INSERT INTO apiCall SET apiID=1, active=1;');
+	$this->addSql('INSERT INTO api VALUES(4, 1048576, "TariochEveapiFetcherEveWorker", "char", "UpcomingCalendarEvents", 30);');
+	$this->addSql('INSERT INTO api VALUES(5, NULL, "TariochEveapiFetcherEveWorker", "map", "Sovereignty", 60);');
+	$this->addSql('INSERT INTO apiCall SET apiID=5, active=1');
+	$this->addSql('INSERT INTO api VALUES(6, NULL, "TariochEveapiFetcherEveWorker", "eve", "RefTypes", 60);');
+	$this->addSql('INSERT INTO apiCall SET apiID=6, active=1');
+	$this->addSql('INSERT INTO api VALUES(7, NULL, "TariochEveapiFetcherEveWorker", "eve", "ConquerableStationList", 60);');
+	$this->addSql('INSERT INTO apiCall SET apiID=7, active=1');
+	$this->addSql('INSERT INTO api VALUES(8, NULL, "TariochEveapiFetcherEveWorker", "eve", "AllianceList", 60);');
+	$this->addSql('INSERT INTO apiCall SET apiID=8, active=1');
+	$this->addSql('INSERT INTO api VALUES(9, 1, "TariochEveapiFetcherEveWorker", "corp", "AccountBalance", 60);');
+	$this->addSql('INSERT INTO api VALUES(10, 8, "TariochEveapiFetcherEveWorker", "corp", "CorporationSheet", 360);');
+	$this->addSql('INSERT INTO api VALUES(11, 524288, "TariochEveapiFetcherEveWorker", "corp", "StarbaseList", 360);');
+	$this->addSql('INSERT INTO api VALUES(12, 2048, "TariochEveapiFetcherEveWorker", "corp", "MemberTracking", 180);');
+	$this->addSql('INSERT INTO api VALUES(13, 2, "TariochEveapiFetcherEveWorker", "corp", "AssetList", 180);');
+	$this->addSql('INSERT INTO api VALUES(14, 128, "TariochEveapiFetcherEveWorker", "corp", "IndustryJobs", 5);');
+	$this->addSql('INSERT INTO api VALUES(15, 1048576, "TariochEveapiFetcherEveWorker", "corp", "WalletJournal", 5);');
+	$this->addSql('INSERT INTO api VALUES(16, 2097152, "TariochEveapiFetcherEveWorker", "corp", "WalletTransactions", 5);');
+	$this->addSql('INSERT INTO api VALUES(17, 8, "TariochEveapiFetcherEveWorker", "char", "CharacterSheet", 60)');
+	$this->addSql('INSERT INTO api VALUES(18, 1, "TariochEveapiFetcherEveWorker", "char", "AccountBalance", 60)');
+	$this->addSql('INSERT INTO api VALUES(19, 2, "TariochEveapiFetcherEveWorker", "char", "AssetList", 360)');
+	$this->addSql('INSERT INTO api VALUES(20, 16, "TariochEveapiFetcherEveWorker", "char", "ContactList", 1380)');
+	$this->addSql('INSERT INTO api VALUES(21, 67108864, "TariochEveapiFetcherEveWorker", "char", "Contracts", 60)');
+	$this->addSql('INSERT INTO api VALUES(22, 2048, "TariochEveapiFetcherEveWorker", "char", "MailMessages", 1380)');
+	$this->addSql('INSERT INTO api VALUES(23, 512, "TariochEveapiFetcherEveWorker", "char", "MailBodies", 1380)');
+	$this->addSql('INSERT INTO api VALUES(24, 1024, "TariochEveapiFetcherEveWorker", "char", "MailingLists", 60)');
+	$this->addSql('INSERT INTO api VALUES(25, 2097152, "TariochEveapiFetcherEveWorker", "char", "WalletJournal", 30)');
+	$this->addSql('INSERT INTO api VALUES(26, 4194304, "TariochEveapiFetcherEveWorker", "char", "WalletTransactions", 60)');
     }
 
     public function down(Schema $schema)

@@ -43,7 +43,7 @@ class KeySectionApiTest extends \PHPUnit_Framework_TestCase
     private $specificApi;
 
     /**
-     * @var AbstractKeySectionApi
+     * @var KeySectionApi
      */
     private $keySectionApi;
 
@@ -85,6 +85,7 @@ class KeySectionApiTest extends \PHPUnit_Framework_TestCase
             $this->keySectionApi->update($this->apiCall);
             $this->fail('Exception expected');
         } catch (PhealException $e) {
+            // ok
         }
     }
 
@@ -105,6 +106,7 @@ class KeySectionApiTest extends \PHPUnit_Framework_TestCase
             $this->keySectionApi->update($this->apiCall);
             $this->fail('Exception expected');
         } catch (PhealException $e) {
+            // ok
         }
     }
 

@@ -18,7 +18,7 @@ abstract class AbstractIndustryJobTest extends AbstractFunctionalTestCase
         $key = new ApiKey(123, 'dummyvcode');
         $owner = new AccountCharacter($key, 123);
         $owner->setCorporationId(11);
-        $call = new ApiCall("dummyapi", $owner, $key);
+        $call = new ApiCall('dummyapi', $owner, $key);
         $this->api->update($call, $key, $this->pheal);
         $this->entityManager->flush();
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpIndustryJob');

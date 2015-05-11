@@ -13,10 +13,10 @@ class EveRefTypesTest extends AbstractFunctionalTestCase
 
     public function testUpdate()
     {
-        $this->api->update(new ApiCall("dummyiapi"), $this->pheal);
+        $this->api->update(new ApiCall('dummyiapi'), $this->pheal);
         $this->entityManager->flush();
         $refType = $this->entityManager->getRepository('TariochEveapiFetcherBundle:EveRefType')->findOneByRefTypeId(42);
-        $this->assertEquals("Dummy", $refType->getRefTypeName());
+        $this->assertEquals('Dummy', $refType->getRefTypeName());
     }
     
     public function setUp()

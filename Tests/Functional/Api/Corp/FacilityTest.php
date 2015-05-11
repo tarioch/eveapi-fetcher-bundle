@@ -18,17 +18,17 @@ class FacilityTest extends AbstractFunctionalTestCase
         $key = new ApiKey(123, 'dummyvcode');
         $owner = new AccountCharacter($key, 123);
         $owner->setCorporationId(11);
-        $call = new ApiCall("dummyapi", $owner, $key);
+        $call = new ApiCall('dummyapi', $owner, $key);
         $this->api->update($call, $key, $this->pheal);
         $this->entityManager->flush();
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpFacility');
         $facility = $repo->findOneByFacilityId(1);
         $this->assertEquals(2, $facility->getTypeId());
-        $this->assertEquals("TypeName", $facility->getTypeName());
+        $this->assertEquals('TypeName', $facility->getTypeName());
         $this->assertEquals(3, $facility->getSolarSystemId());
-        $this->assertEquals("SolarSystemName", $facility->getSolarSystemName());
+        $this->assertEquals('SolarSystemName', $facility->getSolarSystemName());
         $this->assertEquals(4, $facility->getRegionId());
-        $this->assertEquals("RegionName", $facility->getRegionName());
+        $this->assertEquals('RegionName', $facility->getRegionName());
         $this->assertEquals(5, $facility->getStarbaseModifier());
         $this->assertEquals(6, $facility->getTax());
     }

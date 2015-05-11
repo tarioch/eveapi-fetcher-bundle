@@ -158,7 +158,7 @@ class CorpIndustryJob
     /**
      * @ORM\Column(name="completedCharacterID", type="bigint", options={"unsigned"=true})
      */
-    private $completedCharacterID;
+    private $completedCharacterId;
 
     /**
      * @ORM\Column(name="successfulRuns", type="bigint", options={"unsigned"=true})
@@ -790,26 +790,26 @@ class CorpIndustryJob
     }
 
     /**
-     * Set completedCharacterID
+     * Set completedCharacterId
      *
-     * @param integer $completedCharacterID
+     * @param integer $completedCharacterId
      * @return CorpIndustryJob
      */
-    public function setCompletedCharacterID($completedCharacterID)
+    public function setCompletedCharacterId($completedCharacterId)
     {
-        $this->completedCharacterID = $completedCharacterID;
+        $this->completedCharacterId = $completedCharacterId;
 
         return $this;
     }
 
     /**
-     * Get completedCharacterID
+     * Get completedCharacterId
      *
      * @return integer 
      */
-    public function getCompletedCharacterID()
+    public function getCompletedCharacterId()
     {
-        return $this->completedCharacterID;
+        return $this->completedCharacterId;
     }
 
     /**
