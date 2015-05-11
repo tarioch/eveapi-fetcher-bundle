@@ -3,11 +3,6 @@ namespace Tarioch\EveapiFetcherBundle\Tests\Unit\Component\EveApi\Account\ApiKey
 
 use Mockery as m;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
-use Tarioch\EveapiFetcherBundle\Component\Section\KeySectionApi;
-use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;
-use Tarioch\PhealBundle\DependencyInjection\PhealFactory;
-use Pheal\Pheal;
-use Pheal\Exceptions\PhealException;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\Account\ApiKeyInfo\CurrentApiCallFactory;
 
 class CurrentApiCallFactoryTest extends \PHPUnit_Framework_TestCase

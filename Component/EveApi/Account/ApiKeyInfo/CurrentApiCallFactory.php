@@ -4,7 +4,6 @@ namespace Tarioch\EveapiFetcherBundle\Component\EveApi\Account\ApiKeyInfo;
 use JMS\DiExtraBundle\Annotation as DI;
 use Doctrine\ORM\EntityManager;
 use Tarioch\EveapiFetcherBundle\Entity\ApiKey;
-use Tarioch\EveapiFetcherBundle\Entity\Api;
 
 /**
  * @DI\Service(id = "tarioch.eveapi.account.api_key_info.current_api_call_factory", public = false)

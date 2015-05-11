@@ -140,7 +140,7 @@ class CorpWalletJournal
 
 
     /**
-     * @param integer $refid
+     * @param integer $refId
      */
     public function __construct($refId, $ownerId, $accountKey)
     {
