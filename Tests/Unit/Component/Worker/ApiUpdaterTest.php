@@ -83,7 +83,7 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 
         $this->sectionApi->shouldReceive('update')
             ->with($this->apiCall)
-            ->andThrow(new APIException(111, "", new \SimpleXMLElement("<foo></foo>")));
+            ->andThrow(new APIException(111, '', new \SimpleXMLElement('<foo></foo>')));
 
         $this->logger->shouldReceive('error');
         $this->apiCall->shouldReceive('increaseErrorCount');
@@ -100,7 +100,7 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 
         $this->sectionApi->shouldReceive('update')
             ->with($this->apiCall)
-            ->andThrow(new APIException(111, "", new \SimpleXMLElement("<foo></foo>")));
+            ->andThrow(new APIException(111, '', new \SimpleXMLElement('<foo></foo>')));
 
         $this->logger->shouldReceive('error');
         $this->apiCall->shouldReceive('increaseErrorCount');
