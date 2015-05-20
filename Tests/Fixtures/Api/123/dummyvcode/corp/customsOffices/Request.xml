@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2015-05-20 19:42:01</currentTime>
+  <result>
+    <rowset name="pocos" key="itemID" columns="itemID,solarSystemID,solarSystemName,reinforceHour,allowAlliance,allowStandings,standingLevel,taxRateAlliance,taxRateCorp,taxRateStandingHigh,taxRateStandingGood,taxRateStandingNeutral,taxRateStandingBad,taxRateStandingHorrible">
+      <row itemID="42" solarSystemID="11" solarSystemName="SolarSystemName" reinforceHour="22" allowAlliance="True" allowStandings="True" standingLevel="-2" taxRateAlliance="0.01" taxRateCorp="0.02" taxRateStandingHigh="0.03" taxRateStandingGood="0.04" taxRateStandingNeutral="0.05" taxRateStandingBad="0.06" taxRateStandingHorrible="0.07" />
+    </rowset>
+  </result>
+  <cachedUntil>2015-05-20 20:42:01</cachedUntil>
+</eveapi>
