@@ -12,4 +12,6 @@ cache:
         - vendor
         - $HOME/.composer/cache
 
+install: composer install
+
 script: make fullbuild
