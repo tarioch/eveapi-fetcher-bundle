@@ -40,8 +40,8 @@ class CustomsOfficeUpdater extends AbstractCorpUpdater
             $entity->setSolarSystemId($customOffice->solarSystemID);
             $entity->setSolarSystemName($customOffice->solarSystemName);
             $entity->setReinforceHour($customOffice->reinforceHour);
-            $entity->setAllowAlliance($customOffice->allowAlliance);
-            $entity->setAllowStandings($customOffice->allowStandings);
+            $entity->setAllowAlliance(filter_var($customOffice->allowAlliance, FILTER_VALIDATE_BOOLEAN));
+            $entity->setAllowStandings(filter_var($customOffice->allowStandings, FILTER_VALIDATE_BOOLEAN));
             $entity->setStandingLevel($customOffice->standingLevel);
             $entity->setTaxRateAlliance($customOffice->taxRateAlliance);
             $entity->setTaxRateCorp($customOffice->taxRateCorp);
