@@ -1,7 +1,15 @@
 language: php
+
 php:
   - 5.6
 
+sudo: false
+
 services: mysql
+
+cache:
+    directories:
+        - vendor
+        - $HOME/.composer/cache
 
 script: make fullbuild
