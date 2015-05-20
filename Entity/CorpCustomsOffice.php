@@ -34,6 +34,11 @@ class CorpCustomsOffice
     private $solarSystemId;
 
     /**
+     * @ORM\Column(name="solarSystemName", type="string")
+     */
+    private $solarSystemName;
+
+    /**
      * @ORM\Column(name="reinforceHour", type="integer", options={"unsigned"=true})
      */
     private $reinforceHour;
@@ -165,6 +170,29 @@ class CorpCustomsOffice
     public function getSolarSystemId()
     {
         return $this->solarSystemId;
+    }
+
+    /**
+     * Set solarSystemName
+     *
+     * @param string $solarSystemName
+     * @return CorpCustomsOffice
+     */
+    public function setSolarSystemName($solarSystemName)
+    {
+        $this->solarSystemName = $solarSystemName;
+    
+        return $this;
+    }
+
+    /**
+     * Get solarSystemName
+     *
+     * @return string 
+     */
+    public function getSolarSystemName()
+    {
+        return $this->solarSystemName;
     }
 
     /**
