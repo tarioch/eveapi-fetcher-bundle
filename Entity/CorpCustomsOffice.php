@@ -91,7 +91,7 @@ class CorpCustomsOffice
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -114,7 +114,7 @@ class CorpCustomsOffice
     /**
      * Get ownerId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOwnerId()
     {
@@ -137,7 +137,7 @@ class CorpCustomsOffice
     /**
      * Get itemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemId()
     {
@@ -160,7 +160,7 @@ class CorpCustomsOffice
     /**
      * Get solarSystemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSolarSystemId()
     {
@@ -183,7 +183,7 @@ class CorpCustomsOffice
     /**
      * Get reinforceHour
      *
-     * @return integer 
+     * @return integer
      */
     public function getReinforceHour()
     {
@@ -206,7 +206,7 @@ class CorpCustomsOffice
     /**
      * Get allowAlliance
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowAlliance()
     {
@@ -229,7 +229,7 @@ class CorpCustomsOffice
     /**
      * Get allowStandings
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowStandings()
     {
@@ -252,7 +252,7 @@ class CorpCustomsOffice
     /**
      * Get standingLevel
      *
-     * @return string 
+     * @return string
      */
     public function getStandingLevel()
     {
@@ -275,7 +275,7 @@ class CorpCustomsOffice
     /**
      * Get taxRateAlliance
      *
-     * @return string 
+     * @return string
      */
     public function getTaxRateAlliance()
     {
@@ -298,7 +298,7 @@ class CorpCustomsOffice
     /**
      * Get taxRateCorp
      *
-     * @return string 
+     * @return string
      */
     public function getTaxRateCorp()
     {
@@ -321,7 +321,7 @@ class CorpCustomsOffice
     /**
      * Get taxRateStandingHigh
      *
-     * @return string 
+     * @return string
      */
     public function getTaxRateStandingHigh()
     {
@@ -344,7 +344,7 @@ class CorpCustomsOffice
     /**
      * Get taxRateStandingGood
      *
-     * @return string 
+     * @return string
      */
     public function getTaxRateStandingGood()
     {
@@ -367,7 +367,7 @@ class CorpCustomsOffice
     /**
      * Get taxRateStandingNeutral
      *
-     * @return string 
+     * @return string
      */
     public function getTaxRateStandingNeutral()
     {
@@ -390,7 +390,7 @@ class CorpCustomsOffice
     /**
      * Get taxRateStandingBad
      *
-     * @return string 
+     * @return string
      */
     public function getTaxRateStandingBad()
     {
@@ -413,7 +413,7 @@ class CorpCustomsOffice
     /**
      * Get taxRateStandingHorrible
      *
-     * @return string 
+     * @return string
      */
     public function getTaxRateStandingHorrible()
     {
