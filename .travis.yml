@@ -4,12 +4,4 @@ php:
 
 services: mysql
 
-addons:
-    apt:
-        packages:
-            - libgearman-dev
-
-install:
-    - pecl install gearman
-
 script: make fullbuild
