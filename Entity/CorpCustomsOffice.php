@@ -236,7 +236,7 @@ class CorpCustomsOffice
      *
      * @return boolean
      */
-    public function getAllowAlliance()
+    public function isAllowAlliance()
     {
         return $this->allowAlliance;
     }
@@ -259,7 +259,7 @@ class CorpCustomsOffice
      *
      * @return boolean
      */
-    public function getAllowStandings()
+    public function isAllowStandings()
     {
         return $this->allowStandings;
     }

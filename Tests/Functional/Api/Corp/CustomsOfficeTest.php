@@ -26,8 +26,8 @@ class CustomsOfficeTest extends AbstractFunctionalTestCase
         $this->assertEquals(11, $customsOffice->getSolarSystemId());
         $this->assertEquals('SolarSystemName', $customsOffice->getSolarSystemName());
         $this->assertEquals(22, $customsOffice->getReinforceHour());
-        $this->assertEquals(true, $customsOffice->getAllowAlliance());
-        $this->assertEquals(true, $customsOffice->getAllowStandings());
+        $this->assertEquals(true, $customsOffice->isAllowAlliance());
+        $this->assertEquals(true, $customsOffice->isAllowStandings());
         $this->assertEquals(-2, $customsOffice->getStandingLevel());
         $this->assertEquals(0.01, $customsOffice->getTaxRateAlliance());
         $this->assertEquals(0.02, $customsOffice->getTaxRateCorp());
