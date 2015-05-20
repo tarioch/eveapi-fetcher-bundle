@@ -188,7 +188,7 @@ class CorpCustomsOffice
     /**
      * Get solarSystemName
      *
-     * @return string 
+     * @return string
      */
     public function getSolarSystemName()
     {
