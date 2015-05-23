@@ -50,6 +50,20 @@ class PlanetaryColonyTest extends AbstractFunctionalTestCase
         $pin = $repo->findOneByPlanetId(42);
 
         $this->assertEquals(11, $pin->getOwnerId());
+        $this->assertEquals(88, $pin->getPinId());
+        $this->assertEquals(22, $pin->getTypeId());
+        $this->assertEquals('TypeName', $pin->getTypeName());
+        $this->assertEquals(33, $pin->getSchematicId());
+        $this->assertEquals(new \DateTime('2010-10-15 22:33:44'), $pin->getLastLaunchTime());
+        $this->assertEquals(44, $pin->getCycleTime());
+        $this->assertEquals(55, $pin->getQuantityPerCycle());
+        $this->assertEquals(new \DateTime('2011-12-25 12:13:14'), $pin->getInstallTime());
+        $this->assertEquals(new \DateTime('2012-12-16 13:14:15'), $pin->getExpiryTime());
+        $this->assertEquals(66, $pin->getContentTypeId());
+        $this->assertEquals('ContentTypeName', $pin->getContentTypeName());
+        $this->assertEquals(77, $pin->getContentQuantity());
+        $this->assertEquals(-1.11, $pin->getLongitude());
+        $this->assertEquals(2.22, $pin->getLatitude());
     }
 
     private function assertLink()
@@ -58,6 +72,9 @@ class PlanetaryColonyTest extends AbstractFunctionalTestCase
         $link = $repo->findOneByPlanetId(42);
 
         $this->assertEquals(11, $link->getOwnerId());
+        $this->assertEquals(22, $link->getSourcePinId());
+        $this->assertEquals(33, $link->getDestinationPinId());
+        $this->assertEquals(44, $link->getLinkLevel());
     }
 
     private function assertRoute()
@@ -66,8 +83,18 @@ class PlanetaryColonyTest extends AbstractFunctionalTestCase
         $route = $repo->findOneByPlanetId(42);
 
         $this->assertEquals(11, $route->getOwnerId());
+        $this->assertEquals(22, $route->getRouteId());
+        $this->assertEquals(33, $route->getSourcePinId());
+        $this->assertEquals(44, $route->getDestinationPinId());
+        $this->assertEquals(55, $route->getContentTypeId());
+        $this->assertEquals('ContentTypeName', $route->getContentTypeName());
+        $this->assertEquals(66, $route->getQuantity());
+        $this->assertEquals(77, $route->getWaypoint1());
+        $this->assertEquals(88, $route->getWaypoint2());
+        $this->assertEquals(99, $route->getWaypoint3());
+        $this->assertEquals(122, $route->getWaypoint4());
+        $this->assertEquals(133, $route->getWaypoint5());
     }
-
 
     public function setUp()
     {
