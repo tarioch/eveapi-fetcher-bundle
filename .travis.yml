@@ -1,18 +1,26 @@
 language: php
 
 php:
-  - 5.6
+    - 5.6
 
 sudo: false
 
 services: mysql
 
 cache:
-    directories:
-        - $HOME/.composer/cache
+  directories:
+  - "$HOME/.composer/cache"
 
-before_install: composer self-update
+env:
+  global:
+    secure: eKBFvBtJNlIz0AKS4XPCzflUonA8fFN49qib9UuuYLaG9VQuOFEdS+IdY84EDUW67PSoPyWoEEwcjsWtmpyC9Z6i1FvpQbW2LMoXwWmycgfKBv0Dak863Sbx1qlBeUlwvMH5w8O1hC2eQgliNKzwe7XXr+SDB0s/FKG+je5FHNQ=
 
-install: composer install --prefer-dist
+before_install:
+    - composer self-update
+    - composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH
 
-script: make fullbuild
+install:
+    - composer install --prefer-dist
+
+script:
+    - make fullbuild
