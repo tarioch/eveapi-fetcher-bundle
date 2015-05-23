@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2015-05-23 18:11:36</currentTime>
+  <result>
+    <rowset name="routes" key="routeID" columns="routeID,sourcePinID,destinationPinID,contentTypeID,contentTypeName,quantity,waypoint1,waypoint2,waypoint3,waypoint4,waypoint5">
+      <row routeID="22" sourcePinID="33" destinationPinID="44" contentTypeID="55" contentTypeName="ContentTypeName" quantity="66" waypoint1="77" waypoint2="88" waypoint3="99" waypoint4="122" waypoint5="133" />
+    </rowset>
+  </result>
+  <cachedUntil>2015-05-23 19:11:36</cachedUntil>
+</eveapi>

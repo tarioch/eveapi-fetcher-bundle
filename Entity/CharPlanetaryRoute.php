@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="charPlanetaryRoute", indexes={
  *     @ORM\Index(name="owner", columns={"ownerID"})}, uniqueConstraints={
- *     @ORM\UniqueConstraint(name="entry_owner", columns={"routeId", "ownerId"})
+ *     @ORM\UniqueConstraint(name="entry_owner", columns={"routeId", "ownerId", "planetId"})
  * })
  */
 class CharPlanetaryRoute
@@ -22,6 +22,11 @@ class CharPlanetaryRoute
      * @ORM\Column(name="ownerID", type="bigint", options={"unsigned"=true})
      */
     private $ownerId;
+
+    /**
+     * @ORM\Column(name="planetID", type="bigint", options={"unsigned"=true})
+     */
+    private $planetId;
 
     /**
      * @ORM\Column(name="routeID", type="bigint", options={"unsigned"=true})
@@ -110,6 +115,29 @@ class CharPlanetaryRoute
     public function getOwnerId()
     {
         return $this->ownerId;
+    }
+
+    /**
+     * Set planetId
+     *
+     * @param integer $planetId
+     * @return CharPlanetaryColony
+     */
+    public function setPlanetId($planetId)
+    {
+        $this->planetId = $planetId;
+    
+        return $this;
+    }
+
+    /**
+     * Get planetId
+     *
+     * @return integer
+     */
+    public function getPlanetId()
+    {
+        return $this->planetId;
     }
 
     /**

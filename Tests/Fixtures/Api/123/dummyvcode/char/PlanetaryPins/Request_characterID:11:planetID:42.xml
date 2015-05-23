@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2015-05-23 18:11:36</currentTime>
+  <result>
+    <rowset name="pins" key="pinID" columns="pinID,typeID,typeName,schematicID,lastLaunchTime,cycleTime,quantityPerCycle,installTime,expiryTime,contentTypeID,contentTypeName,contentQuantity,longitude,latitude">
+      <row pinID="88" typeID="22" typeName="TypeName" schematicID="33" lastLaunchTime="2010-10-15 22:33:44" cycleTime="44" quantityPerCycle="55" installTime="2011-12-25 12:13:14" expiryTime="2012-12-16 13:14:15" contentTypeID="66" contentTypeName="ContentTypeName" contentQuantity="77" longitude="-1.11" latitude="2.22" />
+    </rowset>
+  </result>
+  <cachedUntil>2015-05-23 19:11:36</cachedUntil>
+</eveapi>

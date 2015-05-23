@@ -20,8 +20,18 @@ class PlanetaryColonyTest extends AbstractFunctionalTestCase
         $call = new ApiCall('dummyapi', $owner, $key);
         $this->api->update($call, $key, $this->pheal);
         $this->entityManager->flush();
+
+        $this->assertColony();
+        $this->assertPin();
+        $this->assertLink();
+        $this->assertRoute();
+    }
+
+    private function assertColony()
+    {
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharPlanetaryColony');
         $colony = $repo->findOneByPlanetId(42);
+
         $this->assertEquals(11, $colony->getOwnerId());
         $this->assertEquals('OwnerName', $colony->getOwnerName());
         $this->assertEquals(22, $colony->getSolarSystemId());
@@ -33,7 +43,32 @@ class PlanetaryColonyTest extends AbstractFunctionalTestCase
         $this->assertEquals(44, $colony->getUpgradeLevel());
         $this->assertEquals(55, $colony->getNumberOfPins());
     }
-    
+
+    private function assertPin()
+    {
+        $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharPlanetaryPin');
+        $pin = $repo->findOneByPlanetId(42);
+
+        $this->assertEquals(11, $pin->getOwnerId());
+    }
+
+    private function assertLink()
+    {
+        $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharPlanetaryLink');
+        $link = $repo->findOneByPlanetId(42);
+
+        $this->assertEquals(11, $link->getOwnerId());
+    }
+
+    private function assertRoute()
+    {
+        $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharPlanetaryRoute');
+        $route = $repo->findOneByPlanetId(42);
+
+        $this->assertEquals(11, $route->getOwnerId());
+    }
+
+
     public function setUp()
     {
         parent::setUp();

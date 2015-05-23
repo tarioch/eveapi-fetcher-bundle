@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2015-05-23 18:11:36</currentTime>
+  <result>
+    <rowset name="links" key="sourcePinID" columns="sourcePinID,destinationPinID,linkLevel">
+      <row sourcePinID="22" destinationPinID="33" linkLevel="44" />
+    </rowset>
+  </result>
+  <cachedUntil>2015-05-23 19:11:36</cachedUntil>
+</eveapi>
