@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<eveapi version="2">
+  <currentTime>2015-05-23 11:54:41</currentTime>
+  <result>
+    <rowset name="colonies" key="planetID" columns="solarSystemID,solarSystemName,planetID,planetName,planetTypeID,planetTypeName,ownerID,ownerName,lastUpdate,upgradeLevel,numberOfPins">
+      <row solarSystemID="22" solarSystemName="SolarSystemName" planetID="42" planetName="PlanetName" planetTypeID="33" planetTypeName="PlanetTypeName" ownerID="11" ownerName="OwnerName" lastUpdate="2010-10-15 22:33:44" upgradeLevel="44" numberOfPins="55" />
+    </rowset>
+  </result>
+  <cachedUntil>2015-05-23 12:54:41</cachedUntil>
+</eveapi>
