@@ -7,6 +7,7 @@ use Psr\Log\LoggerInterface;
 use Tarioch\EveapiFetcherBundle\Component\Worker\ApiUpdater;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Pheal\Exceptions\APIException;
+use Doctrine\DBAL\LockMode;
 
 class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 {
@@ -50,7 +51,7 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
     public function testUpdateNoLongerValid()
     {
         $this->entityManager->shouldReceive('find')
-            ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID)
+            ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID, LockMode::PESSIMISTIC_WRITE)
             ->andReturn($this->apiCall);
         $this->apiTimeCalculator->shouldReceive('isCallStillValid')
             ->with($this->apiCall)
@@ -116,7 +117,7 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
     private function mockPrepareApiCall()
     {
         $this->entityManager->shouldReceive('find')
-            ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID)
+            ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID, LockMode::PESSIMISTIC_WRITE)
             ->andReturn($this->apiCall);
         $this->apiTimeCalculator->shouldReceive('isCallStillValid')
             ->with($this->apiCall)
