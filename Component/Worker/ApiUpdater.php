@@ -44,7 +44,8 @@ class ApiUpdater
     public function update($apiCallId)
     {
         print('CallId ' . $apiCallId . "\n");
-        $call = $this->entityManager->find('TariochEveapiFetcherBundle:ApiCall', $apiCallId, LockMode::PESSIMISTIC_WRITE);
+        $em = $this->entityManager;
+        $call = $em->find('TariochEveapiFetcherBundle:ApiCall', $apiCallId, LockMode::PESSIMISTIC_WRITE);
         if ($this->apiTimeCalculator->isCallStillValid($call)) {
             $api = $call->getApi();
             $apiInfo = $api->getSection() . ' ' . $api->getName();
