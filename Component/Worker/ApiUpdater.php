@@ -7,6 +7,7 @@ use Pheal\Exceptions\PhealException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Stopwatch\Stopwatch;
 use Tarioch\EveapiFetcherBundle\Component\Section\SectionApiFactory;
+use Doctrine\DBAL\LockMode;
 
 /**
  * @DI\Service(public=false)
@@ -43,7 +44,7 @@ class ApiUpdater
     public function update($apiCallId)
     {
         print('CallId ' . $apiCallId . "\n");
-        $call = $this->entityManager->find('TariochEveapiFetcherBundle:ApiCall', $apiCallId);
+        $call = $this->entityManager->find('TariochEveapiFetcherBundle:ApiCall', $apiCallId, LockMode::PESSIMISTIC_WRITE);
         if ($this->apiTimeCalculator->isCallStillValid($call)) {
             $api = $call->getApi();
             $apiInfo = $api->getSection() . ' ' . $api->getName();
