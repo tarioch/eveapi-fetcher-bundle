@@ -7,7 +7,6 @@ use Psr\Log\LoggerInterface;
 use Tarioch\EveapiFetcherBundle\Component\Worker\ApiUpdater;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Pheal\Exceptions\APIException;
-use Doctrine\DBAL\LockMode;
 
 class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 {
