@@ -42,6 +42,14 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
      * @var SectionApi
      */
     private $sectionApi;
+    /**
+     * @var ApiKey
+     */
+    private $key;
+    /**
+     * @var AccountCharacter
+     */
+    private $owner;
 
     /**
      * @var ApiUpdater
@@ -50,11 +58,7 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
 
     public function testUpdateNoLongerValid()
     {
-        $this->entityManager->shouldReceive('find')
-            ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID)
-            ->andReturn($this->apiCall);
-        $this->entityManager->shouldReceive('lock')
-            ->with($this->apiCall, LockMode::PESSIMISTIC_WRITE);
+        $this->mockApiCallLoad();
         $this->apiTimeCalculator->shouldReceive('isCallStillValid')
             ->with($this->apiCall)
             ->andReturn(false);
@@ -115,14 +119,24 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
         $this->apiUpdater->update(self::API_CALL_ID);
     }
 
-
-    private function mockPrepareApiCall()
+    private function mockApiCallLoad()
     {
         $this->entityManager->shouldReceive('find')
             ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID)
             ->andReturn($this->apiCall);
+        $this->apiCall->shouldReceive('getKey')
+            ->andReturn($this->key);
+        $this->apiCall->shouldReceive('getOwner')
+            ->andReturn($this->owner);
         $this->entityManager->shouldReceive('lock')
-            ->with($this->apiCall, LockMode::PESSIMISTIC_WRITE);
+            ->with($this->key, LockMode::PESSIMISTIC_WRITE);
+        $this->entityManager->shouldReceive('lock')
+            ->with($this->owner, LockMode::PESSIMISTIC_WRITE);
+    }
+
+    private function mockPrepareApiCall()
+    {
+        $this->mockApiCallLoad();
         $this->apiTimeCalculator->shouldReceive('isCallStillValid')
             ->with($this->apiCall)
             ->andReturn(true);
@@ -153,6 +167,8 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
         $this->apiTimeCalculator = m::mock('Tarioch\EveapiFetcherBundle\Component\Worker\ApiTimeCalculator');
         $this->sectionApiFactory = m::mock('Tarioch\EveapiFetcherBundle\Component\Section\SectionApiFactory');
         $this->apiCall = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiCall');
+        $this->key = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiKey');
+        $this->owner = m::mock('Tarioch\EveapiFetcherBundle\Entity\AccountCharacter');
         $this->api = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
         $this->sectionApi = m::mock('Tarioch\EveapiFetcherBundle\Component\Section\SectionApi');
 
