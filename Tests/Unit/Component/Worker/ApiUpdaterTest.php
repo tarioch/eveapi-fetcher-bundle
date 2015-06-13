@@ -42,14 +42,6 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
      * @var SectionApi
      */
     private $sectionApi;
-    /**
-     * @var ApiKey
-     */
-    private $key;
-    /**
-     * @var AccountCharacter
-     */
-    private $owner;
 
     /**
      * @var ApiUpdater
@@ -124,14 +116,8 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
         $this->entityManager->shouldReceive('find')
             ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID)
             ->andReturn($this->apiCall);
-        $this->apiCall->shouldReceive('getKey')
-            ->andReturn($this->key);
         $this->apiCall->shouldReceive('getOwner')
-            ->andReturn($this->owner);
-        $this->entityManager->shouldReceive('lock')
-            ->with($this->key, LockMode::PESSIMISTIC_WRITE);
-        $this->entityManager->shouldReceive('lock')
-            ->with($this->owner, LockMode::PESSIMISTIC_WRITE);
+            ->andReturn(null);
     }
 
     private function mockPrepareApiCall()

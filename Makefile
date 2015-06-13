@@ -9,7 +9,7 @@ checkstyleFix:
 	@./vendor/bin/phpcbf -s -p --colors --standard=phpcs_rules.xml --extensions=php --ignore=vendor . || exit 2
 
 detectmess:
-	@./vendor/bin/phpmd . text phpmd_rules.xml --suffixes php --exclude vendor,DoctrineMigrations,Tests || exit 3
+	@./vendor/bin/phpmd . text phpmd_rules.xml --suffixes php --exclude vendor,DoctrineMigrations || exit 3
 
 test:
 	@./vendor/bin/phpunit || exit 4
