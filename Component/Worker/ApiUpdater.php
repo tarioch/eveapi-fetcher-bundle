@@ -49,7 +49,7 @@ class ApiUpdater
         if ($call->getOwner() != null) {
             $repo = $em->getRepository('TariochEveapiFetcherBundle:AccountCharacter');
             $owners = $repo->findByCharacterId($call->getOwner()->getCharacterId());
-            if ($owners->count() > 1) {
+            if (count($owners) > 1) {
                 foreach ($owners as $owner) {
                     $entity = 'TariochEveapiFetcherBundle:AccountCharacter';
                     $em->find($entity, $owner->getId(), LockMode::PESSIMISTIC_WRITE);
