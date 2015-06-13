@@ -49,8 +49,11 @@ class ApiUpdater
         if ($call->getOwner() != null) {
             $repo = $em->getRepository('TariochEveapiFetcherBundle:AccountCharacter');
             $owners = $repo->findByCharacterId($call->getOwner()->getCharacterId());
-            foreach ($owners as $owner) {
-                $em->find('TariochEveapiFetcherBundle:AccountCharacter', $owner->getId(), LockMode::PESSIMISTIC_WRITE);
+            if ($owners->count() > 1) {
+                foreach ($owners as $owner) {
+                    $entity = 'TariochEveapiFetcherBundle:AccountCharacter';
+                    $em->find($entity, $owner->getId(), LockMode::PESSIMISTIC_WRITE);
+                }
             }
         }
         if ($this->apiTimeCalculator->isCallStillValid($call)) {
