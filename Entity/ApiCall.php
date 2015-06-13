@@ -38,19 +38,19 @@ class ApiCall
     private $errorCount;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AccountCharacter", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="AccountCharacter", fetch="LAZY")
      * @ORM\JoinColumn(name="ownerID", referencedColumnName="ID", nullable=true, onDelete="cascade")
      */
     private $owner;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Api", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Api", fetch="LAZY")
      * @ORM\JoinColumn(name="apiID", referencedColumnName="apiID", nullable=false, onDelete="cascade")
      */
     private $api;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ApiKey", fetch="EAGER", inversedBy="apiCalls")
+     * @ORM\ManyToOne(targetEntity="ApiKey", fetch="LAZY", inversedBy="apiCalls")
      * @ORM\JoinColumn(name="keyID", referencedColumnName="keyID", nullable=true, onDelete="cascade")
      */
     private $key;

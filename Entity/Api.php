@@ -4,7 +4,7 @@ namespace Tarioch\EveapiFetcherBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="ApiRepository")
+ * @ORM\Entity(repositoryClass="ApiRepository", readOnly=true)
  * @ORM\Table(name="api")
  */
 class Api
