@@ -51,8 +51,10 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
     public function testUpdateNoLongerValid()
     {
         $this->entityManager->shouldReceive('find')
-            ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID, LockMode::PESSIMISTIC_WRITE)
+            ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID)
             ->andReturn($this->apiCall);
+        $this->entityManager->shouldReceive('lock')
+            ->with($this->apiCall, LockMode::PESSIMISTIC_WRITE);
         $this->apiTimeCalculator->shouldReceive('isCallStillValid')
             ->with($this->apiCall)
             ->andReturn(false);
@@ -117,8 +119,10 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
     private function mockPrepareApiCall()
     {
         $this->entityManager->shouldReceive('find')
-            ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID, LockMode::PESSIMISTIC_WRITE)
+            ->with('TariochEveapiFetcherBundle:ApiCall', self::API_CALL_ID)
             ->andReturn($this->apiCall);
+        $this->entityManager->shouldReceive('lock')
+            ->with($this->apiCall, LockMode::PESSIMISTIC_WRITE);
         $this->apiTimeCalculator->shouldReceive('isCallStillValid')
             ->with($this->apiCall)
             ->andReturn(true);
