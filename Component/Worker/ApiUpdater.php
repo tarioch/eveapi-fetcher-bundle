@@ -46,8 +46,12 @@ class ApiUpdater
         print('CallId ' . $apiCallId . "\n");
         $em = $this->entityManager;
         $call = $em->find('TariochEveapiFetcherBundle:ApiCall', $apiCallId);
-        $em->lock($call->getKey(), LockMode::PESSIMISTIC_WRITE);
-        $em->lock($call->getOwner(), LockMode::PESSIMISTIC_WRITE);
+        if ($call->getKey() != null) {
+            $em->lock($call->getKey(), LockMode::PESSIMISTIC_WRITE);
+        }
+        if ($call->getOwner() != null) {
+            $em->lock($call->getOwner(), LockMode::PESSIMISTIC_WRITE);
+        }
         if ($this->apiTimeCalculator->isCallStillValid($call)) {
             $api = $call->getApi();
             $apiInfo = $api->getSection() . ' ' . $api->getName();
