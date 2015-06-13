@@ -47,12 +47,12 @@ class EveWorker
             $this->entityManager->getConnection()->commit();
         } catch (\Exception $e) {
             $this->entityManager->getConnection()->rollback();
-            $this->entityManager->close();
             $details = array('callId' => $apiCallId, 'exception' => $e);
             if (strstr($e->getMessage(), '1213 Deadlock found when trying to get lock; try restarting transaction')) {
                 $this->logger->info('{callId}: Deadlock', $details);
             } else {
                 $this->logger->critical('{callId}: Unhandled exception', $details);
+                $this->entityManager->close();
                 throw $e;
             }
         }
