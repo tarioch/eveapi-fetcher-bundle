@@ -153,8 +153,6 @@ class ApiUpdaterTest extends \PHPUnit_Framework_TestCase
         $this->apiTimeCalculator = m::mock('Tarioch\EveapiFetcherBundle\Component\Worker\ApiTimeCalculator');
         $this->sectionApiFactory = m::mock('Tarioch\EveapiFetcherBundle\Component\Section\SectionApiFactory');
         $this->apiCall = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiCall');
-        $this->key = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiKey');
-        $this->owner = m::mock('Tarioch\EveapiFetcherBundle\Entity\AccountCharacter');
         $this->api = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
         $this->sectionApi = m::mock('Tarioch\EveapiFetcherBundle\Component\Section\SectionApi');
 
