@@ -32,7 +32,7 @@ class WalletTransactionUpdater extends AbstractCorpUpdater
                 'characterID' => $charId,
                 'rowCount' => 2560,
                 'accountKey' => $accountKey
-            ));$
+            ));
             $cached = $api->cached_until;
 
             $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CorpWalletTransaction');

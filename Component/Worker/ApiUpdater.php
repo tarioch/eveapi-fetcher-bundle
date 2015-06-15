@@ -46,7 +46,7 @@ class ApiUpdater
         print('CallId ' . $apiCallId . "\n");
         $em = $this->entityManager;
         $call = $em->find('TariochEveapiFetcherBundle:ApiCall', $apiCallId);
-        if ($call->getOwner() != null) {
+        if ($call->getOwner() !== null) {
             $repo = $em->getRepository('TariochEveapiFetcherBundle:AccountCharacter');
             $owners = $repo->findByCharacterId($call->getOwner()->getCharacterId());
             if (count($owners) > 1) {
