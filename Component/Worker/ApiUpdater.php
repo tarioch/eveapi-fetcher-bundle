@@ -49,13 +49,15 @@ class ApiUpdater
         if ($call->getOwner() != null) {
             $repo = $em->getRepository('TariochEveapiFetcherBundle:AccountCharacter');
             $owners = $repo->findByCharacterId($call->getOwner()->getCharacterId());
-            foreach ($owners as $owner) {
-                $entity = 'TariochEveapiFetcherBundle:AccountCharacter';
-                $em->find($entity, $owner->getId(), LockMode::PESSIMISTIC_WRITE);
-                $this->logger->info('{callId}: locked for owner {ownerId}', array(
-                    'callId' => $apiCallId,
-                    'ownerId' => $owner->getId()
-                ));
+            if (count($owners) > 1) {
+                foreach ($owners as $owner) {
+                    $entity = 'TariochEveapiFetcherBundle:AccountCharacter';
+                    $em->find($entity, $owner->getId(), LockMode::PESSIMISTIC_WRITE);
+                    $this->logger->info('{callId}: locked for owner {ownerId}', array(
+                        'callId' => $apiCallId,
+                        'ownerId' => $owner->getId()
+                    ));
+                }
             }
         }
         if ($this->apiTimeCalculator->isCallStillValid($call)) {
