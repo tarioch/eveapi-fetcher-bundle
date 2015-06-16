@@ -20,10 +20,11 @@ class MailMessageBodyUpdater extends AbstractCharUpdater
         $charId = $owner->getCharacterId();
 
         $repo = $this->entityManager->getRepository('TariochEveapiFetcherBundle:CharMailMessage');
-        $messages = $repo->loadMessagesWithoutBody($charId, $call->getCachedUntil());
+        $messages = $repo->loadMessagesWithoutBody($charId);
 
         $messageIds = array();
         foreach ($messages as $message) {
+            $message->setBody('');
             $messageIds[$message->getMessageId()] = $message;
         }
         $cached = 'now';
