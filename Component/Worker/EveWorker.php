@@ -51,6 +51,8 @@ class EveWorker
             $details = array('callId' => $apiCallId, 'exception' => $e);
             if (strstr($e->getMessage(), '1213 Deadlock found when trying to get lock; try restarting transaction')) {
                 $this->logger->info('{callId}: Deadlock', $details);
+            } elseif (strstr($e->getMessage(), '1205 Lock wait timeout exceeded; try restarting transaction')) {
+                $this->logger->info('{callId}: Lock wait timeout', $details);
             } else {
                 $this->logger->critical('{callId}: Unhandled exception', $details);
             }
