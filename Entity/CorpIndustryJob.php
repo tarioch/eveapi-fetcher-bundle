@@ -36,7 +36,7 @@ class CorpIndustryJob
     private $installerId;
 
     /**
-     * @ORM\Column(name="installerName", type="string", length=255, options={"unsigned"=true})
+     * @ORM\Column(name="installerName", type="string", length=255)
      */
     private $installerName;
 
@@ -51,7 +51,7 @@ class CorpIndustryJob
     private $solarSystemId;
 
     /**
-     * @ORM\Column(name="solarSystemName", type="string", length=255, options={"unsigned"=true})
+     * @ORM\Column(name="solarSystemName", type="string", length=255)
      */
     private $solarSystemName;
 
@@ -76,7 +76,7 @@ class CorpIndustryJob
     private $blueprintTypeId;
 
     /**
-     * @ORM\Column(name="blueprintTypeName", type="string", length=255, options={"unsigned"=true})
+     * @ORM\Column(name="blueprintTypeName", type="string", length=255)
      */
     private $blueprintTypeName;
 
@@ -121,7 +121,7 @@ class CorpIndustryJob
     private $productTypeId;
 
     /**
-     * @ORM\Column(name="productTypeName", type="string", length=255, options={"unsigned"=true})
+     * @ORM\Column(name="productTypeName", type="string", length=255)
      */
     private $productTypeName;
 
