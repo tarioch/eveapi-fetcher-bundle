@@ -104,17 +104,6 @@ class CharSkillInTraining
         return $this->skillInTraining;
     }
 
-
-    /**
-     * Get skillInTraining
-     *
-     * @return boolean 
-     */
-    public function getSkillInTraining()
-    {
-        return $this->skillInTraining;
-    }
-
     /**
      * Set trainingStartTime
      *
@@ -131,7 +120,7 @@ class CharSkillInTraining
     /**
      * Get trainingStartTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getTrainingStartTime()
     {
@@ -154,7 +143,7 @@ class CharSkillInTraining
     /**
      * Get trainingEndTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getTrainingEndTime()
     {
@@ -177,7 +166,7 @@ class CharSkillInTraining
     /**
      * Get trainingTypeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTrainingTypeId()
     {
@@ -200,7 +189,7 @@ class CharSkillInTraining
     /**
      * Get trainingStartSp
      *
-     * @return integer 
+     * @return integer
      */
     public function getTrainingStartSp()
     {
@@ -223,7 +212,7 @@ class CharSkillInTraining
     /**
      * Get trainingDestinationSp
      *
-     * @return integer 
+     * @return integer
      */
     public function getTrainingDestinationSp()
     {
@@ -246,7 +235,7 @@ class CharSkillInTraining
     /**
      * Get trainingToLevel
      *
-     * @return integer 
+     * @return integer
      */
     public function getTrainingToLevel()
     {
