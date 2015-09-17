@@ -21,33 +21,33 @@ class CharSkillInTraining
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="trainingStartTime", type="datetime")
+     * @ORM\Column(name="trainingStartTime", type="datetime", nullable=true)
      */
     private $trainingStartTime;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="trainingEndTime", type="datetime")
+     * @ORM\Column(name="trainingEndTime", type="datetime", nullable=true)
      */
     private $trainingEndTime;
     
     /**
-     * @ORM\Column(name="trainingTypeID", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="trainingTypeID", type="bigint", options={"unsigned"=true}, nullable=true)
      */
     private $trainingTypeId;
 
     /**
-     * @ORM\Column(name="trainingStartSp", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="trainingStartSp", type="bigint", options={"unsigned"=true}, nullable=true)
      */
     private $trainingStartSp;
 
     /**
-     * @ORM\Column(name="trainingDestinationSp", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="trainingDestinationSp", type="bigint", options={"unsigned"=true}, nullable=true)
      */
     private $trainingDestinationSp;
 
     /**
-     * @ORM\Column(name="trainingToLevel", type="integer", options={"unsigned"=true})
+     * @ORM\Column(name="trainingToLevel", type="integer", options={"unsigned"=true}, nullable=true)
      */
     private $trainingToLevel;
 
