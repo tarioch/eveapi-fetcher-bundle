@@ -32,22 +32,22 @@ class CharSkillInTraining
     private $trainingEndTime;
     
     /**
-     * @ORM\Id @ORM\Column(name="trainingTypeID", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="trainingTypeID", type="bigint", options={"unsigned"=true})
      */
     private $trainingTypeId;
 
     /**
-     * @ORM\Id @ORM\Column(name="trainingStartSp", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="trainingStartSp", type="bigint", options={"unsigned"=true})
      */
     private $trainingStartSp;
 
     /**
-     * @ORM\Id @ORM\Column(name="trainingDestinationSp", type="bigint", options={"unsigned"=true})
+     * @ORM\Column(name="trainingDestinationSp", type="bigint", options={"unsigned"=true})
      */
     private $trainingDestinationSp;
 
     /**
-     * @ORM\Id @ORM\Column(name="trainingToLevel", type="integer", options={"unsigned"=true})
+     * @ORM\Column(name="trainingToLevel", type="integer", options={"unsigned"=true})
      */
     private $trainingToLevel;
 
