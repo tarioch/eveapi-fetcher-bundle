@@ -16,11 +16,15 @@ env:
     secure: eKBFvBtJNlIz0AKS4XPCzflUonA8fFN49qib9UuuYLaG9VQuOFEdS+IdY84EDUW67PSoPyWoEEwcjsWtmpyC9Z6i1FvpQbW2LMoXwWmycgfKBv0Dak863Sbx1qlBeUlwvMH5w8O1hC2eQgliNKzwe7XXr+SDB0s/FKG+je5FHNQ=
 
 before_install:
+    - phpenv config-rm xdebug.ini
     - composer self-update
     - composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH
 
 install:
     - composer install --prefer-dist
+
+before_script:
+    - phpenv config-add xdebug.ini
 
 script:
     - make fullbuild
