@@ -24,5 +24,8 @@ before_install:
 install:
     - composer install --prefer-dist
 
+before_script:
+    - echo 'zend_extension=xdebug.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
 script:
     - make fullbuild
