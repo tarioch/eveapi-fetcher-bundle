@@ -16,7 +16,7 @@
     },
     "require": {
         "php": ">=5.4.4",
-	    "symfony/framework-bundle": ">=2.3,<3",
+	    "symfony/framework-bundle": ">=2.3",
 	    "jms/di-extra-bundle" : ">=1.4",
 	    "tarioch/pheal-bundle" : "0.1.*",
 	    "doctrine/orm" : ">=2.2.3",
