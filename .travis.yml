@@ -24,8 +24,5 @@ before_install:
 install:
     - composer install --prefer-dist
 
-before_script:
-    - phpenv config-add xdebug.ini
-
 script:
     - make fullbuild
