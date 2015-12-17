@@ -45,7 +45,7 @@ class AppKernel extends Kernel
         $bundles = array(
             ...
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle()
-            new Tarioch\PhealBundle\TariochPhealBundle(),
+            new Evelabs\PhealNGBundle\EvelabsPhealNGBundle(),
             new Tarioch\PhealBundle\TariochEveapiFetcherBundle()
         );
         //...
@@ -116,6 +116,10 @@ gearman:
         localhost:
             host: 127.0.0.1
             port: 4730
+
+evelabs_pheal:
+    cache_dir = "%kernel.cache_dir%/pheal"
+    user_agen = "myname@mydomain.tld""
 
 ```
 

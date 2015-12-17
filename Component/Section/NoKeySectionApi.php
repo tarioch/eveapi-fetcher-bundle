@@ -2,7 +2,7 @@
 namespace Tarioch\EveapiFetcherBundle\Component\Section;
 
 use JMS\DiExtraBundle\Annotation as DI;
-use Tarioch\PhealBundle\DependencyInjection\PhealFactory;
+use Evelabs\PhealNGBundle\Pheal\PhealFactory;
 use Tarioch\EveapiFetcherBundle\Entity\ApiCall;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;
 
@@ -16,7 +16,7 @@ class NoKeySectionApi implements SectionApi
 
     /**
      * @DI\InjectParams({
-     * "phealFactory" = @DI\Inject("tarioch.pheal.factory"),
+     * "phealFactory" = @DI\Inject("evelabs.pheal_factory"),
      * "specificApiFactory" = @DI\Inject("tarioch.eveapi_fetcher_bundle.component.eve_api.specific_api_factory")
      * })
      */
@@ -33,7 +33,7 @@ class NoKeySectionApi implements SectionApi
      */
     public function update(ApiCall $call)
     {
-        $pheal = $this->phealFactory->createEveOnline();
+        $pheal = $this->phealFactory->getPheal();
         $specificApi = $this->specificApiFactory->create($call->getApi());
 
         return new \DateTime($specificApi->update($call, $pheal));

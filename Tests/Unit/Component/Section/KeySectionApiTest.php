@@ -5,7 +5,7 @@ use Mockery as m;
 use Tarioch\EveapiFetcherBundle\Entity\Api;
 use Tarioch\EveapiFetcherBundle\Component\Section\KeySectionApi;
 use Tarioch\EveapiFetcherBundle\Component\EveApi\SpecificApiFactory;
-use Tarioch\PhealBundle\DependencyInjection\PhealFactory;
+use Evelabs\PhealNGBundle\Pheal\PhealFactory;
 use Pheal\Pheal;
 use Pheal\Exceptions\PhealException;
 
@@ -137,7 +137,7 @@ class KeySectionApiTest extends \PHPUnit_Framework_TestCase
         $this->api = m::mock('Tarioch\EveapiFetcherBundle\Entity\Api');
         $this->key = m::mock('Tarioch\EveapiFetcherBundle\Entity\ApiKey');
         $this->pheal = m::mock('Pheal\Pheal');
-        $this->phealFactory = m::mock('Tarioch\PhealBundle\DependencyInjection\PhealFactory');
+        $this->phealFactory = m::mock('Evelabs\PhealNGBundle\Pheal\PhealFactory');
         $this->specificApi = m::mock('Tarioch\EveapiFetcherBundle\Component\KeyApi');
 
         $this->keySectionApi = new KeySectionApi(
