@@ -16,11 +16,16 @@ env:
     secure: eKBFvBtJNlIz0AKS4XPCzflUonA8fFN49qib9UuuYLaG9VQuOFEdS+IdY84EDUW67PSoPyWoEEwcjsWtmpyC9Z6i1FvpQbW2LMoXwWmycgfKBv0Dak863Sbx1qlBeUlwvMH5w8O1hC2eQgliNKzwe7XXr+SDB0s/FKG+je5FHNQ=
 
 before_install:
+    - phpenv config-rm xdebug.ini
+    - echo 'memory_limit=-1' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
     - composer self-update
     - composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH
 
 install:
     - composer install --prefer-dist
+
+before_script:
+    - echo 'zend_extension=xdebug.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 script:
     - make fullbuild

@@ -44,9 +44,13 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             ...
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle()
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new JMS\AopBundle\JMSAopBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
+            new Mmoreram\GearmanBundle\GearmanBundle(),
             new Evelabs\PhealNGBundle\EvelabsPhealNGBundle(),
-            new Tarioch\PhealBundle\TariochEveapiFetcherBundle()
+            new Tarioch\EveapiFetcherBundle\TariochEveapiFetcherBundle(),
         );
         //...
 
@@ -96,7 +100,13 @@ doctrine:
 doctrine_migrations:
     # workaround, see http://stackoverflow.com/questions/17066670/symfony2-change-migration-directory
     dir_name: '%kernel.root_dir%/../vendor/tarioch/eveapi-fetcher-bundle/Tarioch/EveapiFetcherBundle/DoctrineMigrations'
-    
+
+doctrine_cache:
+    providers:
+        gearman_cache:
+            type: file_system
+            namespace: doctrine_cache.ns.gearman
+
 gearman:
     bundles:
         TariochEveapiFetcherBundle:
