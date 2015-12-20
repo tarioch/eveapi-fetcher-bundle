@@ -3,7 +3,7 @@ namespace Tarioch\EveapiFetcherBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 
-class MailMessageRepository extends EntityRepository
+class CharMailMessageRepository extends EntityRepository
 {
     public function loadMessagesWithoutBody($ownerId)
     {

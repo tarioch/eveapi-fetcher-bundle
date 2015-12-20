@@ -57,8 +57,8 @@ class WalletJournalUpdater extends AbstractCharUpdater
                     $entity->setReason($entry->reason);
                     $entity->setOwner1TypeId($entry->owner1TypeID);
                     $entity->setOwner2TypeId($entry->owner2TypeID);
-                    $entity->setTaxAmount($entry->taxAmount);
-                    $entity->setTaxReceiverId($entry->taxReceiverID);
+                    $entity->setTaxAmount((float) $entry->taxAmount);
+                    $entity->setTaxReceiverId($entry->taxReceiverID === '' ? null : $entry->taxReceiverID);
 
                     $this->entityManager->flush($entity);
                 }
