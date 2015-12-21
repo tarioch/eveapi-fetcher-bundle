@@ -4,7 +4,7 @@ namespace Tarioch\EveapiFetcherBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="MailMessageRepository")
+ * @ORM\Entity(repositoryClass="CharMailMessageRepository")
  * @ORM\Table(name="charMailMessage", uniqueConstraints={
  *     @ORM\UniqueConstraint(name="message_owner", columns={"ownerId", "messageId"})
  * })
