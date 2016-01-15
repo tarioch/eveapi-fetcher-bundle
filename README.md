@@ -152,7 +152,7 @@ http://supervisord.org
 ```
 [program:evetool]
 process_name=evetool%(process_num)s
-command=/usr/bin/php /path/to/app/console gearman:worker:execute TariochEveapiFetcherBundleComponentWorkerTariochEveapiFetcherEveWorker --env=prod --no-interaction
+command=/usr/bin/php /path/to/app/console gearman:worker:execute TariochEveapiFetcherEveWorker --env=prod --no-interaction
 numprocs=10
 autostart=true
 autorestart=true
