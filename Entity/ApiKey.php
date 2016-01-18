@@ -54,6 +54,11 @@ class ApiKey
         return $this->vCode;
     }
 
+    public function setVcode($vcode)
+    {
+        $this->vCode = $vcode;
+    }
+
     public function isActive()
     {
         return $this->active;
